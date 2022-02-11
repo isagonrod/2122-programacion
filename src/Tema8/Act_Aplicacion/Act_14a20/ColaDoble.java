@@ -7,7 +7,6 @@ package Tema8.Act_Aplicacion.Act_14a20;
  */
 
 public class ColaDoble extends ColaNueva {
-
     void encolarPrincipio(Integer elemento) {
         super.insertarPrincipio(elemento);
     }

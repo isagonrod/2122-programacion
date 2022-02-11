@@ -7,8 +7,6 @@ package Tema8.Act_Aplicacion.Act_14a20;
 import java.util.Arrays;
 
 public class ColaNueva extends ListaNueva {
-    ListaNueva cola;
-
     public ColaNueva() {
         super();
     }

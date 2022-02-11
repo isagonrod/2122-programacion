@@ -3,6 +3,9 @@ package Tema8.Act_Aplicacion.Act_11;
 import Tema8.Act_Resueltas.Act_4y5.Instrumento;
 import Tema8.Act_Resueltas.Act_4y5.Nota;
 
+/* EJERCICIO 8.11
+ * Crea la clase Campana que hereda de Instrumento (definida en la Actividad resuelta 8.4)
+ */
 public class Campana extends Instrumento {
     public Campana() {
         super();

@@ -5,8 +5,6 @@ package Tema8.Act_Aplicacion.Act_14a20;
  */
 
 public class PilaNueva extends ListaNueva {
-    ListaNueva pila;
-
     public PilaNueva() {
         super();
     }
