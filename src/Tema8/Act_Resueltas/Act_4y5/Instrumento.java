@@ -18,10 +18,10 @@ public abstract class Instrumento {
         melodia = new Nota[0];
     }
 
-    void add(Nota nota) {
+    public void add(Nota nota) {
         melodia = Arrays.copyOf(melodia, melodia.length + 1);
         melodia[melodia.length - 1] = nota;
     }
 
-    abstract void interpretar();
+    public abstract void interpretar();
 }
