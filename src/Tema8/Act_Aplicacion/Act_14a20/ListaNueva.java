@@ -93,13 +93,26 @@ public class ListaNueva {
     @Override
     public boolean equals(Object o) {
         boolean iguales;
-        if (this == o) {
+        int i, j, coincidencias = 0;
+
+        if (this == o) { //si coinciden las referencias de memoria
             iguales = true;
-        }
-        if (o == null || getClass() != o.getClass()) {
+        } else if (o == null || this.getClass() != o.getClass()) { //si el otro es nulo o no son de la misma clase
             iguales = false;
+        } else {
+            ListaNueva otro = (ListaNueva) o;
+
+            for (i = 0; i < tabla.length; i++) {
+                for (j = 0; i < otro.tabla.length; i++) {
+                    if (tabla[i] == otro.tabla[j]) {
+                        coincidencias++;
+                    }
+                }
+            }
+
+            iguales = coincidencias >= tabla.length; //si no hemos visto menos coincidencias que el tamaño, serán iguales
+            //iguales = Arrays.equals(tabla, otro.tabla);
         }
-        ListaNueva that = (ListaNueva) o;
-        return Arrays.equals(tabla, that.tabla);
+        return iguales;
     }
 }
