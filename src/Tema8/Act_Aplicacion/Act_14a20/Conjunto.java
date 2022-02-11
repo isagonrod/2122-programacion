@@ -24,9 +24,9 @@ public class Conjunto extends ListaNueva {
         }
     }
 
-    @Override
-    public void insertarFinal(ListaNueva otraLista) {
+    public void insertarFinal(Conjunto otro) {
         //???
+        super.insertarFinal(otro);
     }
 
     @Override
