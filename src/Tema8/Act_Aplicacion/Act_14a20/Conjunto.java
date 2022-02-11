@@ -1,6 +1,40 @@
 package Tema8.Act_Aplicacion.Act_14a20;
 
+/* EJERCICIO 8.19
+ * Un conjunto es un objeto similar a las listas, capaz de guardar valores de un tipo determinado, con la diferencia de
+ * que sus elementos no pueden estar repetidos. Escribe la clase Conjunto para enteros heredando de Lista y
+ * reimplementando los métodos de inserción para evitar las repeticiones.
+ */
+/* EJERCICIO 8.20
+ * Implementa el método equals() en la clase Conjunto. Dos conjuntos se consideran iguales si tienen los mismos
+ * elementos, no importa en qué orden.
+ */
 public class Conjunto extends ListaNueva {
+    @Override
+    public void insertarPrincipio(Integer nuevo) {
+        if (this.buscar(nuevo) == -1) {
+            super.insertarPrincipio(nuevo);
+        }
+    }
+
+    @Override
+    public void insertarFinal(Integer nuevo) {
+        if (this.buscar(nuevo) == -1) {
+            super.insertarFinal(nuevo);
+        }
+    }
+
+    @Override
+    public void insertarFinal(ListaNueva otraLista) {
+        //???
+    }
+
+    @Override
+    public void insertar(int posicion, Integer nuevo) {
+        if (this.buscar(nuevo) == -1) {
+            super.insertar(posicion, nuevo);
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
