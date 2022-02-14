@@ -1,4 +1,4 @@
-package Tema8.Act_Ampliacion.Act_25;
+package Tema8.Act_Ampliacion.Act_25y27a28;
 
 public class Punto3D extends Punto {
     int z;
@@ -15,5 +15,9 @@ public class Punto3D extends Punto {
     @Override
     public String toString() {
         return super.toString() + ", " + this.z;
+    }
+
+    public boolean equals(Punto3D otroPunto3D) {
+        return super.equals(otroPunto3D) && this.z == otroPunto3D.z;
     }
 }
