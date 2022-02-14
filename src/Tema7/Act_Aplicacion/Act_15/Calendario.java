@@ -71,14 +71,13 @@ public class Calendario {
         }
     }
 
-    public void mostrar() {
-        System.out.println("Día " + day + " del mes " + month + " del año " + year);
+    public String toString() {
+        return "Día " + day + " del mes " + month + " del año " + year;
     }
 
-    boolean iguales(Calendario otraFecha) {
+    public boolean equals(Calendario otraFecha) {
         return this.day == otraFecha.day && this.month == otraFecha.month && this.year == otraFecha.year;
     }
 }
 
 //equals método de la clase Object (genérica)
-
