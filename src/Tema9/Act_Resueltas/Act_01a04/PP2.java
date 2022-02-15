@@ -19,7 +19,7 @@ public class PP2 {
         n = c.desencolar();
         while (n != null) {
             System.out.println(n + " ");
-            n = c.desencolar(); //TODO : No funciona el desencolar
+            n = c.desencolar();
         }
         System.out.println("");
     }

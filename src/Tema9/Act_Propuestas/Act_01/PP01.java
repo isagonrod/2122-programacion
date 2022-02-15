@@ -22,7 +22,7 @@ public class PP01 {
         num = lista.desapilar();
         while (num != null) {
             System.out.println(num + " ");
-            num = lista.desapilar(); // TODO : No funciona el desapilar
+            num = lista.desapilar();
         }
         System.out.println("");
     }
