@@ -27,13 +27,14 @@ public class Lista implements Pila, Cola, ColaDoble {
     }
 
     @Override
-    public Integer desencolar() { // TODO : No funciona
-        Integer eliminado;
+    public Integer desencolar() {
+        Integer eliminado = null;
 
-        eliminado = this.tabla[0];
-        System.arraycopy(this.tabla, 1, this.tabla, 0, this.tabla.length - 1);
-        this.tabla = Arrays.copyOf(this.tabla, this.tabla.length - 1);
-
+        if (this.tabla.length != 0) {
+            eliminado = this.tabla[0];
+            System.arraycopy(this.tabla, 1, this.tabla, 0, this.tabla.length - 1);
+            this.tabla = Arrays.copyOf(this.tabla, this.tabla.length - 1);
+        }
         return eliminado;
     }
 
@@ -43,12 +44,14 @@ public class Lista implements Pila, Cola, ColaDoble {
     }
 
     @Override
-    public Integer desapilar() { // TODO : No funciona
-        Integer eliminado;
+    public Integer desapilar() {
+        Integer eliminado = null;
 
-        eliminado = this.tabla[tabla.length - 1];
-        System.arraycopy(this.tabla, 0, this.tabla, 0, this.tabla.length - 1);
-        this.tabla = Arrays.copyOf(this.tabla, this.tabla.length - 1);
+        if (this.tabla.length != 0) {
+            eliminado = this.tabla[tabla.length - 1];
+            System.arraycopy(this.tabla, 0, this.tabla, 0, this.tabla.length - 1);
+            this.tabla = Arrays.copyOf(this.tabla, this.tabla.length - 1);
+        }
 
         return eliminado;
     }
