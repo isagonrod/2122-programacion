@@ -16,11 +16,14 @@ public class PP2 {
             c.encolar(n);
             n = Teclado.getNumber("Introducir número: ");
         }
+        System.out.println("Cola inicial: " + c);
+
         n = c.desencolar();
         while (n != null) {
             System.out.println(n + " ");
             n = c.desencolar();
         }
-        System.out.println("");
+
+        System.out.println("Cola final: " + c);
     }
 }
