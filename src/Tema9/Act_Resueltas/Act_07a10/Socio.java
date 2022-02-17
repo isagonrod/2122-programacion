@@ -1,4 +1,4 @@
-package Tema9.Act_Resueltas.Act_07;
+package Tema9.Act_Resueltas.Act_07a10;
 
 /* ACTIVIDAD 9.7
  * Implementar la interfaz Comparable en la clase Socio para que, por defecto, se ordene según los números de
@@ -11,7 +11,7 @@ import java.time.temporal.ChronoUnit;
 
 public class Socio implements Comparable {
     int id;
-    String nombre;
+    public String nombre;
     LocalDate fechaNacimiento;
 
     public Socio(int id, String nombre, String fechaNacimiento) {
@@ -26,24 +26,15 @@ public class Socio implements Comparable {
     }
 
     @Override
-    public int compareTo(Object ob) {
-        int resultado;
-        Socio otroSocio = (Socio)ob;
-        if (id < otroSocio.id) {
-            resultado = -1;
-        } else if (id > otroSocio.id) {
-            resultado = 1;
-        } else {
-            resultado = 0;
-        }
-        return resultado;
+    public int compareTo(Object otro) {
+        return nombre.compareTo(((Socio)otro).nombre);
     }
 
-    public int compareToTwo(Object ob) {
-        return id - ((Socio)ob).id;
+    public int compareToTwo(Object otro) {
+        return id - ((Socio)otro).id;
     }
 
     public String toString() {
-        return "Id: " + id + "| Nombre: " + nombre + "| Edad: " + edad() + "\n";
+        return "Id: " + id + " | Nombre: " + nombre + " | Edad: " + edad() + "\n";
     }
 }
