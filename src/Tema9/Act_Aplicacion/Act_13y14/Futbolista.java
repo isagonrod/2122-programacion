@@ -8,10 +8,6 @@ package Tema9.Act_Aplicacion.Act_13y14;
  *      - Un comparador para hacer ordenaciones basadas en el nombre y otro basado en la edad.
  * Crear una tabla con 5 futbolistas y mostrarlos ordenados por DNI, por nombre y por edad.
  */
-/* ACTIVIDAD 9.14
- * Añadir a la actividad de aplicación 9.13 un comparador que ordene los futbolistas por edades y, para aquellos que
- * tienen la misma edad, por nombres.
- */
 
 import java.util.Comparator;
 
@@ -28,7 +24,7 @@ public class Futbolista implements Comparable {
 
     public String toString() {
         return "DNI: " + this.dni + " | Nombre: " + this.nombre + " | Edad: " + this.edad + " | Nº de goles: "
-                + this.nGoles;
+                + this.nGoles + "\n";
     }
 
     public boolean equals(Futbolista otroFutbolista) {
