@@ -1,4 +1,4 @@
-package Tema9.Act_Aplicacion.Act_11y12;
+package Tema9.Act_Aplicacion.Act_11y12y15a18;
 
 /* ACTIVIDAD 9.11
  * Implementar la clase Lista para almacenar elementos de tipo String.
@@ -11,13 +11,13 @@ package Tema9.Act_Aplicacion.Act_11y12;
 import java.util.Arrays;
 
 public class Lista implements Cola, Pila {
-    String[] tabla;
+    Object[] tabla;
 
     public Lista() {
-        this.tabla = new String[0];
+        this.tabla = new Object[0];
     }
 
-    void insertarPrincipio(String nuevo) {
+    void insertarPrincipio(Object nuevo) {
         tabla = Arrays.copyOf(tabla, tabla.length + 1);
         System.arraycopy(tabla, 0, tabla,1,tabla.length - 1);
         tabla[0] = nuevo;
@@ -29,14 +29,14 @@ public class Lista implements Cola, Pila {
         System.arraycopy(otraLista.tabla, 0, tabla, tamIni, otraLista.tabla.length);
     }
 
-    void insertar(int posicion, String nuevo) {
+    public void insertar(int posicion, Object nuevo) {
         tabla = Arrays.copyOf(tabla, tabla.length + 1);
         System.arraycopy(tabla, posicion, tabla, posicion + 1, tabla.length - posicion - 1);
         tabla[posicion] = nuevo;
     }
 
-    String eliminar(int indice) {
-        String eliminado = null;
+    Object eliminar(int indice) {
+        Object eliminado = null;
         if (indice >= 0 && indice < tabla.length) {
             eliminado = tabla[indice];
             for (int i = indice + 1; i < tabla.length; i++) {
@@ -47,15 +47,15 @@ public class Lista implements Cola, Pila {
         return eliminado;
     }
 
-    String get(int indice) {
-        String resultado = null;
+    Object get(int indice) {
+        Object resultado = null;
         if (indice >= 0 && indice < tabla.length) {
             resultado = tabla[indice];
         }
         return resultado;
     }
 
-    int buscar(String claveBusqueda) {
+    int buscar(Object claveBusqueda) {
         int indice = -1;
         for (int i = 0; i < tabla.length && indice == -1; i++) {
             if (tabla[i].equals(claveBusqueda)) {
@@ -70,22 +70,22 @@ public class Lista implements Cola, Pila {
     }
 
     @Override
-    public void encolar(String nuevo) {
+    public void encolar(Object nuevo) {
         insertar(tabla.length, nuevo);
     }
 
     @Override
-    public String desencolar() {
+    public Object desencolar() {
         return eliminar(0);
     }
 
     @Override
-    public void apilar(String elemento) {
+    public void apilar(Object elemento) {
         insertar(tabla.length, elemento);
     }
 
     @Override
-    public String desapilar() {
+    public Object desapilar() {
         return eliminar(tabla.length - 1);
     }
 }
