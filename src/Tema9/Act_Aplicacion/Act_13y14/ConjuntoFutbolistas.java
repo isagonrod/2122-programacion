@@ -1,7 +1,5 @@
 package Tema9.Act_Aplicacion.Act_13y14;
 
-import Tema7.Anexo.Act_1.Conjunto;
-
 import java.util.Arrays;
 
 public class ConjuntoFutbolistas {
@@ -13,14 +11,17 @@ public class ConjuntoFutbolistas {
 
     void ordenarDni() {
         Arrays.sort(this.equipo);
+        System.out.println("Tabla ordenada por DNI: \n" + Arrays.deepToString(this.equipo));
     }
 
     void ordenarNombre() {
         Arrays.sort(this.equipo, new ComparaNombre());
+        System.out.println("Tabla ordenada por nombre: \n" + Arrays.deepToString(this.equipo));
     }
 
     void ordenarEdad() {
         Arrays.sort(this.equipo, new ComparaEdad());
+        System.out.println("Tabla ordenada por edad: \n" + Arrays.deepToString(this.equipo));
     }
 
     int numeroElementos() {
@@ -91,7 +92,7 @@ public class ConjuntoFutbolistas {
     }
 
     public void muestra() {
-        System.out.println("Lista: " + Arrays.toString(this.equipo));
+        System.out.println(Arrays.toString(this.equipo));
     }
 
     static boolean incluido(ConjuntoFutbolistas c1, ConjuntoFutbolistas c2) {

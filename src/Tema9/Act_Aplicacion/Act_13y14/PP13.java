@@ -10,15 +10,8 @@ public class PP13 {
         tabla.insertar(new Futbolista("44444444D", "Pablo Ruiz", 21, 20));
         tabla.insertar(new Futbolista("55555555E", "Abelino Gil", 20, 1));
 
-        tabla.muestra();
-
-        tabla.ordenarNombre();
-        tabla.muestra();
-
-        tabla.ordenarEdad();
-        tabla.muestra();
-
         tabla.ordenarDni();
-        tabla.muestra();
+        tabla.ordenarNombre();
+        tabla.ordenarEdad();
     }
 }
