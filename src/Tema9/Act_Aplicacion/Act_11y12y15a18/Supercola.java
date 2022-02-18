@@ -14,7 +14,7 @@ package Tema9.Act_Aplicacion.Act_11y12y15a18;
  * Después de cada operación se mostrará el estado de las dos colas para seguir su evolución.
  */
 
-public class Supercola implements Cola { // TODO : Revisar, porque algo no está funcionando
+public class Supercola {
     Cola cola1;
     Cola cola2;
 
@@ -23,15 +23,36 @@ public class Supercola implements Cola { // TODO : Revisar, porque algo no está
         this.cola2 = new Lista();
     }
 
-    @Override
-    public void encolar(Object nuevo) {
-        cola1.encolar(nuevo);
-        cola1.toString();
+    public void encolar(Object nuevo, Integer objetivo) {
+        if (objetivo == 1) {
+            cola1.encolar(nuevo);
+        }
+        else if (objetivo == 2) {
+            cola2.encolar(nuevo);
+        }
     }
 
-    @Override
-    public Object desencolar() {
-        cola1.desencolar();
-        return cola1.toString();
+    public Object desencolar(Integer objetivo) {
+        Object resultado = null;
+
+        if (objetivo == 1) {
+            resultado = cola1.desencolar();
+            if (resultado == null) {
+                resultado = cola2.desencolar();
+            }
+        }
+        else if (objetivo == 2) {
+            resultado = cola2.desencolar();
+            if (resultado == null) {
+                resultado = cola1.desencolar();
+            }
+        }
+
+        return resultado;
+    }
+
+    public String toString() {
+        return "Cola 1: " + cola1 +
+                "\nCola 2: " + cola2;
     }
 }
