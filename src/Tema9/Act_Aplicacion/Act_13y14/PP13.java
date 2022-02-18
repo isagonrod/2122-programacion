@@ -4,24 +4,21 @@ public class PP13 {
     public static void main (String[] args) {
         ConjuntoFutbolistas tabla = new ConjuntoFutbolistas();
 
-        tabla.insertar(new Futbolista("039082349", "Puto", 69, 999999));
-        tabla.insertar(new Futbolista("039083838", "Fracasao", 20, 0));
-        tabla.insertar(new Futbolista("928920111", "Capullo", 50, 154));
-        tabla.insertar(new Futbolista("119298282", "Subnormal", 31, 200));
-        tabla.insertar(new Futbolista("229838120", "Ana", 90, -1));
+        tabla.insertar(new Futbolista("11111111A", "León Gómez", 23, 15));
+        tabla.insertar(new Futbolista("22222222B", "Fran Pérez", 20, 0));
+        tabla.insertar(new Futbolista("33333333C", "Fernando Porres", 19, 11));
+        tabla.insertar(new Futbolista("44444444D", "Pablo Ruiz", 21, 20));
+        tabla.insertar(new Futbolista("55555555E", "Abelino Gil", 20, 1));
 
         tabla.muestra();
 
         tabla.ordenarNombre();
-
         tabla.muestra();
 
         tabla.ordenarEdad();
-
         tabla.muestra();
 
         tabla.ordenarDni();
-
         tabla.muestra();
     }
 }
