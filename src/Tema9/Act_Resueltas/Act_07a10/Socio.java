@@ -4,6 +4,14 @@ package Tema9.Act_Resueltas.Act_07a10;
  * Implementar la interfaz Comparable en la clase Socio para que, por defecto, se ordene según los números de
  * identificación -id- crecientes.
  */
+/* ACTIVIDAD DE APLICACIÓN 9.19
+ * Implementa la interfaz Comparable en la clase Socio para que el criterio de ordenación natural sea de menor a mayor
+ * edad.
+ */
+/* ACTIVIDAD DE APLICACIÓN 9.20
+ * Repetir actividad de aplicación 9.19 para que se ordene por edades y, si dos socios tienen la misma edad, vaya antes
+ * el que tenga un número de socio menor.
+ */
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -27,11 +35,12 @@ public class Socio implements Comparable {
 
     @Override
     public int compareTo(Object otro) {
-        return nombre.compareTo(((Socio)otro).nombre);
-    }
-
-    public int compareToTwo(Object otro) {
-        return id - ((Socio)otro).id;
+        int resultado;
+        resultado = this.edad() - ((Socio)otro).edad();
+        if (resultado == 0) {
+            resultado = this.id - ((Socio)otro).id;
+        }
+        return resultado;
     }
 
     public String toString() {

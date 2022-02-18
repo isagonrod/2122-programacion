@@ -17,7 +17,7 @@ public class PP03 {
         Socio socio1 = new Socio(5,"Miguel Ruiz","23-12-1986");
         Socio socio2 = new Socio(6,"Isa González","10-12-1985");
 
-        System.out.println(socio1.compareToTwo(socio2));
+        System.out.println(socio1.compareTo(socio2));
 
         Socio[] tabla = new Socio[] {
             new Socio(2, "Rosa Marín", "10-03-1996"),

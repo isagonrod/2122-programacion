@@ -14,8 +14,6 @@ package Tema9.Act_Aplicacion.Act_11y12y15a18;
  * Después de cada operación se mostrará el estado de las dos colas para seguir su evolución.
  */
 
-import java.util.Arrays;
-
 public class Supercola implements Cola { // TODO : Revisar, porque algo no está funcionando
     Cola cola1;
     Cola cola2;

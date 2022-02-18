@@ -11,10 +11,22 @@ public class PP15 {
             menu();
             opc = Teclado.leerOpcion(1,5);
             switch (opc) {
-                case 1 -> supercola.cola1.encolar(Teclado.getNumber("Inserta número: "));
-                case 2 -> supercola.cola2.encolar(Teclado.getNumber("Inserta número: "));
-                case 3 -> supercola.cola1.desencolar();
-                case 4 -> supercola.cola2.desencolar();
+                case 1 -> {
+                    supercola.encolar(Teclado.getNumber("Inserta número: "), 1);
+                    System.out.println(supercola);
+                }
+                case 2 -> {
+                    supercola.encolar(Teclado.getNumber("Inserta número: "), 2);
+                    System.out.println(supercola);
+                }
+                case 3 -> {
+                    System.out.println("Desencolado: " + supercola.desencolar(1));
+                    System.out.println(supercola);
+                }
+                case 4 -> {
+                    System.out.println("Desencolado: " + supercola.desencolar(2));
+                    System.out.println(supercola);
+                }
                 case 5 -> System.out.println("¡Adiós!");
             }
         } while (opc != 5);
