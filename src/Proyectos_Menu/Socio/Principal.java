@@ -1,7 +1,24 @@
 package Proyectos_Menu.Socio;
 
+import Utilidades.Teclado;
+
 public class Principal {
     public static void main (String[] args) {
+        ConjuntoSocio asociacion = new ConjuntoSocio();
+        int opc;
+
+        do {
+            menu();
+            opc = Teclado.leerOpcion(1, 6);
+            switch (opc) {
+                case 1 -> asociacion.altaSocio();
+                case 2 -> asociacion.modificarFechaNacimiento(Teclado.getNumber("¿La fecha de nacimiento de qué socio quieres modificar?"));
+                case 3 -> System.out.println(asociacion.buscarSocio(Teclado.getNumber("¿A qué socio estás buscando?")));
+                case 4 -> asociacion.listadoOrdenadoId();
+                case 5 -> asociacion.listadoOrdenadoEdad();
+                case 6 -> System.out.println("¡Adiós!");
+            }
+        } while (opc != 6);
     }
 
     static void menu() {
