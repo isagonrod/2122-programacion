@@ -9,8 +9,6 @@ package Tema9.Act_Aplicacion.Act_13y14;
  * Crear una tabla con 5 futbolistas y mostrarlos ordenados por DNI, por nombre y por edad.
  */
 
-import java.util.Comparator;
-
 public class Futbolista implements Comparable {
     String dni, nombre;
     Integer edad, nGoles;

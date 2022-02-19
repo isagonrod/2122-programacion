@@ -1,16 +1,19 @@
 package Proyectos_Menu.Socio;
 
+import Utilidades.Teclado;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class Socio implements Comparable {
-    int id;
+    public static int idSocioActual = 1;
+    int idSocio;
     public String nombre;
     LocalDate fechaNacimiento;
 
-    public Socio(int id, String nombre, String fechaNacimiento) {
-        this.id = id;
+    public Socio(int idSocio, String nombre, String fechaNacimiento) {
+        this.idSocio = idSocio;
         this.nombre = nombre;
         DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         this.fechaNacimiento = LocalDate.parse(fechaNacimiento, f);
@@ -22,11 +25,19 @@ public class Socio implements Comparable {
 
     @Override
     public int compareTo(Object otro) {
-        return this.id - ((Socio)otro).id;
+        return this.idSocio - ((Socio)otro).idSocio;
     }
 
     public String toString() {
-        return "Id: " + this.id + " | Nombre: " + this.nombre + " | Edad: "
+        return "Id: " + this.idSocio + " | Nombre: " + this.nombre + " | Edad: "
                 + edad() + "\n";
+    }
+
+    public static Socio pedirDatosSocio() {
+        return new Socio(
+                Teclado.getNumber("ID: "),
+                Teclado.getString("NOMBRE: "),
+                Teclado.getString("FECHA DE NACIMIENTO: ")
+        );
     }
 }
