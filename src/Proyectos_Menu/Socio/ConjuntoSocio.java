@@ -60,4 +60,19 @@ public class ConjuntoSocio {
         Arrays.sort(this.asociacion, new ComparaEdad());
         System.out.println(Arrays.toString(asociacion));
     }
+
+    void listadoOrdenadoFechaNacimiento() {
+        Arrays.sort(this.asociacion, new ComparaFechaNacimiento());
+        System.out.println(Arrays.toString(asociacion));
+    }
+
+    void listadoOrdenadoNombre() {
+        Arrays.sort(this.asociacion, new ComparaNombre());
+        System.out.println(Arrays.toString(asociacion));
+    }
+
+    void listadoOrdenadoNombreReverse() {
+        Arrays.sort(this.asociacion, new ComparaNombre().reversed());
+        System.out.println(Arrays.toString(asociacion));
+    }
 }
