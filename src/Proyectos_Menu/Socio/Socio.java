@@ -29,8 +29,8 @@ public class Socio implements Comparable {
     }
 
     public String toString() {
-        return "Id: " + this.idSocio + " | Nombre: " + this.nombre + " | Edad: "
-                + edad() + "\n";
+        return "Id: " + this.idSocio + " | Nombre: " + this.nombre + " | Fecha de nacimiento: " + this.fechaNacimiento
+                + " | Edad: " + edad() + "\n";
     }
 
     public static Socio pedirDatosSocio() {
