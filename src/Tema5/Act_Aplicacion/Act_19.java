@@ -19,7 +19,7 @@ public class Act_19 {
 	 * antidopaje, lo que provoca su expulsión inmediata.
 	 * Para finalizar, se introducen los dorsales de los corredores que no han pagado su inscripción en la
 	 * carrera, lo que provoca que se releguen a los últimos puestos del ranking general.
-	 * La aplicación debe mostrar los dorsales de los corredores que han conseguido las medallas de oro, plata y bronce.
+	 * La aplicación debe mostrar los dorsales de los corredores que han conseguido las medallas de oros, plata y bronce.
 	 */
 
 	public static void main(String[] args) {
@@ -64,7 +64,7 @@ public class Act_19 {
 		
 		/* Podium */
 		System.out.println("\nMEDALLERO:");
-		System.out.println("Medalla de oro: " + carrera[0]);
+		System.out.println("Medalla de oros: " + carrera[0]);
 		System.out.println("Medalla de plata: " + carrera[1]);
 		System.out.println("Medalla de bronce: " + carrera[2]);
 
