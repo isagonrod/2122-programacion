@@ -80,7 +80,7 @@ public class Lista implements Cola, Pila {
     }
 
     public String toString() {
-        return Arrays.deepToString(tabla);
+        return Arrays.deepToString(this.tabla);
     }
 
     @Override
@@ -111,13 +111,13 @@ public class Lista implements Cola, Pila {
         return eliminar(tabla.length - 1);
     }
 
-    void ordenar() {
+    public void ordenar() {
         Arrays.sort(this.tabla);
-        System.out.println(this.tabla);
+        System.out.println(this);
     }
 
-    void ordenar(Comparator c) {
+    public void ordenar(Comparator c) {
         Arrays.sort(this.tabla, c);
-        System.out.println(this.tabla);
+        System.out.println(this);
     }
 }
