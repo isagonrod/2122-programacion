@@ -12,6 +12,7 @@ package Tema9.Act_Ampliacion.Act_28a30;
  */
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class Jornada implements Comparable {
     String dni;
@@ -23,8 +24,8 @@ public class Jornada implements Comparable {
         this.fechaSalida = fechaSalida;
     }
 
-    int tiempoTrabajado() { // TODO : método para calcular el número de minutos trabajados (LocalTime) until
-        return 0;
+    public int tiempoTrabajado() {
+        return (int)fechaEntrada.until(fechaSalida, ChronoUnit.MINUTES);
     }
 
     @Override
@@ -38,6 +39,6 @@ public class Jornada implements Comparable {
     }
 
     public String toString() {
-        return "DNI: " + this.dni + " | Fecha: " + this.fechaEntrada + " | Duración de jornada: " + tiempoTrabajado() + "min";
+        return "DNI: " + this.dni + " | Fecha: " + this.fechaEntrada + " | Duración de jornada: " + tiempoTrabajado() + "min\n";
     }
 }
