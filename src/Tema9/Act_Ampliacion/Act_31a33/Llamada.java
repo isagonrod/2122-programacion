@@ -65,6 +65,7 @@ public class Llamada implements Comparable {
 
     public String toString() {
         DateTimeFormatter f = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(Locale.getDefault());
-        return "";
+        return "Teléfono origen: " + this.telefonoCliente + " | Teléfono destino: " + this.telefonoDestino +
+                "\nFecha y hora de la llamada: " + this.principio;
     }
 }
