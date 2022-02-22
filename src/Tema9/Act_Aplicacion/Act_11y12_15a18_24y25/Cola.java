@@ -1,4 +1,4 @@
-package Tema9.Act_Aplicacion.Act_11y12y15a18;
+package Tema9.Act_Aplicacion.Act_11y12_15a18_24y25;
 
 /* ACTIVIDAD 9.16
  * Definir las interfaces Cola y Pila para objetos Object e implementarlos en la clase Lista definida en la

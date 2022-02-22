@@ -1,4 +1,4 @@
-package Tema9.Act_Aplicacion.Act_11y12y15a18;
+package Tema9.Act_Aplicacion.Act_11y12_15a18_24y25;
 
 /* ACTIVIDAD 9.15
  * Implementar la clase Supercola, que tiene como atributos dos colas para enteros, en las que se encola y desencola por

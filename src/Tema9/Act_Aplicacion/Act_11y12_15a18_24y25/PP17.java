@@ -1,4 +1,4 @@
-package Tema9.Act_Aplicacion.Act_11y12y15a18;
+package Tema9.Act_Aplicacion.Act_11y12_15a18_24y25;
 
 /* ACTIVIDAD 9.17
  * Escribir un programa donde se use una Lista para elementos Object para encolar y desencolar objetos de distintos

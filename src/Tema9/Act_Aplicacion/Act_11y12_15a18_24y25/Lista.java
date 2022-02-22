@@ -1,4 +1,4 @@
-package Tema9.Act_Aplicacion.Act_11y12y15a18;
+package Tema9.Act_Aplicacion.Act_11y12_15a18_24y25;
 
 /* ACTIVIDAD 9.11
  * Implementar la clase Lista para almacenar elementos de tipo String.
@@ -7,8 +7,18 @@ package Tema9.Act_Aplicacion.Act_11y12y15a18;
  * Definir las interfaces Cola y Pila para objetos String e implementarlos en la clase Lista definida en la Actividad
  * de aplicación 9.11
  */
+/* ACTIVIDAD 9.24
+ * Implementar en la clase Lista para elementos Object las funciones sobrecargadas:
+ *      - void ordenar(), que ordena la lista con el orden natural de sus elementos.
+ *      - void ordenar(Comparator c), que la ordena con el criterio que establezca c. Aquí tendremos que ser muy
+ *          cuidadosos con que todos los elementos insertados sean del mismo tipo.
+ */
+/* ACTIVIDAD 9.25
+ * Usar la Lista (actividad de aplicación 9.24) para insertar cadenas de caracteres y ordenarlos por orden alfabético.
+ */
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Lista implements Cola, Pila {
     Object[] tabla;
@@ -18,9 +28,13 @@ public class Lista implements Cola, Pila {
     }
 
     void insertarPrincipio(Object nuevo) {
-        tabla = Arrays.copyOf(tabla, tabla.length + 1);
-        System.arraycopy(tabla, 0, tabla,1,tabla.length - 1);
-        tabla[0] = nuevo;
+        if (tabla.length == 0 || tabla[0].getClass().isAssignableFrom(nuevo.getClass())) {
+            tabla = Arrays.copyOf(tabla, tabla.length + 1);
+            System.arraycopy(tabla, 0, tabla,1,tabla.length - 1);
+            tabla[0] = nuevo;
+        } else {
+            System.out.println("Se esperaba insertar: " + tabla[0].getClass() + ". Se ha recibido: " + nuevo.getClass());
+        }
     }
 
     void insertarFinal(Lista otraLista) {
@@ -71,7 +85,11 @@ public class Lista implements Cola, Pila {
 
     @Override
     public void encolar(Object nuevo) {
-        insertar(tabla.length, nuevo);
+        if (tabla.length == 0 || tabla[0].getClass().isAssignableFrom(nuevo.getClass())) {
+            insertar(tabla.length, nuevo);
+        } else {
+            System.out.println("Se esperaba encolar: " + tabla[0].getClass() + ". Se ha recibido: " + nuevo.getClass());
+        }
     }
 
     @Override
@@ -81,11 +99,25 @@ public class Lista implements Cola, Pila {
 
     @Override
     public void apilar(Object elemento) {
-        insertar(tabla.length, elemento);
+        if (tabla.length == 0 || tabla[0].getClass().isAssignableFrom(elemento.getClass())) {
+            insertar(tabla.length, elemento);
+        } else {
+            System.out.println("Se esperaba apilar: " + tabla[0].getClass() + ". Se ha recibido: " + elemento.getClass());
+        }
     }
 
     @Override
     public Object desapilar() {
         return eliminar(tabla.length - 1);
+    }
+
+    void ordenar() {
+        Arrays.sort(this.tabla);
+        System.out.println(this.tabla);
+    }
+
+    void ordenar(Comparator c) {
+        Arrays.sort(this.tabla, c);
+        System.out.println(this.tabla);
     }
 }
