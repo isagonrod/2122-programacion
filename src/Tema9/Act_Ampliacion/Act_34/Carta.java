@@ -26,7 +26,16 @@ public class Carta implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) { // segun palo y numero
-        return 0;
+    public int compareTo(Object o) {
+        int resultado = 0;
+        resultado = this.palo.compareTo(((Carta)o).palo);
+        if (resultado == 0) {
+            resultado = this.num - ((Carta)o).num;
+        }
+        return resultado;
+    }
+
+    public String toString() {
+        return "CARTA: " + this.num + " de " + this.palo;
     }
 }

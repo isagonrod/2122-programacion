@@ -17,8 +17,7 @@ public class Persona implements Cliente, Empleado {
     private String nombre;
     private double saldo;
     private int horasTrabajadas;
-    private boolean esEmpleado;
-    private boolean esCliente;
+    private boolean esEmpleado, esCliente;
 
     public Persona(String dni, String nombre, double saldo, int horasTrabajadas, boolean esEmpleado, boolean esCliente) {
         this.dni = dni;

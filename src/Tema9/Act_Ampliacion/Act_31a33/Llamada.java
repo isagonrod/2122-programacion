@@ -13,14 +13,6 @@ package Tema9.Act_Ampliacion.Act_31a33;
  * Por último, implementar el método toString(), que muestre los dos números de teléfono, la fecha y hora del inicio,
  * la duración y el coste.
  */
-/* ACTIVIDAD DE AMPLIACIÓN 9.32
- * Utilizar la clase Lista para guardar una serie de llamadas.
- * A continuación, ordenarla con el criterio de orden natural y mostrarla por pantalla.
- */
-/* ACTIVIDAD DE AMPLIACIÓN 9.33
- * Implementar una clase comparadora que ordene las llamadas por coste.
- * Usarla para ordenar la lista de la actividad de ampliación 9.32 y mostrar el resultado por pantalla.
- */
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -51,7 +43,7 @@ public class Llamada implements Comparable {
     }
 
     double costeLlamada() { // TODO: en Euros : multiplicar la duración por el coste de la zona
-        return duracion() * tarifaZona[zona - 1];
+        return duracion() * tarifaZona[zona];
     }
 
     @Override
@@ -66,6 +58,7 @@ public class Llamada implements Comparable {
     public String toString() {
         DateTimeFormatter f = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withLocale(Locale.getDefault());
         return "Teléfono origen: " + this.telefonoCliente + " | Teléfono destino: " + this.telefonoDestino +
-                "\nFecha y hora de la llamada: " + this.principio;
+                " | Fecha y hora de la llamada: " + this.principio + " | Duración: " + this.duracion() +
+                " | Coste: " + this.costeLlamada() + "\n";
     }
 }

@@ -6,6 +6,6 @@ public class ComparaNumero implements Comparator {
 
     @Override
     public int compare(Object o1, Object o2) {
-        return 0;
+        return ((Carta)o1).num - ((Carta)o2).num;
     }
 }
