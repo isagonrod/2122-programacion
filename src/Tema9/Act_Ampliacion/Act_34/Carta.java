@@ -8,6 +8,8 @@ package Tema9.Act_Ampliacion.Act_34;
  * construya y devuelva una carta al azar.
  */
 
+import Utilidades.Valores;
+
 public class Carta implements Comparable {
     final Palo palo;
     Integer num;
@@ -17,11 +19,11 @@ public class Carta implements Comparable {
         this.num = num;
     }
 
-//    static Carta cartaAzar() {
-//        palo = Math.random();
-//        num = (Integer)Math.random() * 12 - 1;
-//        return (new Carta(palo, num));
-//    }
+    static Carta cartaAzar() {
+        Palo paloNuevo = Palo.values()[Valores.generarAleatorio(0, 3)];
+        Integer numNuevo = Valores.generarAleatorio(1, 12);
+        return (new Carta(paloNuevo, numNuevo));
+    }
 
     @Override
     public int compareTo(Object o) { // segun palo y numero

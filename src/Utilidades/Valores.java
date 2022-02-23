@@ -15,6 +15,16 @@ public class Valores {
         return (int)(Math.random() * (valorMax - valorMin) + valorMin);
     }
 
+    /** Método para generar un número real aleatorio dado un mínimo y un máximo.
+     *
+     * @param valorMin - valor mínimo que puede tomar el aleatorio
+     * @param valorMax - valor máximo que puede tomar el aleatorio
+     * @return int - el entero generado
+     */
+    public static double generarAleatorio(double valorMin, double valorMax) {
+        return Math.random() * (valorMax - valorMin) + valorMin;
+    }
+
     /** Método para generar una cadena aleatoria dado un mínimo y un máximo.<br>
      * Usar mínimo=97 y máximo=122 para que se generen letras minúsculas.
      *

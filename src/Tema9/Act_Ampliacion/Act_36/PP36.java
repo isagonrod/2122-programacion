@@ -9,9 +9,21 @@ package Tema9.Act_Ampliacion.Act_36;
  * Utilizar funcionTabla() para calcular la raíz cuadrada de los elementos de una tabla de números reales.
  */
 
+import Utilidades.Vectores;
+
+import java.util.Arrays;
+
 public class PP36 {
     public static void main (String[] args) {
+        double[] tabla1 = new double[5];
+        double[] tabla2;
+        Vectores.rellenarVector(tabla1, 1.0, 999.0);
 
+        System.out.println(Arrays.toString(tabla1));
+
+        tabla2 = funcionTabla(tabla1, new ClaseFuncion());
+
+        System.out.println(Arrays.toString(tabla2));
     }
 
     static double[] funcionTabla(double[] tabla, Funcion funcion) {

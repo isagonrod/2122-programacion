@@ -20,6 +20,19 @@ public class Vectores {
         }
     }
 
+    /** Rellena un vector de Double con un valor mínimo y máximo para los valores aleatorios.
+     *
+     * @param vector - objetivo a rellenar
+     * @param valorMin - entero mínimo
+     * @param valorMax - entero máximo
+     */
+    public static void rellenarVector (double[] vector, Double valorMin, Double valorMax) {
+        int i;
+        for (i = 0; i < vector.length; i++) {
+            vector[i] = Valores.generarAleatorio(valorMin, valorMax);
+        }
+    }
+
     /** Rellena un vector de String con un rango específico de caracteres y una longitud para los valores aleatorios.<br>
      * Usar mínimo=97 y máximo=122 para que se generen letras minúsculas.
      *
