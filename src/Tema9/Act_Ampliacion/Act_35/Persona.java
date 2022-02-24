@@ -30,46 +30,55 @@ public class Persona implements Cliente, Empleado {
 
     @Override
     public String getDNI() {
-        return null;
+        return this.dni;
     }
 
     @Override
     public String getNombre() {
-        return null;
+        return this.nombre;
     }
 
     @Override
     public void setNombre(String nombre) {
-
+        this.nombre = nombre;
     }
 
     @Override
     public int getHorasTrabajadas() {
-        return 0;
+        return this.horasTrabajadas;
     }
 
     @Override
     public void setHorasTrabajadas(int num) {
-
+        if (num >= 0) {
+            this.horasTrabajadas = num;
+        }
     }
 
     @Override
     public void incrementaHoras(int inc) {
-
+        this.horasTrabajadas += inc;
     }
 
     @Override
     public double getSaldo() {
-        return 0;
+        return this.saldo;
     }
 
     @Override
     public void setSaldo(double saldo) {
-
+        if (saldo >= 0) {
+            this.saldo = saldo;
+        }
     }
 
     @Override
     public void incrementaSaldo(Double inc) {
+        this.saldo += inc;
+    }
 
+    public String toString() {
+        return "DNI: " + this.dni + " | Nombre: " + this.nombre + " | Saldo: " + this.saldo +
+                " | Horas trabajadas: " + this.horasTrabajadas;
     }
 }
