@@ -10,8 +10,7 @@ package Tema9.Act_Clase.Biblioteca;
  *
  * Cada revista tiene además un número que será pasado como parámetro al ser creada la revista.
  *
- * Crear una interfaz P
- * restable con los métodos prestar, devolver y prestado.
+ * Crear una interfaz Prestable con los métodos prestar, devolver y prestado.
  *      - void prestar();
  *      - void devolver();
  *      - boolean prestado();
@@ -59,4 +58,7 @@ public class Publicacion {
         this.añoPublicacion = añoPublicacion;
     }
 
+    public String toString() {
+        return "Código: " + this.codigo + " | Título: " + this.titulo + " | Año de publicación: " + this.añoPublicacion;
+    }
 }

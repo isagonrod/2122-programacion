@@ -1,7 +1,5 @@
 package Tema9.Act_Clase.Biblioteca;
 
-import Utilidades.Teclado;
-
 import java.util.Arrays;
 
 public class ConjuntoPublicacion {
@@ -35,17 +33,19 @@ public class ConjuntoPublicacion {
     }
 
     void prestarLibro(int idLibro) {
-        ConjuntoPublicacion librosPrestados = new ConjuntoPublicacion();
+        Integer indiceLibro = buscarLibro(idLibro);
 
-        if (buscarLibro(idLibro) != -1) {
+        if (indiceLibro != -1) {
+            ((Libro)tablaPub[indiceLibro]).prestar();
         }
-
     }
 
     void devolverLibro(int idLibro) {
-        ConjuntoPublicacion librosDevueltos = new ConjuntoPublicacion();
+        Integer indiceLibro = buscarLibro(idLibro);
 
-        buscarLibro(idLibro);
+        if (indiceLibro != -1) {
+            ((Libro)tablaPub[indiceLibro]).devolver();
+        }
     }
 
     void listadoCompleto() {
