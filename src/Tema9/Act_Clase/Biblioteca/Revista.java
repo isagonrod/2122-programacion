@@ -13,4 +13,8 @@ public class Revista extends Publicacion {
     public static Revista pedirDatosRevista() {
         return new Revista();
     }
+
+    public String toString() {
+        return super.toString() + " | Número: " + this.numero + "\n";
+    }
 }

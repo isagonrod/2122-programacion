@@ -7,6 +7,10 @@ import java.util.Arrays;
 public class ConjuntoPublicacion {
     Publicacion[] tablaPub;
 
+    public ConjuntoPublicacion() {
+        this.tablaPub = new Publicacion[0];
+    }
+
     void altaLibro() {
         tablaPub = Arrays.copyOf(tablaPub, tablaPub.length + 1);
         this.tablaPub[tablaPub.length - 1] = Libro.pedirDatosLibro();

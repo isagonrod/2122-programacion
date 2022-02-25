@@ -32,13 +32,13 @@ package Tema9.Act_Clase.Biblioteca;
 import Utilidades.Teclado;
 
 public class Publicacion {
-    static int numPublicacion = 0;
+    static int numPublicacion = 1;
     int codigo = 0;
     private String titulo;
     private int añoPublicacion;
 
     public Publicacion() {
-        this.codigo++;
+        this.codigo = numPublicacion;
         this.titulo = Teclado.getString("Título: ");
         this.añoPublicacion = Teclado.getNumber("Año de publicación: ");
     }
