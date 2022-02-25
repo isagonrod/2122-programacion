@@ -1,6 +1,6 @@
 package Tema9.Act_Clase.Biblioteca;
 
-import Proyectos_Menu.Socio.Socio;
+import Utilidades.Teclado;
 
 import java.util.Arrays;
 
@@ -15,7 +15,7 @@ public class ConjuntoPublicacion {
 
     void altaRevista() {
         tablaPub = Arrays.copyOf(tablaPub, tablaPub.length + 1);
-        //this.tablaPub[tablaPub.length - 1] = Revista.pedirDatosRevista();
+        this.tablaPub[tablaPub.length - 1] = Revista.pedirDatosRevista();
         Publicacion.numPublicacion++;
     }
 
@@ -30,16 +30,25 @@ public class ConjuntoPublicacion {
         return indice;
     }
 
-    void prestarLibro(int codigo) {
+    void prestarLibro(int idLibro) {
+        ConjuntoPublicacion librosPrestados = new ConjuntoPublicacion();
+
+        if (buscarLibro(idLibro) != -1) {
+        }
 
     }
 
-    void devolverLibro(int codigo) {
+    void devolverLibro(int idLibro) {
+        ConjuntoPublicacion librosDevueltos = new ConjuntoPublicacion();
 
+        buscarLibro(idLibro);
     }
 
     void listadoCompleto() {
-
+        int i;
+        for (i = 0; i < this.tablaPub.length; i++) {
+            System.out.println(tablaPub[i]);
+        }
     }
 
     void listadoRevistas() {
@@ -52,6 +61,11 @@ public class ConjuntoPublicacion {
     }
 
     void listadoLibros() {
-
+        int i;
+        for (i = 0; i < this.tablaPub.length; i++) {
+            if (tablaPub[i] instanceof Libro) {
+                System.out.println(tablaPub[i]);
+            }
+        }
     }
 }

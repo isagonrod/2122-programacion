@@ -1,6 +1,6 @@
 package Tema9.Act_Clase.Biblioteca;
 
-/* Escribir un programa para una biblioteca que contenga libros y revistas.
+/* Escribir un programa para una biblioteca que contenga Libros y Revistas.
  * Las características comunes para libros y revistas son: código, título y año de publicación.
  *
  * Al crear una revista o un libro se especificarán estos tres valores, el código será un entero único para cada
@@ -10,7 +10,8 @@ package Tema9.Act_Clase.Biblioteca;
  *
  * Cada revista tiene además un número que será pasado como parámetro al ser creada la revista.
  *
- * Crear una interfaz prestable con los métodos prestar, devolver y prestado.
+ * Crear una interfaz P
+ * restable con los métodos prestar, devolver y prestado.
  *      - void prestar();
  *      - void devolver();
  *      - boolean prestado();
@@ -31,18 +32,31 @@ package Tema9.Act_Clase.Biblioteca;
 import Utilidades.Teclado;
 
 public class Publicacion {
-    static int numPublicacion = 1;
-    int codigo; // TODO : asignar de forma automática
+    static int numPublicacion = 0;
+    int codigo = 0;
     private String titulo;
     private int añoPublicacion;
 
-    public Publicacion(String titulo, int añoPublicacion) {
-        this.titulo = titulo;
-        this.añoPublicacion = añoPublicacion;
-    }
-
-    public void pedirDatosPublicacion() {
+    public Publicacion() {
+        this.codigo++;
         this.titulo = Teclado.getString("Título: ");
         this.añoPublicacion = Teclado.getNumber("Año de publicación: ");
     }
+
+    public String getTitulo() {
+        return this.titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public int getAñoPublicacion() {
+        return this.añoPublicacion;
+    }
+
+    public void setAñoPublicacion(int añoPublicacion) {
+        this.añoPublicacion = añoPublicacion;
+    }
+
 }
