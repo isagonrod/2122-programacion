@@ -17,7 +17,7 @@ public class Act_05 {
         BufferedReader in = null;
 
         try {
-            in = new BufferedReader(new FileReader("archivos_txt/Numeros.txt"));
+            in = new BufferedReader(new FileReader("archivos_txt/numeros.txt"));
             Scanner s;
             double numero, suma = 0;
             String linea = in.readLine();
