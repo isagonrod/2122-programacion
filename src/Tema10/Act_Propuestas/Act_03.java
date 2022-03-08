@@ -32,8 +32,13 @@ public class Act_03 {
                 mediaEdad += edad;
                 mediaEstatura += estatura;
                 System.out.println("Nombre: " + nombre);
-                System.out.println("Media de edad: " + mediaEdad + " | Media de estatura: " + mediaEstatura);
+                System.out.println("Edad: " + edad + " | Estatura: " + estatura);
             }
+
+            mediaEdad /= nLineas;
+            mediaEstatura /= nLineas;
+
+            System.out.println("\nMedia de edad: " + mediaEdad + " | Media de estatura: " + mediaEstatura);
         }
         catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());

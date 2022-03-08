@@ -1,7 +1,7 @@
 package Tema10.Act_Aplicacion;
 
 /* ACTIVIDAD DE APLICACIÓN 10.17
- * En Linux disponemos del comando more, al que se le pasa un fichero y lo muestra poco a poco: cada 24 líneas.
+ * En Linux disponemos del comando "more", al que se le pasa un fichero y lo muestra poco a poco: cada 24 líneas.
  * Implementa un programa que funcione de forma similar.
  */
 
@@ -13,6 +13,38 @@ import java.io.IOException;
 
 public class Act_17 {
     public static void main (String[] args) {
-        // TODO : Hacer un fichero con muchas líneas. El método tiene que conseguir que al llegar a la línea 24 se pare y espere a dar INTRO para seguir
+        String linea;
+        int nLinea = 0;
+        BufferedReader in = null;
+
+        try {
+            in = new BufferedReader(new FileReader("archivos_txt/carta.txt"));
+            do {
+                do {
+                    linea = in.readLine();
+                    if (linea != null) {
+                        System.out.println(linea);
+                        nLinea++;
+                    }
+                } while (linea != null && nLinea % 24 != 0);
+
+                if (linea != null) {
+                    Teclado.getString("Pulse INTRO (dos veces) para continuar listando...");
+                }
+            } while (linea != null);
+        }
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        finally {
+            if (in != null) {
+                try {
+                    in.close();
+                }
+                catch (IOException ex) {
+                    System.out.println(ex);
+                }
+            }
+        }
     }
 }

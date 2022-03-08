@@ -12,13 +12,13 @@ import java.io.IOException;
 
 public class Act_04 {
     public static void main (String[] args) throws IOException {
-        String texto = "";
+        String texto;
         BufferedWriter out = null;
 
         try {
             out = new BufferedWriter(new FileWriter("archivos_txt/Texto.txt"));
             texto = Teclado.getString("Introduce una cadena de texto: ");
-            while (texto != "fin") {
+            while (!texto.equals("fin")) {
                 out.write(texto);
                 out.newLine();
                 texto = Teclado.getString("Introduce otra cadena de texto: ");
