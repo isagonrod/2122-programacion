@@ -16,7 +16,7 @@ public class Act_03 {
         FileInputStream jugadores;
         String linea[];
         String nombre;
-        int edad;
+        int edad, nLineas = 0;
         double estatura, mediaEdad = 0, mediaEstatura = 0;
 
         try {
@@ -25,6 +25,7 @@ public class Act_03 {
 
             while (sc.hasNext()) {
                 linea = sc.nextLine().split(" "); //solo una vez por cada jugador
+                nLineas++;
                 nombre = linea[0];
                 edad = Integer.parseInt(linea[1]);
                 estatura = Double.parseDouble(linea[2]);

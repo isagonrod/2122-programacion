@@ -5,6 +5,12 @@ package Tema10.Act_Aplicacion;
  * Implementa un programa que funcione de forma similar.
  */
 
+import Utilidades.Teclado;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Act_17 {
     public static void main (String[] args) {
         // TODO : Hacer un fichero con muchas líneas. El método tiene que conseguir que al llegar a la línea 24 se pare y espere a dar INTRO para seguir
