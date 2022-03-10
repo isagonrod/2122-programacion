@@ -48,3 +48,20 @@ public class Act_17 {
         }
     }
 }
+
+/*
+        try {
+            BufferedReader in = new BufferedReader(new FileReader("fichero.txt"));
+            String linea = in.readLine();
+            while (line != null) {
+                System.out.println(linea);
+                if (contador % 24 == 0) {
+                    System.out.println("more");
+                    new Scanner(System.in).nextLine();
+                }
+                linea = in.readLine();
+                contador++;
+           }
+      }
+      catch ...
+ */
