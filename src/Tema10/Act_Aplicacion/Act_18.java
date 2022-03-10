@@ -10,7 +10,8 @@ import java.util.Scanner;
 
 public class Act_18 {
     public static void main (String[] args) {
-        System.out.println(Arrays.toString(leerEnteros("En la casa había 7 hermanas con 20 gatos de 4 patas cada 1")));
+        String texto = "En la casa había 7 hermanas con 20 gatos de 4 patas cada 1";
+        System.out.println(Arrays.toString(leerEnteros(texto)));
     }
 
     public static Integer[] leerEnteros(String texto) {
