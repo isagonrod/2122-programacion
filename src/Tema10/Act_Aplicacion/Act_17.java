@@ -29,7 +29,7 @@ public class Act_17 {
                 } while (linea != null && nLinea % 24 != 0);
 
                 if (linea != null) {
-                    Teclado.getString("Pulse INTRO (dos veces) para continuar listando...");
+                    Teclado.getString("\nPulse INTRO (dos veces) para continuar listando...\n");
                 }
             } while (linea != null);
         }

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Act_18 {
     public static void main (String[] args) {
-        System.out.println(Arrays.toString(leerEnteros("8 38 pito 282 09 culo 309 69 bacon 86 aaaa")));
+        System.out.println(Arrays.toString(leerEnteros("En la casa había 7 hermanas con 20 gatos de 4 patas cada 1")));
     }
 
     public static Integer[] leerEnteros(String texto) {
@@ -24,8 +24,6 @@ public class Act_18 {
             }
             catch (NumberFormatException ex) {
                 System.out.println(ex.getMessage());
-
-                //deshacer lo hecho si se lía parda con el elemento actual (mucho vodka y tal) ¡SEGURIDAD!
                 tablaEnteros = Arrays.copyOf(tablaEnteros, tablaEnteros.length - 1);
                 i--;
             }
