@@ -51,7 +51,7 @@ public class Act_17 {
 
 /*
         try {
-            BufferedReader in = new BufferedReader(new FileReader("fichero.txt"));
+            BufferedReader in = new BufferedReader(new FileReader("texto1.txt"));
             String linea = in.readLine();
             while (line != null) {
                 System.out.println(linea);
