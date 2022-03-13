@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Lista implements Cola, Pila {
-    Object[] tabla;
+    protected Object[] tabla;
 
     public Lista() {
         this.tabla = new Object[0];

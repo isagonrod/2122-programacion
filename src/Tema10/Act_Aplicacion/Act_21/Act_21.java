@@ -18,15 +18,11 @@ package Tema10.Act_Aplicacion.Act_21;
  */
 
 import Utilidades.Teclado;
-import Utilidades.Valores;
 
 public class Act_21 {
     public static void main (String[] args) {
-        Agenda miAgenda = new Agenda();
+        Agenda agenda = new Agenda();
         int opc;
-        String inicial;
-
-        /*
 
         agenda.cargarTablaFichero();
         do {
@@ -34,16 +30,15 @@ public class Act_21 {
             opc = Teclado.leerOpcion(1,4);
             switch (opc) {
                 case 1 -> agenda.insertarContacto();
-                case 2 -> agenda.buscarNombreIniciales(inicial = Teclado.getString("Introduce las iniciales del nombre: ");
+                case 2 -> System.out.println("Teléfonos: " +
+                        agenda.buscarNombreIniciales(Teclado.getString("Introduce las iniciales del nombre: ")));
                 case 3 -> agenda.listarAgenda();
                 case 4 -> {
-                    agenda.cargarTablaFichero();
+                    agenda.guardarTablaFichero();
                     System.out.println("¡Adiós! ¡Hasta la próxima!");
                 }
             }
         } while (opc != 4);
-
-        */
     }
 
     static void menu() {

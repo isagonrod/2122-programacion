@@ -11,6 +11,10 @@ package Tema10.Act_Aplicacion;
  * Al final aparecerán los valores medios de la edad, el peso y la estatura.
  */
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Act_22 {
     public static void main (String[] args) {
         FileInputStream jugadores;

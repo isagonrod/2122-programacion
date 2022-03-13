@@ -69,7 +69,7 @@ public class Act_19 {
 
         try {
             bw = new BufferedWriter(new FileWriter("archivos_txt/" + destino));
-            bw.write(contenido); //TODO: entiende esto los \n?
+            bw.write(contenido);
         }
         catch (IOException ex) {
             System.out.println(ex.getMessage() + " - " + destino);
