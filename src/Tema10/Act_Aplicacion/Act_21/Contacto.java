@@ -11,6 +11,11 @@ public class Contacto implements Comparable {
         this.telefono = Teclado.getString("Teléfono del contacto: ");
     }
 
+    public Contacto(String nombre, String telefono) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+
     @Override
     public int compareTo(Object o) {
         return this.nombre.compareTo(((Contacto)o).nombre);

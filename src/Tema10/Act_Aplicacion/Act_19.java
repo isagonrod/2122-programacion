@@ -45,7 +45,7 @@ public class Act_19 {
             in = new BufferedReader(new FileReader("archivos_txt/" + nombreFichero));
             linea = in.readLine();
             while (linea != null) {
-                contenido += linea + '\n'; //TODO: hay que meter manualmente los saltos de línea??
+                contenido += linea;
                 linea = in.readLine();
             }
         }
