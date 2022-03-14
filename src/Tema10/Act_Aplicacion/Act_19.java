@@ -15,17 +15,17 @@ public class Act_19 {
         String fichero = leerFichero("fichero.txt");
         String ficheroEncriptado = encriptaContenido(fichero, abc);
 
-        guardarFichero(ficheroEncriptado, "ficheroEncriptado.txt");
+        guardarFichero(ficheroEncriptado,"ficheroEncriptado.txt");
     }
 
     static char[][] leeCodec() {
-        FileInputStream in1;
+        FileInputStream in;
         Scanner sc;
         char[][] abc = new char[2][26];
 
         try {
-            in1 = new FileInputStream("archivos_txt/codec.txt");
-            sc = new Scanner(in1);
+            in = new FileInputStream("archivos_txt/codec.txt");
+            sc = new Scanner(in);
 
             abc[0] = sc.nextLine().toCharArray();
             abc[1] = sc.nextLine().toCharArray();
@@ -37,7 +37,7 @@ public class Act_19 {
         return abc;
     }
 
-    static String leerFichero(String nombreFichero) {
+    static String leerFichero(String nombreFichero) { //TODO : integrar lectura y codificación, no hacerlo en secuencia (dice que sobra código porque no es eficiente del todo si sobra)
         BufferedReader in = null;
         String contenido = "", linea;
 
@@ -63,6 +63,50 @@ public class Act_19 {
 
         return contenido;
     }
+
+    /*
+        // LECTURA Y ESCRITURA //
+        try {
+            lect = new BufferedReader(new FileReader("codificado.txt"));
+            escr = new BufferedReader(new FileReader("decodificado.txt"));
+            c = lect.read(); // caracter a decodificar
+            while (c != -1) {
+                escr.write(traduce((char)c, codec));
+                c = lect.read();
+            }
+        } catch (IOException eof) {
+            System.out.println("Error de fichero");
+        } finally {
+            if (lect != null) {
+                try {
+                    lect.close();
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                if (escr != null) {
+                    try {
+                        escr.close();
+                    } catch (IOException ex) {
+                        System.out.println(ex.getMessage());
+                    }
+                }
+            }
+        }
+
+        static char traduce (char c, char codec[][]) {
+            char cod;
+            int i = 0;
+            while (i < codec[0].length && c != codec[0][i] {
+                i++;
+            }
+            if (i < codec[0].length) {
+                cod = codec[0][i];
+            } else {
+                cod = c;
+            }
+            return cod;
+        }
+     */
 
     static void guardarFichero(String contenido, String destino) {
         BufferedWriter bw = null;
