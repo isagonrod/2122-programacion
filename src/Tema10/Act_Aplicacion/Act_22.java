@@ -34,6 +34,7 @@ public class Act_22 {
                 do {
                     nombre += sc.next() + " ";
                 } while (!sc.hasNextInt());
+
                 nombre = nombre.trim(); //para quitar el espacio que sobra del do-while
                 edad = sc.nextInt();
                 peso = sc.nextDouble();
@@ -43,14 +44,16 @@ public class Act_22 {
                 mediaPeso += peso;
                 mediaEstatura += estatura;
 
-                System.out.println("Nombre: " + nombre + " | Edad: " + edad + " | Peso: " + peso + " | Estatura: " + estatura);
+                System.out.println("Nombre: " + nombre + " | Edad: " + edad + " | Peso: " + peso + " | Estatura: "
+                        + estatura);
             }
 
             mediaEdad /= nLineas;
             mediaPeso /= nLineas;
             mediaEstatura /= nLineas;
 
-            System.out.println("\nMedia de edad: " + mediaEdad + " | Media de peso: " + mediaPeso + " | Media de estatura: " + mediaEstatura);
+            System.out.println("\nMedia de edad: " + mediaEdad + " | Media de peso: " + mediaPeso +
+                    " | Media de estatura: " + mediaEstatura);
         }
         catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());

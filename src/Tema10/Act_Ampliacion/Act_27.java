@@ -1,17 +1,15 @@
-package Tema10.Act_Aplicacion;
+package Tema10.Act_Ampliacion;
 
-/* ACTIVIDAD DE APLICACIÓN 10.14
- * Escribe un programa que lea un fichero de texto llamado carta.txt
- * Tenemos que contar los caracteres, las líneas y las palabras.
- * Para simplificar supondremos que cada palabra está separada de otra por un único espacio en blanco
- * o por un cambio de línea.
+/* ACTIVIDAD DE AMPLIACIÓN 10.27
+ * Repite la Actividad de aplicación 10.14, pero sabiendo que una palabra puede no estar separada de otra solo por un
+ * espacio en blanco; también puede ser un tabulador, punto, coma o punto y coma.
  */
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Act_14 {
+public class Act_27 {
     public static void main (String[] args) {
         BufferedReader in = null;
         Integer lineas = 0, palabras = 0, caracteres = 0;
@@ -24,7 +22,7 @@ public class Act_14 {
             while (lineaActual != null) {
                 lineas++;
                 caracteres += lineaActual.length();
-                palabras += lineaActual.split(" ").length;
+                palabras += lineaActual.split("[^(,\\s)][\\s\\t.;,]").length;
 
                 lineaActual = in.readLine();
             }

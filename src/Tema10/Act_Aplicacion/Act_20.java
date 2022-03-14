@@ -68,4 +68,13 @@ public class Act_20 {
 
         return diferencia;
     }
+
+    /*
+        int contLinea = 1, contCar = 1;
+        try {
+            BufferedReader entr1 = new BufferedReader(new FileReader("texto1.txt"));
+            BufferedReader entr2 = new BufferedReader(new FileReader("texto2.txt"));
+            ...
+        }
+     */
 }
