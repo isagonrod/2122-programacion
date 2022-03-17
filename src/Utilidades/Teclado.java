@@ -19,6 +19,17 @@ public class Teclado {
         return sc.nextInt();
     }
 
+    /** Muestra un mensaje por consola para pedir un número por teclado.
+     *
+     * @param message mensaje a mostrar
+     * @return Double - el número insertado por teclado
+     */
+    public static Double getDouble(String message) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(message);
+        return sc.nextDouble();
+    }
+
     /** Muestra un mensaje por consola para pedir una cadena por teclado.
      *
      * @param message mensaje a mostrar

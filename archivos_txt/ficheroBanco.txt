@@ -1,0 +1,3 @@
+11111111A   Alejandra Abad Amargo   01-01-1991   100.0
+22222222B   Beatriz Benítez Bueno   02-02-1992   200.0
+44444444D   Daniel Ruiz Sanchez   24-02-1990   5.0
