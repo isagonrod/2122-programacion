@@ -49,7 +49,7 @@ public class Lista implements Cola, Pila {
         tabla[posicion] = nuevo;
     }
 
-    Object eliminar(int indice) {
+    public Object eliminar(int indice) {
         Object eliminado = null;
         if (indice >= 0 && indice < tabla.length) {
             eliminado = tabla[indice];
