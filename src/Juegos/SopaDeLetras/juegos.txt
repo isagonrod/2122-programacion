@@ -1,0 +1,8 @@
+cluedo
+monopoly
+trivial
+uno
+ajedrez
+risk
+parchis
+domino

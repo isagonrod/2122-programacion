@@ -1,0 +1,8 @@
+cemento
+arcilla
+piedra
+madera
+granito
+acero
+adobe
+yeso

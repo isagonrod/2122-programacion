@@ -13,9 +13,60 @@ package Juegos.SopaDeLetras;
  *  5. Crear una clase MatrizJuego que contendrá el juego (char[][]) y sus operaciones.
  */
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class SopaDeLetras_Tablero {
     public static void main (String[] args) {
+        String tematica, contenidoFichero, palabra;
+        MatrizJuego tablero = new MatrizJuego();
 
+        tematica = getString("¿Qué temática quieres para jugar? Elige entre: animales, juegos, materiales, personajes o planetas.\n");
+        contenidoFichero = leerFichero(tematica);
+        tablero.rellenarTablero(contenidoFichero);
+        System.out.println(tablero);
+        tablero.guardarEnFichero();
+
+        /*for (int i = 0; i < 8; i++) {
+            palabra = getString("¿Qué palabra crees que has encontrado?");
+            tablero.buscarPalabra(palabra);
+        }*/
     }
 
+    static String leerFichero(String nombreFichero) {
+        BufferedReader in = null;
+        String linea, contenido = "";
+
+        try {
+            in = new BufferedReader(new FileReader("src/Juegos/SopaDeLetras/" + nombreFichero + ".txt"));
+            linea = in.readLine();
+            while (linea != null) {
+                contenido += linea + "\n";
+                linea = in.readLine();
+            }
+        }
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        finally {
+            if (in != null) {
+                try {
+                    in.close();
+                }
+                catch (IOException ex) {
+                    System.out.println(ex);
+                }
+            }
+        }
+
+        return contenido;
+    }
+
+    static String getString (String message) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(message);
+        return sc.nextLine();
+    }
 }

@@ -1,0 +1,8 @@
+cerdo
+gorrion
+araña
+rata
+perro
+gato
+pavo
+vaca

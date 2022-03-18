@@ -1,0 +1,8 @@
+venus
+marte
+urano
+saturno
+jupiter
+pluton
+neptuno
+mercurio
