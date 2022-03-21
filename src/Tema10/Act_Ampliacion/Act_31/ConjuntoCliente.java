@@ -2,17 +2,29 @@ package Tema10.Act_Ampliacion.Act_31;
 
 import Tema9.Act_Aplicacion.Act_11y12_15a18_24y25.Lista;
 
+import java.util.Arrays;
+
 public class ConjuntoCliente extends Lista {
     public ConjuntoCliente() {
         super();
     }
 
     void altaCliente() {
-        this.encolar(Cliente.pedirDatosCliente());
+        //Arrays.sort(this.tabla);
+        Cliente nuevo = Cliente.pedirDatosCliente();
+        int indiceInsercion = Arrays.binarySearch(tabla, nuevo);
+        if (indiceInsercion < 0) {
+            indiceInsercion = -indiceInsercion - 1;
+        }
+        Cliente[] copia = new Cliente[tabla.length + 1];
+        System.arraycopy(tabla,0,copia,0,indiceInsercion);
+        System.arraycopy(tabla, indiceInsercion, copia,indiceInsercion + 1, tabla.length - indiceInsercion);
+        copia[indiceInsercion] = nuevo;
+        tabla = copia;
     }
 
     void listarClientes() {
-        this.ordenar();
+        System.out.println(super.toString());
         System.out.println("Saldo Mínimo del conjunto de clientes: " + this.saldoMin());
         System.out.println("Saldo Máximo del conjunto de clientes: " + this.saldoMax());
         System.out.println("Saldo Promedio del conjunto de clientes: " + this.saldoPromedio());

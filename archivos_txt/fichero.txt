@@ -1,5 +1,5 @@
-hola, que tal?
-me llamo fulano de tal
+hola,	que		tal?
+me	llamo	fulano	de	tal
 
 Dabale arroz a la zorra el abad
 
