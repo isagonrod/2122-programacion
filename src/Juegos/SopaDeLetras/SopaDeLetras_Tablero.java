@@ -28,11 +28,6 @@ public class SopaDeLetras_Tablero {
         tablero.rellenarTablero(contenidoFichero);
         System.out.println(tablero);
         tablero.guardarEnFichero();
-
-        /*for (int i = 0; i < 8; i++) {
-            palabra = getString("¿Qué palabra crees que has encontrado?");
-            tablero.buscarPalabra(palabra);
-        }*/
     }
 
     static String leerFichero(String nombreFichero) {

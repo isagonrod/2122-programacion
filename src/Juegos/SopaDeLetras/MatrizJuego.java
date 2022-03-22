@@ -24,7 +24,10 @@ public class MatrizJuego {
         String cadena = "";
 
         for (int i = 0; i < this.juego.length; i++) {
-            cadena += Arrays.toString(juego[i]) + "\n";
+            for (int j = 0; j < this.juego[i].length; j++) {
+                cadena += this.juego[i][j] + "\s\s";
+            }
+            cadena += "\n";
         }
 
         return cadena;
