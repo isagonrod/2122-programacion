@@ -93,12 +93,6 @@ public class MatrizJuego {
         return huecos == tamaño;
     }
 
-    public boolean buscarPalabra(String palabra, int orientacion, int x, int y) {
-        boolean resultado = false;
-        //TODO
-        return resultado;
-    }
-
     public void guardarEnFichero() {
         BufferedWriter out = null;
 
