@@ -19,10 +19,7 @@ public class Act_02 {
                 + "no corta el mar, sino vuela \n"
                 + "un velero bergantín.";
 
-        ObjectOutputStream out;
-
-        try {
-            out = new ObjectOutputStream(new FileOutputStream("archivos_binary/cancionPirata.dat"));
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos_binary/cancionPirata.dat"))) {
             out.writeObject(estrofa);
         }
         catch (IOException ex) {

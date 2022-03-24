@@ -11,12 +11,10 @@ import java.util.Arrays;
 
 public class Act_04 {
     public static void main (String[] args) {
-        ObjectInputStream flujoEntrada;
         int[] t = new int[10];
         int i;
 
-        try {
-            flujoEntrada = new ObjectInputStream(new FileInputStream("archivos_binary/datos.dat"));
+        try (ObjectInputStream flujoEntrada = new ObjectInputStream(new FileInputStream("archivos_binary/datos.dat"))) {
             for (i = 0; i < t.length; i++) {
                 t[i] = flujoEntrada.readInt();
             }

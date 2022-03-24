@@ -10,11 +10,9 @@ import java.io.ObjectInputStream;
 
 public class Act_06 {
     public static void main (String[] args) {
-        ObjectInputStream in;
         String cancion;
 
-        try {
-            in = new ObjectInputStream(new FileInputStream("archivos_binary/cancionPirata.dat"));
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos_binary/cancionPirata.dat"))) {
             cancion = (String) in.readObject();
             System.out.println(cancion);
         }

@@ -13,12 +13,10 @@ import java.io.ObjectOutputStream;
 
 public class Act_03 {
     public static void main (String[] args) {
-        ObjectOutputStream out;
         int nElementos, i;
         double tabla[];
 
-        try {
-            out = new ObjectOutputStream(new FileOutputStream("archivos_binary/datos.dat"));
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos_binary/datos.dat"))) {
             nElementos = Teclado.getNumber("Número de elementos: ");
             tabla = new double[nElementos];
 

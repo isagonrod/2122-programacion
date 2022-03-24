@@ -12,10 +12,8 @@ import java.io.ObjectOutputStream;
 public class Act_01 {
     public static void main (String[] args) {
         int[] t = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        ObjectOutputStream out;
 
-        try {
-            out = new ObjectOutputStream(new FileOutputStream("archivos_binary/datos.dat"));
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos_binary/datos.dat"))) {
             out.writeObject(t);
         }
         catch (IOException ex) {

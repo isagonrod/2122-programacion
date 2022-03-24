@@ -11,11 +11,9 @@ import java.util.Arrays;
 
 public class Act_05 {
     public static void main (String[] args) {
-        ObjectInputStream flujoEntrada;
         int[] tabla;
 
-        try {
-            flujoEntrada = new ObjectInputStream(new FileInputStream("archivos_binary/datos.dat"));
+        try (ObjectInputStream flujoEntrada = new ObjectInputStream(new FileInputStream("archivos_binary/datos.dat"))) {
             tabla = (int[]) flujoEntrada.readObject();
             System.out.println(Arrays.toString(tabla));
         }

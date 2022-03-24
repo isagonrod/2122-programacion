@@ -14,26 +14,23 @@ import java.io.*;
 public class Act_07 {
     public static void main (String[] args) {
         int numero;
-        ObjectOutputStream salida;
-        ObjectInputStream entrada;
 
-        try {
-            salida = new ObjectOutputStream(new FileOutputStream("archivos_binary/numeros.dat"));
+        try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("archivos_binary/numeros.dat"))) {
             numero = Teclado.getNumber("Introduce entero: ");
 
             while (numero >= 0) {
                 salida.writeInt(numero);
-                salida.writeObject("\n");
-                numero = Teclado.getNumber("Introduce entero: "); // TODO : Este no lo está pillando
+                numero = Teclado.getNumber("Introduce entero: ");
             }
         }
         catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
 
-        try {
-            entrada = new ObjectInputStream(new FileInputStream("archivos_binary/numeros.dat"));
-            salida = new ObjectOutputStream(new FileOutputStream("archivos_binary/numerosCopia.dat"));
+        try (
+				ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("archivos_binary/numerosCopia.dat"));
+				ObjectInputStream entrada = new ObjectInputStream(new FileInputStream("archivos_binary/numeros.dat"))
+			) {
             System.out.println("[");
 
             while (true) {
