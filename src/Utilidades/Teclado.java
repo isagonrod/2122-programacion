@@ -1,6 +1,7 @@
 package Utilidades;
 
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -25,7 +26,7 @@ public class Teclado {
      * @return Double - el número insertado por teclado
      */
     public static Double getDouble(String message) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in).useLocale(Locale.US);
         System.out.println(message);
         return sc.nextDouble();
     }
