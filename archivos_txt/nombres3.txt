@@ -1,1 +1,4 @@
-[Ljava.lang.String;@5caf905d
+belen, [5]
+daniela, [1]
+luisa, [4, 2]
+maria, [3]

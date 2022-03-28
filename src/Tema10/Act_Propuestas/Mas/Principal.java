@@ -1,4 +1,4 @@
-package Tema10.Act_Propuestas.Extra;
+package Tema10.Act_Propuestas.Mas;
 
 /* EJERCICIO DE PRÁCTICA PARA EL EXAMEN
  * Se tienen varios ficheros (de lectura), y en cada fichero se tiene un conjunto de nombres.
@@ -7,11 +7,16 @@ package Tema10.Act_Propuestas.Extra;
  * repetido, hay que sumar la cantidad que tengan dejando el nombre igual y todos los números (en la misma línea).
  */
 
-import java.io.*;
+public class Principal {
+	public static void main (String[] args) {
+		ConjuntoNombreNumero conjunto = new ConjuntoNombreNumero();
 
-public class Extra {
-    public static void main (String[] args) {
-        ConjuntoNombreNumero fichero1;
-        ConjuntoNombreNumero fichero2;
-    }
+		conjunto.leerFichero("nombres1");
+		conjunto.mostrarTabla();
+
+		conjunto.leerFichero("nombres2");
+		conjunto.mostrarTabla();
+
+		conjunto.escribirFichero();
+	}
 }
