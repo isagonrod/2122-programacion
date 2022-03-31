@@ -6,7 +6,6 @@ package Tema11.Act_Aplicacion;
  */
 
 import java.io.*;
-import java.util.Arrays;
 
 public class Act_15 {
 	public static void main (String[] args) {
@@ -34,15 +33,22 @@ public class Act_15 {
 				escribirFichero("numerosImpares", impar);
 			}
 		}
+		catch (EOFException ex) {
+			System.out.println("Fin de fichero " + nombreFichero);
+		}
 		catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
 
-	static void escribirFichero(String nombreFichero, int[] tabla) {
-
-		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos_binary/" + nombreFichero + ".dat"))) {
-			out.writeObject(tabla);
+	static void mostrarFichero(String nombreFichero) {
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos_binary/" + nombreFichero + ".dat"))) {
+			while (true) {
+				System.out.println(in.readInt());
+			}
+		}
+		catch (EOFException ex) {
+			System.out.println("Fin de fichero " + nombreFichero);
 		}
 		catch (IOException ex) {
 			System.out.println(ex.getMessage());
