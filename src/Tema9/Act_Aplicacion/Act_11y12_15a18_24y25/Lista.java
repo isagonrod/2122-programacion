@@ -27,7 +27,15 @@ public class Lista implements Cola, Pila {
         this.tabla = new Object[0];
     }
 
-    public void insertarPrincipio(Object nuevo) {
+	public Object[] getTabla() {
+		return tabla;
+	}
+
+	public void setTabla(Object[] tabla) {
+		this.tabla = tabla;
+	}
+
+	public void insertarPrincipio(Object nuevo) {
         if (tabla.length == 0 || tabla[0].getClass().isAssignableFrom(nuevo.getClass())) {
             tabla = Arrays.copyOf(tabla, tabla.length + 1);
             System.arraycopy(tabla, 0, tabla,1,tabla.length - 1);

@@ -1,10 +1,15 @@
 package Tema11.Act_Aplicacion.Act_20;
 
-public class Cliente implements Comparable {
+import java.io.Serializable;
+
+public class Cliente implements Comparable, Serializable {
 	private String id;
 	private String nombre;
 	private String telefono;
 
+	public Cliente(String id) {
+		this.id = id;
+	}
 	public Cliente(String id, String nombre, String telefono) {
 		this.id = id;
 		this.nombre = nombre;

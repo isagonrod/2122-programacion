@@ -1,6 +1,7 @@
 package Tema11.Act_Aplicacion.Act_20;
 
-import java.lang.reflect.Array;
+import Utilidades.Teclado;
+
 import java.util.Arrays;
 
 public class ConjuntoCliente {
@@ -19,16 +20,66 @@ public class ConjuntoCliente {
 	}
 
 	public Cliente[] insertarCliente(Cliente nuevo) {
-		int posicion;
+		Cliente[] aux = this.tabla;
+		int posicion = Arrays.binarySearch(aux, nuevo);
 
-		this.tabla = Arrays.copyOf(this.tabla,this.tabla.length + 1);
-		posicion = Arrays.binarySearch(this.tabla, nuevo.getId());
+		if (posicion < 0) {
+			posicion = Math.abs(posicion) - 1;
 
-		System.arraycopy(this.tabla,0,this.tabla,0,posicion);
-		System.arraycopy(this.tabla,posicion,this.tabla,posicion + 1,this.tabla.length - posicion);
+			aux = Arrays.copyOf(aux, aux.length + 1);
+			System.arraycopy(aux, 0, aux, 0, posicion);
+			System.arraycopy(aux, posicion, aux, posicion + 1, aux.length - posicion - 1);
 
-		tabla[posicion] = nuevo;
+			aux[posicion] = nuevo;
+
+			this.tabla = aux;
+		}
 
 		return this.tabla;
+	}
+
+	public int buscar(String id) {
+		int indice = -1;
+		for (int i = 0; i < this.tabla.length && indice == -1; i++) {
+			if (this.tabla[i].getId().compareToIgnoreCase(id) == 0) {
+				indice = i;
+			}
+		}
+		return indice;
+	}
+
+	public Cliente modificarDatos(String id) {
+		Cliente cliente = null;
+		int posicion = this.buscar(id);
+
+		if (posicion >= 0) {
+			this.tabla[posicion].setNombre(Teclado.getString("Nuevo nombre: "));
+			this.tabla[posicion].setTelefono(Teclado.getString("Nuevo teléfono: "));
+			cliente = this.tabla[posicion];
+		}
+
+		return cliente;
+	}
+
+	public Cliente eliminarCliente(String id) {
+		Cliente eliminado = null;
+		int posicion = this.buscar(id);
+
+		if (posicion >= 0 && posicion < this.tabla.length) {
+			eliminado = this.tabla[posicion];
+			System.arraycopy(tabla, posicion + 1, tabla, posicion, this.tabla.length - (posicion + 1));
+			this.tabla = Arrays.copyOf(this.tabla, this.tabla.length - 1);
+		}
+
+		return eliminado;
+
+	}
+
+	public void bajaCliente(String id) {
+		this.eliminarCliente(id);
+	}
+
+	public void listarClientes() {
+		System.out.println(Arrays.toString(getTabla()));
 	}
 }

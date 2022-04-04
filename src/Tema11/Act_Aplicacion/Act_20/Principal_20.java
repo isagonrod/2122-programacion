@@ -15,13 +15,11 @@ package Tema11.Act_Aplicacion.Act_20;
 
 import Utilidades.Teclado;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 
 public class Principal_20 {
 	public static void main (String[] args) {
-		ConjuntoCliente tabla = new ConjuntoCliente();
+		ConjuntoCliente tabla = cargarFichero();
 		int opc;
 
 		do {
@@ -29,7 +27,13 @@ public class Principal_20 {
 			opc = Teclado.leerOpcion(1,5);
 			switch (opc) {
 				case 1 -> tabla.insertarCliente(new Cliente(Teclado.getString("ID: "), Teclado.getString("Nombre: "), Teclado.getString("Teléfono: ")));
-				case 5 -> System.out.println("¡Adiós!");
+				case 2 -> tabla.modificarDatos(Teclado.getString("ID del cliente que quieres modificar: "));
+				case 3 -> tabla.bajaCliente(Teclado.getString("ID del cliente al que quieres dar de baja: "));
+				case 4 -> tabla.listarClientes();
+				case 5 -> {
+					guardarFichero(tabla);
+					System.out.println("¡Adiós!");
+				}
 			}
 		} while (opc != 5);
 	}
@@ -43,13 +47,30 @@ public class Principal_20 {
 		System.out.println("5. Salir");
 	}
 
-	static void cargarFichero() {
-		String linea;
+	static ConjuntoCliente cargarFichero() {
+		ConjuntoCliente tabla = new ConjuntoCliente();
 
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos_binary/clientes.dat"))) {
-			linea = (String) in.readObject();
+			while (true) {
+				tabla.insertarCliente((Cliente) in.readObject());
+			}
+		}
+		catch (EOFException ex) {
+			System.out.println("Fin de fichero");
 		}
 		catch (IOException | ClassNotFoundException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return tabla;
+	}
+
+	static void guardarFichero(ConjuntoCliente tabla) {
+		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos_binary/clientes.dat"))) {
+			for (Cliente cliente : tabla.getTabla()) {
+				out.writeObject(cliente);
+			}
+		}
+		catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
