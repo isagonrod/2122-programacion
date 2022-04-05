@@ -11,6 +11,7 @@ package Tema11.Act_Aplicacion;
 import Utilidades.Teclado;
 
 import java.io.*;
+import java.util.Arrays;
 
 public class Act_25 {
 	public static void main (String[] args) {
@@ -72,13 +73,22 @@ public class Act_25 {
 	}
 
 	static void buscarPosicion(int numero, int[] t1, String fichero) {
-		int posicion = -1;
-		for (int i = 0; i < t1.length && posicion == -1; i++) {
-			if (t1[i] == numero) {
-				posicion = i;
-				System.out.println("\nEl número " + numero + " está en el fichero " + fichero +
+		int posicion;
+
+		//Usando binarySearch
+		posicion = Arrays.binarySearch(t1, numero);
+		if (posicion >= 0) {
+			System.out.println("\nEl número " + numero + " está en el fichero " + fichero +
 									"\nSu posición es la " + posicion);
-			}
 		}
+
+//		Búsqueda secuencial
+//		for (int i = 0; i < t1.length && posicion == -1; i++) {
+//			if (t1[i] == numero) {
+//				posicion = i;
+//				System.out.println("\nEl número " + numero + " está en el fichero " + fichero +
+//									"\nSu posición es la " + posicion);
+//			}
+//		}
 	}
 }
