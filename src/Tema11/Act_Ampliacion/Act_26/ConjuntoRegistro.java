@@ -31,17 +31,72 @@ public class ConjuntoRegistro {
         return this.tabla;
     }
 
-    public double calcularMax(double temp) {
-        return Math.max(temp, 0);
+    /** Calcula el valor máximo de entre el tipo de registro seleccionado.
+     *
+     * @param tipo - 1 para las máximas, 2 para las mínimas, 3 para las variaciones
+     * @return la temperatura máxima del tipo seleccionado
+     */
+    public double calcularMax(int tipo) {
+        double max = 0.0, aux = 0;
+
+        for (Registro elemento : this.tabla) {
+            switch (tipo) {
+                case 1 -> aux = elemento.getTempMax();
+                case 2 -> aux = elemento.getTempMin();
+                case 3 -> aux = elemento.variacion();
+            }
+
+            if (aux > max) {
+                max = aux;
+            }
+        }
+
+        return max;
     }
 
-    public double calcularMin(double temp) {
-        return Math.min(temp,9999);
+    /** Calcula el valor mínimo de entre el tipo de registro seleccionado.
+     *
+     * @param tipo - 1 para las máximas, 2 para las mínimas, 3 para las variaciones
+     * @return la temperatura mínima del tipo seleccionado
+     */
+    public double calcularMin(int tipo) {
+        double min = 9999999.0, aux = 0;
+
+        for (Registro elemento : this.tabla) {
+            switch (tipo) {
+                case 1 -> aux = elemento.getTempMax();
+                case 2 -> aux = elemento.getTempMin();
+                case 3 -> aux = elemento.variacion();
+            }
+
+            if (aux < min) {
+                min = aux;
+            }
+        }
+
+        return min;
     }
 
-    public double calcularMedia(double temp) {
-        double resultado = 0;
+    /** Calcula el valor medio de entre el tipo de registro seleccionado.
+     *
+     * @param tipo - 1 para las máximas, 2 para las mínimas, 3 para las variaciones
+     * @return la temperatura media del tipo seleccionado
+     */
+    public double calcularMedia(int tipo) {
+        double media = 0.0, aux = 0;
 
-        return resultado;
+        for (Registro elemento : this.tabla) {
+            switch (tipo) {
+                case 1 -> aux = elemento.getTempMax();
+                case 2 -> aux = elemento.getTempMin();
+                case 3 -> aux = elemento.variacion();
+            }
+
+            media += aux;
+        }
+
+        media /= this.tabla.length;
+
+        return media;
     }
 }

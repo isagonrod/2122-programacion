@@ -36,13 +36,21 @@ public class Principal_26 {
             menu();
             opc = Teclado.leerOpcion(1, 4);
             switch (opc) {
-                case 1 -> tabla.nuevoRegistro(new Registro(Teclado.getDouble("Temp.Máxima: "), Teclado.getDouble("Temp.Mínima: "),
+                case 1 -> tabla.nuevoRegistro(new Registro(
+                        Teclado.getDouble("Temp.Máxima: "),
+                        Teclado.getDouble("Temp.Mínima: "),
                         Teclado.getString("Fecha: ")));
                 case 2 -> System.out.println(tabla);
                 case 3 -> {
-                    System.out.println("\nTEMPERATURAS MÁXIMAS\nTemperatura máxima: " + " | Temperatura mínima: " + " | Temperatura media: ");
-                    System.out.println("\nTEMPERATURAS MÍNIMAS\nTemperatura máxima: " + " | Temperatura mínima: " + " | Temperatura media: ");
-                    System.out.println("\nVARIACIONES\nTemperatura máxima: " + " | Temperatura mínima: " + " | Temperatura media: ");
+                    System.out.println("\nTEMPERATURAS MÁXIMAS\nTemperatura máxima: " + tabla.calcularMax(1) +
+                            " | Temperatura mínima: " + tabla.calcularMin(1) +
+                            " | Temperatura media: " + tabla.calcularMedia(1));
+                    System.out.println("\nTEMPERATURAS MÍNIMAS\nTemperatura máxima: " + tabla.calcularMax(2) +
+                            " | Temperatura mínima: " + tabla.calcularMin(2) +
+                            " | Temperatura media: " + tabla.calcularMedia(2));
+                    System.out.println("\nVARIACIONES\nTemperatura máxima: " + tabla.calcularMax(3) +
+                            " | Temperatura mínima: " + tabla.calcularMin(3) +
+                            " | Temperatura media: " + tabla.calcularMedia(3));
                 }
                 case 4 -> {
                     System.out.println("¡Adiós!");
@@ -61,7 +69,7 @@ public class Principal_26 {
 
     static ConjuntoRegistro leerFichero() {
         ConjuntoRegistro tabla = new ConjuntoRegistro();
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos_binary/empleados.dat"))) {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos_binary/registro.dat"))) {
             while (true) {
                 in.readObject();
                 tabla.nuevoRegistro((Registro) in.readObject());
