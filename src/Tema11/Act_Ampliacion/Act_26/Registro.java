@@ -1,16 +1,19 @@
 package Tema11.Act_Ampliacion.Act_26;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Registro implements Serializable {
     private double tempMax;
     private double tempMin;
-    private String fecha;
+    private LocalDate fecha;
 
      public Registro(double tempMax, double tempMin, String fecha) {
         this.tempMax = tempMax;
         this.tempMin = tempMin;
-        this.fecha = fecha;
+		 DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.fecha = LocalDate.parse(fecha, f);
     }
 
     public double getTempMax() {
@@ -29,15 +32,15 @@ public class Registro implements Serializable {
         this.tempMin = tempMin;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
+	public LocalDate getFecha() {
+		return fecha;
+	}
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
 
-    public double variacion() {
+	public double variacion() {
         return this.tempMax - this.tempMin;
     }
 

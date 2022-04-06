@@ -1,7 +1,5 @@
 package Tema11.Act_Ampliacion.Act_26;
 
-import Utilidades.Teclado;
-
 import java.util.Arrays;
 
 public class ConjuntoRegistro {
