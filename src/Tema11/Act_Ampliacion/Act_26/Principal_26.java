@@ -20,12 +20,13 @@ package Tema11.Act_Ampliacion.Act_26;
  * aplicación, se leerá del archivo y al salir de ella (opción 4) se volverá a guardar actualizada.
  */
 
+import Tema11.Act_Ampliacion.Act_28.ConjuntoSocio;
+import Tema11.Act_Ampliacion.Act_28.Socio;
+import Tema11.Act_Aplicacion.Act_20.Cliente;
+import Tema11.Act_Aplicacion.Act_20.ConjuntoCliente;
 import Utilidades.Teclado;
 
-import java.io.EOFException;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 
 public class Principal_26 {
     public static void main (String[] args) {
@@ -53,6 +54,7 @@ public class Principal_26 {
                             " | Temperatura media: " + tabla.calcularMedia(3));
                 }
                 case 4 -> {
+					guardarFichero(tabla);
                     System.out.println("¡Adiós!");
                 }
             }
@@ -60,18 +62,17 @@ public class Principal_26 {
     }
 
     static void menu() {
-        System.out.println("-- MENÚ DE OPCIONES --");
+        System.out.println("\n-- MENÚ DE OPCIONES --");
         System.out.println("1. Nuevo registro");
         System.out.println("2. Mostrar historial");
         System.out.println("3. Mostrar estadísticas");
-        System.out.println("4. Salir");
+        System.out.println("4. Salir\n");
     }
 
     static ConjuntoRegistro leerFichero() {
         ConjuntoRegistro tabla = new ConjuntoRegistro();
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos_binary/registro.dat"))) {
             while (true) {
-                in.readObject();
                 tabla.nuevoRegistro((Registro) in.readObject());
             }
         }
@@ -83,4 +84,15 @@ public class Principal_26 {
         }
         return tabla;
     }
+
+	static void guardarFichero(ConjuntoRegistro tabla) {
+		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos_binary/registro.dat"))) {
+			for (Registro registro : tabla.getTabla()) {
+				out.writeObject(registro);
+			}
+		}
+		catch (IOException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
 }

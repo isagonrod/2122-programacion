@@ -1,27 +1,32 @@
-package Tema11.Act_Ampliacion.Act_27;
+package Tema11.Act_Ampliacion.Act_28;
 
+import Tema11.Act_Ampliacion.Act_27.Deporte;
+import Tema11.Act_Ampliacion.Act_27.Deportista;
 import Utilidades.Teclado;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 
-public class ConjuntoDeportistas {
-	private Deportista[] tabla;
+public class ConjuntoSocio {
+	private Socio[] tabla;
 
-	public ConjuntoDeportistas() {
-		this.tabla = new Deportista[0];
+	public ConjuntoSocio() {
+		this.tabla = new Socio[0];
 	}
 
-	public Deportista[] getTabla() {
+	public Socio[] getTabla() {
 		return tabla;
 	}
 
-	public void setTabla(Deportista[] tabla) {
+	public void setTabla(Socio[] tabla) {
 		this.tabla = tabla;
 	}
 
-	public Deportista[] altaDeportista(Deportista nuevo) {
-		Deportista[] aux = this.tabla;
+	public String toString() {
+		return Arrays.deepToString(this.tabla);
+	}
+
+	public Socio[] altaSocio(Socio nuevo) {
+		Socio[] aux = this.tabla;
 		int posicion = Arrays.binarySearch(aux, nuevo);
 
 		if (posicion < 0) {
@@ -35,15 +40,16 @@ public class ConjuntoDeportistas {
 
 			this.tabla = aux;
 		}
+		Socio.numSocioActual++;
 
 		return this.tabla;
 	}
 
-	public int buscarPosicionDeportista(int dni) {
+	public int buscarPosicionSocio(int numSocio) {
 		int indice = -1, i;
 
 		for (i = 0; i < this.tabla.length; i++) {
-			if (this.tabla[i].getDni() == dni) {
+			if (this.tabla[i].getNumSocio() == numSocio) {
 				indice = i;
 			}
 		}
@@ -51,9 +57,9 @@ public class ConjuntoDeportistas {
 		return indice;
 	}
 
-	public Deportista bajaDeportista(int dni) {
-		Deportista eliminado = null;
-		int posicion = this.buscarPosicionDeportista(dni);
+	public Socio bajaSocio(int numSocio) {
+		Socio eliminado = null;
+		int posicion = this.buscarPosicionSocio(numSocio);
 
 		if (posicion >= 0 && posicion < this.tabla.length) {
 			eliminado = this.tabla[posicion];
@@ -64,15 +70,17 @@ public class ConjuntoDeportistas {
 		return eliminado;
 	}
 
-	public Deportista modificarDatosDeportista(int dni) {
-		Deportista modificado = null;
-		int posicion = this.buscarPosicionDeportista(dni);
+	public Socio modificarDatosSocio(int numSocio) {
+		Socio modificado = null;
+		int posicion = this.buscarPosicionSocio(numSocio);
 
 		if (posicion >= 0 && posicion < this.tabla.length) {
 			modificado = this.tabla[posicion];
 			modificado.setNombre(Teclado.getString("Nuevo nombre: "));
 			modificado.setFechaNacimiento(Teclado.getString("Nueva fecha de nacimiento: "));
-			modificado.setDeporte(Deporte.valueOf(Teclado.getString("Nuevo deporte: ")));
+			modificado.setFechaAlta(Teclado.getString("Nueva fecha de alta: "));
+			modificado.setTelefono(Teclado.getNumber("Nuevo teléfono: "));
+			modificado.setEmail(Teclado.getString("Nuevo correo electrónico: "));
 		}
 		return modificado;
 	}
@@ -82,8 +90,8 @@ public class ConjuntoDeportistas {
 		System.out.println(Arrays.deepToString(this.tabla));
 	}
 
-	public void listadoOrdenadoEdad() {
-		Arrays.sort(this.tabla, new ComparaEdad());
+	public void listadoOrdenadoAntigüedad() {
+		Arrays.sort(this.tabla, new ComparaAntigüedad());
 		System.out.println(Arrays.deepToString(this.tabla));
 	}
 }

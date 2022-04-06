@@ -11,5 +11,72 @@ package Tema11.Act_Ampliacion.Act_28;
  * Toda esta información se mantendrá en un archivo binario.
  */
 
+import Utilidades.Teclado;
+
+import java.io.*;
+
 public class Principal_28 {
+	public static void main (String[] args) {
+		ConjuntoSocio tabla = cargarFichero();
+		int opc;
+
+		do {
+			menu();
+			opc = Teclado.leerOpcion(1, 6);
+			switch (opc) {
+				case 1 -> tabla.altaSocio(new Socio(
+						Teclado.getString("Nombre: "),
+						Teclado.getString("Fecha de nacimiento: "),
+						Teclado.getString("Fecha de alta: "),
+						Teclado.getNumber("Teléfono: "),
+						Teclado.getString("Correo electrónico: ")));
+				case 2 -> tabla.bajaSocio(Teclado.getNumber("Nº de socio a dar de baja: "));
+				case 3 -> tabla.modificarDatosSocio(Teclado.getNumber("Nº de socio a modificar: "));
+				case 4 -> tabla.listadoOrdenadoNombre();
+				case 5 -> tabla.listadoOrdenadoAntigüedad();
+				case 6 -> {
+					guardarFichero(tabla);
+					System.out.println("¡Adiós!");
+				}
+			}
+		} while (opc != 6);
+	}
+
+	static void menu() {
+		System.out.println("\n-- MENÚ DE OPCIONES --");
+		System.out.println("1. Alta");
+		System.out.println("2. Baja");
+		System.out.println("3. Modificación");
+		System.out.println("4. Listar por nombre");
+		System.out.println("5. Listar por antigüedad");
+		System.out.println("6. Salir\n");
+	}
+
+	static ConjuntoSocio cargarFichero() {
+		ConjuntoSocio tabla = new ConjuntoSocio();
+
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos_binary/socios_Act_28.dat"))) {
+			while (true) {
+				tabla.altaSocio((Socio) in.readObject());
+			}
+		}
+		catch (EOFException ex) {
+			System.out.println("Fin de fichero");
+		}
+		catch (IOException | ClassNotFoundException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return tabla;
+	}
+
+	static void guardarFichero(ConjuntoSocio tabla) {
+		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos_binary/socios_Act_28.dat"))) {
+			for (Socio cliente : tabla.getTabla()) {
+				out.writeObject(cliente);
+			}
+		}
+		catch (IOException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
 }
