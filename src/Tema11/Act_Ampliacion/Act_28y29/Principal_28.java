@@ -1,4 +1,4 @@
-package Tema11.Act_Ampliacion.Act_28;
+package Tema11.Act_Ampliacion.Act_28y29;
 
 /* ACTIVIDAD DE AMPLIACIÓN 11.28
  * Implementa la clase Socio para gestionar un club.
@@ -9,6 +9,12 @@ package Tema11.Act_Ampliacion.Act_28;
  * Entre las funcionalidades de la aplicación deberán incluirse un listado por orden alfabético de nombres y otro por
  * antigüedad en el club.
  * Toda esta información se mantendrá en un archivo binario.
+ */
+
+/* ACTIVIDAD DE AMPLIACIÓN 11.29
+ * Desarrolla la Actividad 11.28 para añadir a la ficha de cada socio una lista de familiares a su cargo.
+ * Para ello, define la clase Familiar con los atributos: dni, nombre y fecha de nacimiento.
+ * Además, añade la opción de listar los datos de un socio incluyendo la lista de sus familiares ordenada por edad.
  */
 
 import Utilidades.Teclado;

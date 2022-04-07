@@ -20,10 +20,6 @@ package Tema11.Act_Ampliacion.Act_26;
  * aplicación, se leerá del archivo y al salir de ella (opción 4) se volverá a guardar actualizada.
  */
 
-import Tema11.Act_Ampliacion.Act_28.ConjuntoSocio;
-import Tema11.Act_Ampliacion.Act_28.Socio;
-import Tema11.Act_Aplicacion.Act_20.Cliente;
-import Tema11.Act_Aplicacion.Act_20.ConjuntoCliente;
 import Utilidades.Teclado;
 
 import java.io.*;

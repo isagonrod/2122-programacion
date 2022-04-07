@@ -1,7 +1,5 @@
-package Tema11.Act_Ampliacion.Act_28;
+package Tema11.Act_Ampliacion.Act_28y29;
 
-import Tema11.Act_Ampliacion.Act_27.Deporte;
-import Tema11.Act_Ampliacion.Act_27.Deportista;
 import Utilidades.Teclado;
 
 import java.util.Arrays;

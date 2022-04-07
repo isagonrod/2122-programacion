@@ -1,4 +1,4 @@
-package Tema11.Act_Ampliacion.Act_28;
+package Tema11.Act_Ampliacion.Act_28y29;
 
 import java.util.Comparator;
 
