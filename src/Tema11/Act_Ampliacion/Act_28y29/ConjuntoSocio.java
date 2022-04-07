@@ -94,7 +94,11 @@ public class ConjuntoSocio {
 	}
 
 	public void listadoConFamiliares() {
-		Arrays.sort(this.tabla, new ComparaFamiliares());
-		System.out.println(Arrays.deepToString(this.tabla));
+		for (Socio s : this.tabla) {
+			Arrays.sort(s.getFamiliares(), new ComparaFamiliares());
+			System.out.println(s);
+			System.out.println(Arrays.deepToString(s.getFamiliares()));
+			System.out.println("-----------------");
+		}
 	}
 }
