@@ -28,7 +28,7 @@ public class Principal_28 {
 
 		do {
 			menu();
-			opc = Teclado.leerOpcion(1, 6);
+			opc = Teclado.leerOpcion(1, 7);
 			switch (opc) {
 				case 1 -> tabla.altaSocio(new Socio(
 						Teclado.getString("Nombre: "),
@@ -41,11 +41,19 @@ public class Principal_28 {
 				case 4 -> tabla.listadoOrdenadoNombre();
 				case 5 -> tabla.listadoOrdenadoAntigüedad();
 				case 6 -> {
+					ConjuntoFamiliares familiares = new ConjuntoFamiliares();
+					familiares.introducirDatosFamiliar(new Familiar(
+							Teclado.getNumber("DNI: "),
+							Teclado.getString("Nombre: "),
+							Teclado.getString("Fecha de nacimiento: ")));
+					tabla.listadoOrdenadoNombre();
+				}
+				case 7 -> {
 					guardarFichero(tabla);
 					System.out.println("¡Adiós!");
 				}
 			}
-		} while (opc != 6);
+		} while (opc != 7);
 	}
 
 	static void menu() {
@@ -55,7 +63,8 @@ public class Principal_28 {
 		System.out.println("3. Modificación");
 		System.out.println("4. Listar por nombre");
 		System.out.println("5. Listar por antigüedad");
-		System.out.println("6. Salir\n");
+		System.out.println("6. Listar incluyendo datos de familiares");
+		System.out.println("7. Salir\n");
 	}
 
 	static ConjuntoSocio cargarFichero() {

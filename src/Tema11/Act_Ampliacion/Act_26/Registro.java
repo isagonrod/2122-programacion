@@ -9,7 +9,7 @@ public class Registro implements Serializable {
     private double tempMin;
     private LocalDate fecha;
 
-     public Registro(double tempMax, double tempMin, String fecha) {
+    public Registro(double tempMax, double tempMin, String fecha) {
         this.tempMax = tempMax;
         this.tempMin = tempMin;
 		 DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");

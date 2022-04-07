@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 
 public class Socio implements Comparable, Serializable {
 	public static int numSocioActual = 1;
@@ -13,6 +14,11 @@ public class Socio implements Comparable, Serializable {
 	private LocalDate fechaAlta;
 	private int telefono;
 	private String email;
+	private Familiar[] familiares;
+
+	public Socio(int numSocio) {
+		this.numSocio = numSocio;
+	}
 
 	public Socio(String nombre, String fechaNacimiento, String fechaAlta, int telefono, String email) {
 		this.numSocio = numSocioActual;
@@ -72,6 +78,14 @@ public class Socio implements Comparable, Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Familiar[] getFamiliares() {
+		return familiares;
+	}
+
+	public void setFamiliares(Familiar[] familiares) {
+		this.familiares = familiares;
 	}
 
 	int edad() {

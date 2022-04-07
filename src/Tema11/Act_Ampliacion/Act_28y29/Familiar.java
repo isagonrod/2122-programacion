@@ -1,9 +1,11 @@
 package Tema11.Act_Ampliacion.Act_28y29;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
-public class Familiar {
+public class Familiar implements Comparable, Serializable {
     private int dni;
     private String nombre;
     private LocalDate fechaNacimiento;
@@ -39,5 +41,16 @@ public class Familiar {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    int edad() {
+        return (int)this.fechaNacimiento.until(LocalDate.now(), ChronoUnit.YEARS);
+    }
 
+    @Override
+    public int compareTo(Object o) {
+        return ((Familiar)o).edad() - this.edad();
+    }
+
+    public String toString() {
+        return "\tFamiliar: " + this.nombre + " (DNI: " + this.dni + " Edad: " + this.edad() + ")\n";
+    }
 }

@@ -1,0 +1,12 @@
+1   Lengua y literatura
+2   Latín
+3   Griego
+4   Inglés
+5   Francés
+6   Historia
+7   Matemáticas
+8   Física y química
+9   Informática
+10  Dibujo técnico
+11  Economía
+12  Biología y geología
