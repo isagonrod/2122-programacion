@@ -20,7 +20,7 @@ public class Socio implements Comparable, Serializable {
 		this.numSocio = numSocio;
 	}
 
-	public Socio(String nombre, String fechaNacimiento, String fechaAlta, int telefono, String email) {
+	public Socio(String nombre, String fechaNacimiento, String fechaAlta, int telefono, String email, int familiares) {
 		this.numSocio = numSocioActual;
 		this.nombre = nombre;
 		DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -28,6 +28,7 @@ public class Socio implements Comparable, Serializable {
 		this.fechaAlta = LocalDate.parse(fechaAlta, f);
 		this.telefono = telefono;
 		this.email = email;
+		this.familiares = new Familiar[familiares - 1];
 	}
 
 	public int getNumSocio() {
@@ -105,5 +106,9 @@ public class Socio implements Comparable, Serializable {
 		return "Nº de socio: " + this.numSocio + " | Nombre: " + this.nombre + " | Edad: " + this.edad()
 				+ " | Antigüedad: " + this.antigüedad() + " meses | Teléfono: " + this.telefono
 				+ " | Correo electrónico: " + this.email + "\n";
+	}
+
+	public String mostrarConFamiliares() {
+		return this + this.familiares.toString();
 	}
 }

@@ -30,24 +30,21 @@ public class Principal_28 {
 			menu();
 			opc = Teclado.leerOpcion(1, 7);
 			switch (opc) {
-				case 1 -> tabla.altaSocio(new Socio(
-						Teclado.getString("Nombre: "),
-						Teclado.getString("Fecha de nacimiento: "),
-						Teclado.getString("Fecha de alta: "),
-						Teclado.getNumber("Teléfono: "),
-						Teclado.getString("Correo electrónico: ")));
+				case 1 -> {
+					tabla.altaSocio(new Socio(
+							Teclado.getString("Nombre: "),
+							Teclado.getString("Fecha de nacimiento: "),
+							Teclado.getString("Fecha de alta: "),
+							Teclado.getNumber("Teléfono: "),
+							Teclado.getString("Correo electrónico: "),
+							Teclado.getNumber("¿Cuántos familiares quieres incluir? ")));
+					// TODO : Pedir datos familiares
+				}
 				case 2 -> tabla.bajaSocio(Teclado.getNumber("Nº de socio a dar de baja: "));
 				case 3 -> tabla.modificarDatosSocio(Teclado.getNumber("Nº de socio a modificar: "));
 				case 4 -> tabla.listadoOrdenadoNombre();
 				case 5 -> tabla.listadoOrdenadoAntigüedad();
-				case 6 -> {
-					ConjuntoFamiliares familiares = new ConjuntoFamiliares();
-					familiares.introducirDatosFamiliar(new Familiar(
-							Teclado.getNumber("DNI: "),
-							Teclado.getString("Nombre: "),
-							Teclado.getString("Fecha de nacimiento: ")));
-					tabla.listadoOrdenadoNombre();
-				}
+				case 6 -> tabla.listadoConFamiliares();
 				case 7 -> {
 					guardarFichero(tabla);
 					System.out.println("¡Adiós!");

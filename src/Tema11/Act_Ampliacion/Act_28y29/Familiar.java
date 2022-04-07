@@ -1,27 +1,30 @@
 package Tema11.Act_Ampliacion.Act_28y29;
 
+import Tema10.Act_Ampliacion.Act_31.Cliente;
+import Utilidades.Teclado;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class Familiar implements Comparable, Serializable {
-    private int dni;
+    private String dni;
     private String nombre;
     private LocalDate fechaNacimiento;
 
-    public Familiar(int dni, String nombre, String fechaNacimiento) {
+    public Familiar(String dni, String nombre, String fechaNacimiento) {
         this.dni = dni;
         this.nombre = nombre;
         DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.fechaNacimiento = LocalDate.parse(fechaNacimiento, f);
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -53,4 +56,11 @@ public class Familiar implements Comparable, Serializable {
     public String toString() {
         return "\tFamiliar: " + this.nombre + " (DNI: " + this.dni + " Edad: " + this.edad() + ")\n";
     }
+
+	public static Familiar pedirDatosFamiliar() {
+		return new Familiar(
+				Teclado.getString("DNI: "),
+				Teclado.getString("Nombre completo: "),
+				Teclado.getString("Fecha de nacimiento: "));
+	}
 }

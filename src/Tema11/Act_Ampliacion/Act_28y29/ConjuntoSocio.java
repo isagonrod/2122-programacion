@@ -92,4 +92,9 @@ public class ConjuntoSocio {
 		Arrays.sort(this.tabla, new ComparaAntigüedad());
 		System.out.println(Arrays.deepToString(this.tabla));
 	}
+
+	public void listadoConFamiliares() {
+		Arrays.sort(this.tabla, new ComparaFamiliares());
+		System.out.println(Arrays.deepToString(this.tabla));
+	}
 }
