@@ -55,6 +55,19 @@ public class ConjuntoSocio {
 		return indice;
 	}
 
+	public void pedirDatosFamiliar(int numSocio, int cantidadFamiliares) {
+		int posicion = this.buscarPosicionSocio(numSocio), i;
+
+		if (posicion >= 0) {
+			for (i = 0; i < cantidadFamiliares; i++) {
+				new Familiar(
+						Teclado.getString("DNI: "),
+						Teclado.getString("Nombre completo: "),
+						Teclado.getString("Fecha de nacimiento: "));
+			}
+		}
+	}
+
 	public Socio bajaSocio(int numSocio) {
 		Socio eliminado = null;
 		int posicion = this.buscarPosicionSocio(numSocio);

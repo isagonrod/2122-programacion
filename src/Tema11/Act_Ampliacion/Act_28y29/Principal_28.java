@@ -28,7 +28,7 @@ public class Principal_28 {
 
 		do {
 			menu();
-			opc = Teclado.leerOpcion(1, 7);
+			opc = Teclado.leerOpcion(1, 8);
 			switch (opc) {
 				case 1 -> {
 					tabla.altaSocio(new Socio(
@@ -36,32 +36,32 @@ public class Principal_28 {
 							Teclado.getString("Fecha de nacimiento: "),
 							Teclado.getString("Fecha de alta: "),
 							Teclado.getNumber("Teléfono: "),
-							Teclado.getString("Correo electrónico: "),
-							Teclado.getNumber("¿Cuántos familiares quieres incluir? ")));
-					// TODO : Pedir datos familiares
+							Teclado.getString("Correo electrónico: ")));
 				}
-				case 2 -> tabla.bajaSocio(Teclado.getNumber("Nº de socio a dar de baja: "));
-				case 3 -> tabla.modificarDatosSocio(Teclado.getNumber("Nº de socio a modificar: "));
-				case 4 -> tabla.listadoOrdenadoNombre();
-				case 5 -> tabla.listadoOrdenadoAntigüedad();
-				case 6 -> tabla.listadoConFamiliares();
-				case 7 -> {
+				case 2 -> tabla.pedirDatosFamiliar(Teclado.getNumber("DNI del socio: "), Teclado.getNumber("¿Cuántos familiares quiere incluir? "));
+				case 3 -> tabla.bajaSocio(Teclado.getNumber("Nº de socio a dar de baja: "));
+				case 4 -> tabla.modificarDatosSocio(Teclado.getNumber("Nº de socio a modificar: "));
+				case 5 -> tabla.listadoOrdenadoNombre();
+				case 6 -> tabla.listadoOrdenadoAntigüedad();
+				case 7 -> tabla.listadoConFamiliares();
+				case 8 -> {
 					guardarFichero(tabla);
 					System.out.println("¡Adiós!");
 				}
 			}
-		} while (opc != 7);
+		} while (opc != 8);
 	}
 
 	static void menu() {
 		System.out.println("\n-- MENÚ DE OPCIONES --");
 		System.out.println("1. Alta");
-		System.out.println("2. Baja");
-		System.out.println("3. Modificación");
-		System.out.println("4. Listar por nombre");
-		System.out.println("5. Listar por antigüedad");
-		System.out.println("6. Listar incluyendo datos de familiares");
-		System.out.println("7. Salir\n");
+		System.out.println("2. Alta de familiares de socios");
+		System.out.println("3. Baja");
+		System.out.println("4. Modificación");
+		System.out.println("5. Listar por nombre");
+		System.out.println("6. Listar por antigüedad");
+		System.out.println("7. Listar incluyendo datos de familiares");
+		System.out.println("8. Salir\n");
 	}
 
 	static ConjuntoSocio cargarFichero() {

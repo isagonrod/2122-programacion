@@ -1,23 +1,22 @@
-package Tema11.Act_Ampliacion.Act_28y29;
-
-import Tema10.Act_Ampliacion.Act_31.Cliente;
-import Utilidades.Teclado;
+package Tema11.Act_Ampliacion.Act_31;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public class Familiar implements Comparable, Serializable {
+public class Cliente implements Comparable, Serializable {
     private String dni;
     private String nombre;
     private LocalDate fechaNacimiento;
+    private double saldo;
 
-    public Familiar(String dni, String nombre, String fechaNacimiento) {
+    public Cliente(String dni, String nombre, String fechaNacimiento, double saldo) {
         this.dni = dni;
         this.nombre = nombre;
         DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.fechaNacimiento = LocalDate.parse(fechaNacimiento, f);
+        this.saldo = saldo;
     }
 
     public String getDni() {
@@ -44,16 +43,27 @@ public class Familiar implements Comparable, Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    int edad() {
-        return (int)this.fechaNacimiento.until(LocalDate.now(), ChronoUnit.YEARS);
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     @Override
     public int compareTo(Object o) {
-        return ((Familiar)o).edad() - this.edad();
+        return this.dni.compareTo(((Cliente)o).dni);
     }
 
     public String toString() {
-        return "\tFamiliar: " + this.nombre + " (DNI: " + this.dni + " Edad: " + this.edad() + ")\n";
+        return "DNI: " + this.dni +
+                " | Nombre: " + this.nombre +
+                " | Edad: " + this.edad() +
+                " | Saldo: " + this.saldo + " €\n";
+    }
+
+    int edad() {
+        return (int)this.fechaNacimiento.until(LocalDate.now(), ChronoUnit.YEARS);
     }
 }
