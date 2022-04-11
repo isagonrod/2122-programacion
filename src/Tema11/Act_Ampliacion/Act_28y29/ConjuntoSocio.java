@@ -60,10 +60,11 @@ public class ConjuntoSocio {
 
 		if (posicion >= 0) {
 			for (i = 0; i < cantidadFamiliares; i++) {
+				this.tabla[posicion].altaFamiliar(
 				new Familiar(
 						Teclado.getString("DNI: "),
 						Teclado.getString("Nombre completo: "),
-						Teclado.getString("Fecha de nacimiento: "));
+						Teclado.getString("Fecha de nacimiento: ")));
 			}
 		}
 	}

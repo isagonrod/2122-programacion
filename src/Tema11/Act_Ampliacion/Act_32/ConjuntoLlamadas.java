@@ -41,6 +41,5 @@ public class ConjuntoLlamadas {
     }
 
     public void mostrarListaLlamadas(String dni) {
-
     }
 }

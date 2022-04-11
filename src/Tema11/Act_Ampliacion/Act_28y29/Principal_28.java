@@ -38,7 +38,7 @@ public class Principal_28 {
 							Teclado.getNumber("Teléfono: "),
 							Teclado.getString("Correo electrónico: ")));
 				}
-				case 2 -> tabla.pedirDatosFamiliar(Teclado.getNumber("DNI del socio: "), Teclado.getNumber("¿Cuántos familiares quiere incluir? "));
+				case 2 -> tabla.pedirDatosFamiliar(Teclado.getNumber("Nº de socio: "), Teclado.getNumber("¿Cuántos familiares quiere incluir? "));
 				case 3 -> tabla.bajaSocio(Teclado.getNumber("Nº de socio a dar de baja: "));
 				case 4 -> tabla.modificarDatosSocio(Teclado.getNumber("Nº de socio a modificar: "));
 				case 5 -> tabla.listadoOrdenadoNombre();

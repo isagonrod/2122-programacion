@@ -115,4 +115,23 @@ public class Socio implements Comparable, Serializable {
 	public String mostrarConFamiliares() {
 		return this + this.familiares.toString();
 	}
+
+	public Familiar[] altaFamiliar(Familiar nuevo) {
+		Familiar[] aux = this.familiares;
+		int posicion = Arrays.binarySearch(aux, nuevo);
+
+		if (posicion < 0) {
+			posicion = Math.abs(posicion) - 1;
+
+			aux = Arrays.copyOf(aux, aux.length + 1);
+			System.arraycopy(aux, 0, aux, 0, posicion);
+			System.arraycopy(aux, posicion, aux, posicion + 1, aux.length - posicion - 1);
+
+			aux[posicion] = nuevo;
+
+			this.familiares = aux;
+		}
+
+		return this.familiares;
+	}
 }
