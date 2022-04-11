@@ -113,10 +113,6 @@ public class Socio implements Comparable, Serializable {
 				+ " | Correo electrónico: " + this.email + "\n";
 	}
 
-	public String mostrarConFamiliares() {
-		return this + this.familiares.toString();
-	}
-
 	public Familiar[] altaFamiliar(Familiar nuevo) {
 		Familiar[] aux = this.familiares;
 		int posicion = Arrays.binarySearch(aux, nuevo);

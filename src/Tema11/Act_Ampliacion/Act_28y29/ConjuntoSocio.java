@@ -27,6 +27,10 @@ public class ConjuntoSocio {
 		Socio[] aux = this.tabla;
 		int posicion = Arrays.binarySearch(aux, nuevo);
 
+		if (nuevo.getFamiliares() == null) {
+			nuevo.setFamiliares(new Familiar[0]);
+		}
+
 		if (posicion < 0) {
 			posicion = Math.abs(posicion) - 1;
 
