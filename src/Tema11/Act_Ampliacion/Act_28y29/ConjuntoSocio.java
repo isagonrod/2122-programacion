@@ -67,6 +67,9 @@ public class ConjuntoSocio {
 						Teclado.getString("Fecha de nacimiento: ")));
 			}
 		}
+		else {
+			System.out.println("Error: Socio no encontrado\n");
+		}
 	}
 
 	public Socio bajaSocio(int numSocio) {

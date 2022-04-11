@@ -28,6 +28,7 @@ public class Socio implements Comparable, Serializable {
 		this.fechaAlta = LocalDate.parse(fechaAlta, f);
 		this.telefono = telefono;
 		this.email = email;
+		this.familiares = new Familiar[0];
 	}
 
 	public Socio (int numSocio, int familiares) {

@@ -69,7 +69,7 @@ public class Principal_32 {
 
     static void guardarFichero(ConjuntoLlamadas tabla) {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos_binary/centralita.dat"))) {
-            for (Object elemento : tabla) {
+            for (Object elemento : tabla.getTabla()) {
                 out.writeObject(elemento);
             }
         }

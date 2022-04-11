@@ -100,7 +100,7 @@ public class Principal_31 {
         double aux, saldoMax = 0, saldoMin = 9999999, saldoProm = 0;
 
         for (int i = 0; i < tabla.getLength(); i++) {
-            aux = Cliente.getSaldo();
+            aux = 0.0;//Cliente.getSaldo();
 
             if (aux < saldoMin) {
                 saldoMin = aux;
