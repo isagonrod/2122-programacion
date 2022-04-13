@@ -18,11 +18,11 @@ package Tema11.Act_Ampliacion.Act_31;
  * Al cerrar la aplicación, se guardará en el archivo la lista actualizada.
  */
 
-import Tema11.Act_Aplicacion.Act_22.Empleado;
 import Tema9.Act_Aplicacion.Act_11y12_15a18_24y25.Lista;
 import Utilidades.Teclado;
 
 import java.io.*;
+import java.util.Arrays;
 
 public class Principal_31 {
     public static void main (String[] args) {
@@ -34,13 +34,16 @@ public class Principal_31 {
             opc = Teclado.leerOpcion(1, 4);
             switch (opc) {
                 case 1 -> {
-                    tablaClientes.encolar(new Cliente(
+                    Cliente nuevo = new Cliente(
                             Teclado.getString("DNI: "),
                             Teclado.getString("Nombre: "),
                             Teclado.getString("Fecha de nacimiento: "),
-                            Teclado.getDouble("Saldo: ")));
+                            Teclado.getDouble("Saldo: "));
+                    int pos = Arrays.binarySearch(tablaClientes.getTabla(), nuevo);
+                    pos = pos < 0 ? Math.abs(pos) - 1 : pos;
+                    tablaClientes.insertar(pos, nuevo);
                 }
-                case 2 -> tablaClientes.eliminar(buscar(tablaClientes, Teclado.getNumber("Introduce DNI de cliente a eliminar: ")));
+                case 2 -> tablaClientes.eliminar(buscar(tablaClientes, Teclado.getString("Introduce DNI de cliente a eliminar: ")));
                 case 3 -> listarClientes(tablaClientes);
                 case 4 -> {
                     guardarFichero(tablaClientes);
@@ -61,7 +64,7 @@ public class Principal_31 {
     static Lista cargarFichero() {
         Lista tabla = new Lista();
 
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos_binary/empleados_Act_31.dat"))) {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("archivos_binary/clientes_Act_31.dat"))) {
             while (true) {
                 tabla.encolar(in.readObject());
             }
@@ -76,7 +79,7 @@ public class Principal_31 {
     }
 
     static void guardarFichero(Lista tabla) {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos_binary/empleados_Act_31.dat"))) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("archivos_binary/clientes_Act_31.dat"))) {
             for (Object elemento : tabla.getTabla()) {
                 out.writeObject(elemento);
             }
@@ -86,10 +89,10 @@ public class Principal_31 {
         }
     }
 
-    static int buscar(Lista tabla, int dni) {
+    static int buscar(Lista tabla, String dni) {
         int indice = -1;
         for (int i = 0; i < tabla.getLength() && indice == -1; i++) {
-            if (((Empleado)tabla.get(i)).getDni() == dni) {
+            if (((Cliente)tabla.get(i)).getDni().compareToIgnoreCase(dni) == 0) {
                 indice = i;
             }
         }
@@ -98,9 +101,10 @@ public class Principal_31 {
 
     static void listarClientes(Lista tabla) {
         double aux, saldoMax = 0, saldoMin = 9999999, saldoProm = 0;
+        Object[] listado = tabla.getTabla();
 
-        for (int i = 0; i < tabla.getLength(); i++) {
-            aux = 0.0;//Cliente.getSaldo();
+        for (Object cliente : listado) {
+            aux = ((Cliente)cliente).getSaldo();
 
             if (aux < saldoMin) {
                 saldoMin = aux;
