@@ -34,6 +34,8 @@ public class Principal_32 {
                         Teclado.getString("Teléfono interlocutor: "),
                         Teclado.getString("Inicio de la llamada: "),
                         Teclado.getString("Final de la llamada: ")));
+                case 2 -> System.out.println(Arrays.toString(registro.mostrarListaLlamadas(Teclado.getString("Teléfono cliente: "))));
+                case 3 -> System.out.println(Arrays.toString(registro.getTabla()));
                 case 4 -> {
                     guardarFichero(registro);
                     System.out.println("¡Adiós!");

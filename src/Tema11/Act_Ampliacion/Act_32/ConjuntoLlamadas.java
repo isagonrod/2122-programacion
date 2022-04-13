@@ -40,6 +40,15 @@ public class ConjuntoLlamadas {
         return this.tabla;
     }
 
-    public void mostrarListaLlamadas(String dni) {
+    public Llamada[] mostrarListaLlamadas(String telefonoCliente) {
+        Llamada[] resultado = new Llamada[0];
+        for (Llamada actual : this.tabla) {
+            if (actual.getTelefonoCliente().compareToIgnoreCase(telefonoCliente) == 0) {
+                resultado = Arrays.copyOf(resultado, resultado.length + 1);
+                resultado[resultado.length - 1] = actual;
+            }
+        }
+
+        return resultado;
     }
 }
