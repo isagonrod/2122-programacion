@@ -1,14 +1,14 @@
 package Tema11.Práctica;
 
-public class Alumno {
+public class Alumno implements Comparable {
     private String nombre;
     private String dni;
     private CalificacionAsignatura[] notas;
 
-    public Alumno(String nombre, String dni) {
+    public Alumno(String nombre, String dni, CalificacionAsignatura[] notas) {
         this.nombre = nombre;
         this.dni = dni;
-        this.notas = new CalificacionAsignatura[5];
+        this.notas = notas;
     }
 
     public String getNombre() {
@@ -34,4 +34,13 @@ public class Alumno {
     public void setNotas(CalificacionAsignatura[] notas) {
         this.notas = notas;
     }
+
+	public String toString() {
+		return "Alumno/a: " + this.nombre + " | DNI: " + this.dni + " | Notas: " + this.notas + "\n";
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		return this.nombre.compareToIgnoreCase(((Alumno)o).nombre);
+	}
 }
