@@ -23,7 +23,7 @@ import java.util.Scanner;
 
 public class Principal {
     public static void main (String[] args){
-//		ConjuntoAlumnos lista = new ConjuntoAlumnos();
+//		ConjuntoAlumnos listaAlumnos = new ConjuntoAlumnos();
 //
 //		CalificacionAsignatura[] notas1 = {
 //			new CalificacionAsignatura(1, 5.5),
@@ -54,17 +54,20 @@ public class Principal {
 //			new CalificacionAsignatura(6, 4.1)
 //		};
 //
-//		lista.insertarAlumno(new Alumno("Ana Mena", "12345678A", notas1));
-//		lista.insertarAlumno(new Alumno("Juan Peña", "28763540B", notas2));
-//		lista.insertarAlumno(new Alumno("Miguel Ruiz", "84623014C", notas3));
-//		lista.insertarAlumno(new Alumno("Paula Martínez", "90175633D", notas4));
+//		listaAlumnos.insertarAlumno(new Alumno("Ana Mena", "12345678A", notas1));
+//		listaAlumnos.insertarAlumno(new Alumno("Juan Peña", "28763540B", notas2));
+//		listaAlumnos.insertarAlumno(new Alumno("Miguel Ruiz", "84623014C", notas3));
+//		listaAlumnos.insertarAlumno(new Alumno("Paula Martínez", "90175633D", notas4));
 //
-//		guardarFichero(lista);
-		Asignatura[] tablaNombreAsignaturas = cargarFichero();
-		NumAlumCalif[][] tablaCalif = new NumAlumCalif[4][12];
+//		guardarFicheroBinario(listaAlumnos);
+
+		ConjuntoAlumnos tablaAlumnosNotas = cargarFicheroBinario();
+		Asignatura[] tablaNombreAsignaturas = cargarFicheroTexto();
+		NumAlumCalif[][] tablaCalif = new NumAlumCalif[12][4];
+
     }
 
-	static Asignatura[] cargarFichero() {
+	static Asignatura[] cargarFicheroTexto() {
 		FileInputStream in;
 		Scanner sc;
 		Asignatura[] asignaturas = new Asignatura[0];
@@ -85,7 +88,24 @@ public class Principal {
 		return asignaturas;
 	}
 
-	static void guardarFichero(ConjuntoAlumnos lista) {
+	static ConjuntoAlumnos cargarFicheroBinario() {
+		ConjuntoAlumnos alumnos = new ConjuntoAlumnos();
+
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/Tema11/Práctica/alumnos.dat"))) {
+			while (true) {
+				alumnos.insertarAlumno((Alumno) in.readObject());
+			}
+		}
+		catch (EOFException ex) {
+			System.out.println("Fin de fichero");
+		}
+		catch (IOException | ClassNotFoundException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return alumnos;
+	}
+
+	static void guardarFicheroBinario(ConjuntoAlumnos lista) {
 		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/Tema11/Práctica/alumnos.dat"))) {
 			for (Object elemento : lista.getLista()) {
 				out.writeObject(elemento);
