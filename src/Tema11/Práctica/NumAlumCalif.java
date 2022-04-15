@@ -44,4 +44,28 @@ public class NumAlumCalif {
 	public void setnSobresalientes(int nSobresalientes) {
 		this.nSobresalientes = nSobresalientes;
 	}
+
+	public void addSuspenso() {
+		this.nSuspensos++;
+	}
+
+	public void addAprobado() {
+		this.nAprobados++;
+	}
+
+	public void addNotable() {
+		this.nNotables++;
+	}
+
+	public void addSobresaliente() {
+		this.nSobresalientes++;
+	}
+
+	@Override
+	public String toString() {
+		return "Suspensos: " + nSuspensos +
+				"\nAprobados: " + nAprobados +
+				"\nNotables: " + nNotables +
+				"\nSobresalientes: " + nSobresalientes;
+	}
 }

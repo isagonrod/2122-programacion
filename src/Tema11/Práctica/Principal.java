@@ -63,11 +63,43 @@ public class Principal {
 
 		ConjuntoAlumnos tablaAlumnosNotas = cargarFicheroBinario();
 		Asignatura[] tablaNombreAsignaturas = cargarFicheroTexto();
-		NumAlumCalif[][] tablaCalif = new NumAlumCalif[12][4];
+		NumAlumCalif[] tablaCalif = new NumAlumCalif[12];
+		for (int i = 0; i < tablaCalif.length; i++) {
+			tablaCalif[i] = new NumAlumCalif();
+		}
 
 		System.out.println(tablaAlumnosNotas);
 		System.out.println(Arrays.toString(tablaNombreAsignaturas));
+
+		procesarCalificaciones(tablaAlumnosNotas, tablaCalif);
+		imprimirCalificaciones(tablaCalif, tablaNombreAsignaturas);
     }
+
+	private static void imprimirCalificaciones(NumAlumCalif[] tablaCalif, Asignatura[] tablaNombreAsignaturas) {
+		for (Asignatura a : tablaNombreAsignaturas) {
+			System.out.println("\n\nCalificaciones para " + a.getNombre() + ":");
+			System.out.print(tablaCalif[a.getCodigo() - 1]);
+		}
+	}
+
+	private static void procesarCalificaciones(ConjuntoAlumnos tablaAlumnosNotas, NumAlumCalif[] tablaCalif) {
+		for (Alumno a : tablaAlumnosNotas.getLista()) {
+			for (CalificacionAsignatura ca : a.getNotas()) {
+				if (ca.getCalificacion() >= 9) {
+					tablaCalif[ca.getCodigo() - 1].addSobresaliente();
+				}
+				else if (ca.getCalificacion() >= 7 && ca.getCalificacion() < 9) {
+					tablaCalif[ca.getCodigo() - 1].addNotable();
+				}
+				else if (ca.getCalificacion() >= 5 && ca.getCalificacion() < 7) {
+					tablaCalif[ca.getCodigo() - 1].addAprobado();
+				}
+				else {
+					tablaCalif[ca.getCodigo() - 1].addSuspenso();
+				}
+			}
+		}
+	}
 
 	static Asignatura[] cargarFicheroTexto() {
 		FileInputStream in;
