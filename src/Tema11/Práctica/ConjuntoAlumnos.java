@@ -17,6 +17,10 @@ public class ConjuntoAlumnos {
 		this.lista = lista;
 	}
 
+	public String toString() {
+		return Arrays.toString(this.lista);
+	}
+
 	public Alumno[] insertarAlumno(Alumno nuevo) {
 		Alumno[] aux = this.lista;
 		int pos = Arrays.binarySearch(aux, nuevo);
