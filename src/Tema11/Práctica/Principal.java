@@ -64,23 +64,14 @@ public class Principal {
 		ConjuntoAlumnos tablaAlumnosNotas = cargarFicheroBinario();
 		Asignatura[] tablaNombreAsignaturas = cargarFicheroTexto();
 		NumAlumCalif[] tablaCalif = new NumAlumCalif[12];
+
 		for (int i = 0; i < tablaCalif.length; i++) {
 			tablaCalif[i] = new NumAlumCalif();
 		}
 
-		System.out.println(tablaAlumnosNotas);
-		System.out.println(Arrays.toString(tablaNombreAsignaturas));
-
 		procesarCalificaciones(tablaAlumnosNotas, tablaCalif);
 		imprimirCalificaciones(tablaCalif, tablaNombreAsignaturas);
     }
-
-	private static void imprimirCalificaciones(NumAlumCalif[] tablaCalif, Asignatura[] tablaNombreAsignaturas) {
-		for (Asignatura a : tablaNombreAsignaturas) {
-			System.out.println("\n\nCalificaciones para " + a.getNombre() + ":");
-			System.out.print(tablaCalif[a.getCodigo() - 1]);
-		}
-	}
 
 	private static void procesarCalificaciones(ConjuntoAlumnos tablaAlumnosNotas, NumAlumCalif[] tablaCalif) {
 		for (Alumno a : tablaAlumnosNotas.getLista()) {
@@ -101,7 +92,14 @@ public class Principal {
 		}
 	}
 
-	static Asignatura[] cargarFicheroTexto() {
+	private static void imprimirCalificaciones(NumAlumCalif[] tablaCalif, Asignatura[] tablaNombreAsignaturas) {
+		for (Asignatura a : tablaNombreAsignaturas) {
+			System.out.print("\n" + a.getNombre() + " (código " + a.getCodigo() + ") -> ");
+			System.out.print(tablaCalif[a.getCodigo() - 1]);
+		}
+	}
+
+	private static Asignatura[] cargarFicheroTexto() {
 		FileInputStream in;
 		Scanner sc;
 		Asignatura[] asignaturas = new Asignatura[0];
@@ -119,10 +117,11 @@ public class Principal {
 		catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
+		Arrays.sort(asignaturas);
 		return asignaturas;
 	}
 
-	static ConjuntoAlumnos cargarFicheroBinario() {
+	private static ConjuntoAlumnos cargarFicheroBinario() {
 		ConjuntoAlumnos alumnos = new ConjuntoAlumnos();
 
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/Tema11/Práctica/alumnos.dat"))) {
@@ -139,7 +138,7 @@ public class Principal {
 		return alumnos;
 	}
 
-	static void guardarFicheroBinario(ConjuntoAlumnos lista) {
+	private static void guardarFicheroBinario(ConjuntoAlumnos lista) {
 		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/Tema11/Práctica/alumnos.dat"))) {
 			for (Object elemento : lista.getLista()) {
 				out.writeObject(elemento);

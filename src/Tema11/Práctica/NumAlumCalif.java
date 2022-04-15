@@ -63,9 +63,7 @@ public class NumAlumCalif {
 
 	@Override
 	public String toString() {
-		return "Suspensos: " + nSuspensos +
-				"\nAprobados: " + nAprobados +
-				"\nNotables: " + nNotables +
-				"\nSobresalientes: " + nSobresalientes;
+		return "Suspensos: " + nSuspensos + " | Aprobados: " + nAprobados + " | Notables: " + nNotables +
+				" | Sobresalientes: " + nSobresalientes;
 	}
 }
