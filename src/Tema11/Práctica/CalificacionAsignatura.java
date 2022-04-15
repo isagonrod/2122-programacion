@@ -1,6 +1,8 @@
 package Tema11.Práctica;
 
-public class CalificacionAsignatura {
+import java.io.Serializable;
+
+public class CalificacionAsignatura implements Serializable {
     private int codigo;
     private double calificacion;
 

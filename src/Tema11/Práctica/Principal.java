@@ -61,8 +61,8 @@ public class Principal {
 //
 //		guardarFicheroBinario(listaAlumnos);
 
-		ConjuntoAlumnos tablaAlumnosNotas = cargarFicheroBinario(); // TODO : Esto no funciona
-		Asignatura[] tablaNombreAsignaturas = cargarFicheroTexto(); // TODO : Esto tampoco funciona
+		ConjuntoAlumnos tablaAlumnosNotas = cargarFicheroBinario();
+		Asignatura[] tablaNombreAsignaturas = cargarFicheroTexto();
 		NumAlumCalif[][] tablaCalif = new NumAlumCalif[12][4];
 
 		System.out.println(tablaAlumnosNotas);

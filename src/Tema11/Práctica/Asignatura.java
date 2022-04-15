@@ -29,4 +29,9 @@ public class Asignatura implements Comparable {
 	public int compareTo(Object o) {
 		return this.nombre.compareToIgnoreCase(((Asignatura)o).nombre);
 	}
+
+	@Override
+	public String toString() {
+		return "Asignatura: " + nombre + " | Código: " + codigo + "\n";
+	}
 }

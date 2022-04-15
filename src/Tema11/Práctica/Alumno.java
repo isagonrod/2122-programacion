@@ -1,6 +1,9 @@
 package Tema11.Práctica;
 
-public class Alumno implements Comparable {
+import java.io.Serializable;
+import java.util.Arrays;
+
+public class Alumno implements Comparable, Serializable {
     private String nombre;
     private String dni;
     private CalificacionAsignatura[] notas;
@@ -36,7 +39,7 @@ public class Alumno implements Comparable {
     }
 
 	public String toString() {
-		return "Alumno/a: " + this.nombre + " | DNI: " + this.dni + " | Notas: " + this.notas + "\n";
+		return "Alumno/a: " + this.nombre + " | DNI: " + this.dni + "\nNotas: " + Arrays.toString(this.notas) + "\n";
 	}
 
 	@Override
