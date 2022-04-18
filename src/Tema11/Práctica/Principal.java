@@ -1,5 +1,4 @@
 package Tema11.Práctica;
-
 /* PRÁCTICA DEL TEMA 11: LISTADO DE CALIFICACIONES ORDENADO ALFABÉTICAMENTE SEGÚN EL NOMBRE DE LA ASIGNATURA
  *
  * Procesar los siguientes ficheros para obtener el listado resumen del número de alumnos que obtuvieron una determinada
@@ -61,91 +60,91 @@ public class Principal {
 //
 //		guardarFicheroBinario(listaAlumnos);
 
-		ConjuntoAlumnos tablaAlumnosNotas = cargarFicheroBinario();
-		Asignatura[] tablaNombreAsignaturas = cargarFicheroTexto();
-		NumAlumCalif[] tablaCalif = new NumAlumCalif[12];
+        ConjuntoAlumnos tablaAlumnosNotas = cargarFicheroBinario();
+        Asignatura[] tablaNombreAsignaturas = cargarFicheroTexto();
+        NumAlumCalif[] tablaCalif = new NumAlumCalif[12];
 
-		for (int i = 0; i < tablaCalif.length; i++) {
-			tablaCalif[i] = new NumAlumCalif();
-		}
+        for (int i = 0; i < tablaCalif.length; i++) {
+            tablaCalif[i] = new NumAlumCalif();
+        }
 
-		procesarCalificaciones(tablaAlumnosNotas, tablaCalif);
-		imprimirCalificaciones(tablaCalif, tablaNombreAsignaturas);
+        procesarCalificaciones(tablaAlumnosNotas, tablaCalif);
+        imprimirCalificaciones(tablaCalif, tablaNombreAsignaturas);
     }
 
-	private static void procesarCalificaciones(ConjuntoAlumnos tablaAlumnosNotas, NumAlumCalif[] tablaCalif) {
-		for (Alumno a : tablaAlumnosNotas.getLista()) {
-			for (CalificacionAsignatura ca : a.getNotas()) {
-				if (ca.getCalificacion() >= 9) {
-					tablaCalif[ca.getCodigo() - 1].addSobresaliente();
-				}
-				else if (ca.getCalificacion() >= 7 && ca.getCalificacion() < 9) {
-					tablaCalif[ca.getCodigo() - 1].addNotable();
-				}
-				else if (ca.getCalificacion() >= 5 && ca.getCalificacion() < 7) {
-					tablaCalif[ca.getCodigo() - 1].addAprobado();
-				}
-				else {
-					tablaCalif[ca.getCodigo() - 1].addSuspenso();
-				}
-			}
-		}
-	}
+    private static void procesarCalificaciones(ConjuntoAlumnos tablaAlumnosNotas, NumAlumCalif[] tablaCalif) {
+        for (Alumno a : tablaAlumnosNotas.getLista()) {
+            for (CalificacionAsignatura ca : a.getNotas()) {
+                if (ca.getCalificacion() >= 9) {
+                    tablaCalif[ca.getCodigo() - 1].addSobresaliente();
+                }
+                else if (ca.getCalificacion() >= 7 && ca.getCalificacion() < 9) {
+                    tablaCalif[ca.getCodigo() - 1].addNotable();
+                }
+                else if (ca.getCalificacion() >= 5 && ca.getCalificacion() < 7) {
+                    tablaCalif[ca.getCodigo() - 1].addAprobado();
+                }
+                else {
+                    tablaCalif[ca.getCodigo() - 1].addSuspenso();
+                }
+            }
+        }
+    }
 
-	private static void imprimirCalificaciones(NumAlumCalif[] tablaCalif, Asignatura[] tablaNombreAsignaturas) {
-		for (Asignatura a : tablaNombreAsignaturas) {
-			System.out.print("\n" + a.getNombre() + " (código " + a.getCodigo() + ") -> ");
-			System.out.print(tablaCalif[a.getCodigo() - 1]);
-		}
-	}
+    private static void imprimirCalificaciones(NumAlumCalif[] tablaCalif, Asignatura[] tablaNombreAsignaturas) {
+        for (Asignatura a : tablaNombreAsignaturas) {
+            System.out.print("\n" + a.getNombre() + " (código " + a.getCodigo() + ") -> ");
+            System.out.print(tablaCalif[a.getCodigo() - 1]);
+        }
+    }
 
-	private static Asignatura[] cargarFicheroTexto() {
-		FileInputStream in;
-		Scanner sc;
-		Asignatura[] asignaturas = new Asignatura[0];
+    private static Asignatura[] cargarFicheroTexto() {
+        FileInputStream in;
+        Scanner sc;
+        Asignatura[] asignaturas = new Asignatura[0];
 
-		try {
-			in = new FileInputStream("src/Tema11/Práctica/asignaturas.txt");
-			sc = new Scanner(in);
+        try {
+            in = new FileInputStream("src/Tema11/Práctica/asignaturas.txt");
+            sc = new Scanner(in);
 
-			while (sc.hasNextLine()) {
-				String[] linea = sc.nextLine().split("\s\s\s");
-				asignaturas = Arrays.copyOf(asignaturas, asignaturas.length + 1);
-				asignaturas[asignaturas.length - 1] = new Asignatura(Integer.parseInt(linea[0]), linea[1]);
-			}
-		}
-		catch (IOException ex) {
-			System.out.println(ex.getMessage());
-		}
-		Arrays.sort(asignaturas);
-		return asignaturas;
-	}
+            while (sc.hasNextLine()) {
+                String[] linea = sc.nextLine().split("\s\s\s");
+                asignaturas = Arrays.copyOf(asignaturas, asignaturas.length + 1);
+                asignaturas[asignaturas.length - 1] = new Asignatura(Integer.parseInt(linea[0]), linea[1]);
+            }
+        }
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        Arrays.sort(asignaturas);
+        return asignaturas;
+    }
 
-	private static ConjuntoAlumnos cargarFicheroBinario() {
-		ConjuntoAlumnos alumnos = new ConjuntoAlumnos();
+    private static ConjuntoAlumnos cargarFicheroBinario() {
+        ConjuntoAlumnos alumnos = new ConjuntoAlumnos();
 
-		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/Tema11/Práctica/alumnos.dat"))) {
-			while (true) {
-				alumnos.insertarAlumno((Alumno) in.readObject());
-			}
-		}
-		catch (EOFException ex) {
-			System.out.println("Fin de fichero");
-		}
-		catch (IOException | ClassNotFoundException ex) {
-			System.out.println(ex.getMessage());
-		}
-		return alumnos;
-	}
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/Tema11/Práctica/alumnos.dat"))) {
+            while (true) {
+                alumnos.insertarAlumno((Alumno) in.readObject());
+            }
+        }
+        catch (EOFException ex) {
+            System.out.println("Fin de fichero");
+        }
+        catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return alumnos;
+    }
 
-	private static void guardarFicheroBinario(ConjuntoAlumnos lista) {
-		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/Tema11/Práctica/alumnos.dat"))) {
-			for (Object elemento : lista.getLista()) {
-				out.writeObject(elemento);
-			}
-		}
-		catch (IOException ex) {
-			System.out.println(ex.getMessage());
-		}
-	}
+    private static void guardarFicheroBinario(ConjuntoAlumnos lista) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/Tema11/Práctica/alumnos.dat"))) {
+            for (Object elemento : lista.getLista()) {
+                out.writeObject(elemento);
+            }
+        }
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }

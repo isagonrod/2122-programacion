@@ -38,12 +38,12 @@ public class Alumno implements Comparable, Serializable {
         this.notas = notas;
     }
 
-	public String toString() {
-		return "Alumno/a: " + this.nombre + " | DNI: " + this.dni + "\nNotas: " + Arrays.toString(this.notas) + "\n";
-	}
+    public String toString() {
+        return "Alumno/a: " + this.nombre + " | DNI: " + this.dni + "\nNotas: " + Arrays.toString(this.notas) + "\n";
+    }
 
-	@Override
-	public int compareTo(Object o) {
-		return this.nombre.compareToIgnoreCase(((Alumno)o).nombre);
-	}
+    @Override
+    public int compareTo(Object o) {
+        return this.nombre.compareToIgnoreCase(((Tema11.Práctica.Alumno)o).nombre);
+    }
 }
