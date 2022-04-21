@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public class Deportista implements Comparable, Serializable {
+public class Deportista implements Comparable<Deportista>, Serializable {
 	private int dni;
 	private String nombre;
 	private LocalDate fechaNacimiento;
@@ -58,12 +58,18 @@ public class Deportista implements Comparable, Serializable {
 		return (int)this.fechaNacimiento.until(LocalDate.now(), ChronoUnit.YEARS);
 	}
 
+//	@Override
+//	public int compareTo(Object o) {
+//		return this.nombre.compareToIgnoreCase(((Deportista)o).nombre);
+//	}
 	@Override
-	public int compareTo(Object o) {
-		return this.nombre.compareToIgnoreCase(((Deportista)o).nombre);
+	public int compareTo(Deportista o) {
+		return this.nombre.compareToIgnoreCase(o.nombre);
 	}
 
 	public String toString() {
 		return "\nDNI: " + this.dni + " | NOMBRE: " + this.nombre + " | EDAD: " + this.edad() + " | DEPORTE: " + this.deporte;
 	}
+
+
 }
