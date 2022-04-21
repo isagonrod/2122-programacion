@@ -6,5 +6,10 @@ public class PP_Contenedor {
         c.guardar(5);
         Integer n = c.extraer();
         System.out.println(n);
+
+        Contenedor<String> cadena = new Contenedor<>();
+        cadena.guardar("hola");
+        String linea = cadena.extraer();
+        System.out.println(linea);
     }
 }
