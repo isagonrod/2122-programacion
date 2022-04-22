@@ -11,6 +11,7 @@ import Utilidades.Teclado;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class Act_04 {
 	public static void main(String[] args) {
@@ -33,8 +34,19 @@ public class Act_04 {
 		System.out.println("Positivos: " + positivos + " | Suma de sus elementos: " + sumaPositivos);
 		System.out.println("Negativos: " + negativos + " | Suma de sus elementos: " + sumaNegativos);
 
-		while (positivos.remove(n > 10));
-		while (negativos.remove(n < -10));
+		for (Iterator<Integer> it = positivos.iterator(); it.hasNext();) {
+			n = it.next();
+			if (n > 10) {
+				it.remove();
+			}
+		}
+
+		for (Iterator<Integer> it = negativos.iterator(); it.hasNext();) {
+			n = it.next();
+			if (n < -10) {
+				it.remove();
+			}
+		}
 
 		System.out.println("\nPositivos: " + positivos);
 		System.out.println("Negativos: " + negativos);
