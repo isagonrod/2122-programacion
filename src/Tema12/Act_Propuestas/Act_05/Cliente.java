@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public class Cliente implements Comparable {
+public class Cliente implements Comparable<Cliente> {
     Integer dni;
     String nombre;
     LocalDate fechaNacimiento;
@@ -22,11 +22,6 @@ public class Cliente implements Comparable {
         return dni.equals(cliente.dni);
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return this.dni - ((Cliente)o).dni;
-    }
-
     public int edad() {
         return (int)fechaNacimiento.until(LocalDate.now(), ChronoUnit.YEARS);
     }
@@ -34,4 +29,9 @@ public class Cliente implements Comparable {
     public String toString() {
         return "\nDNI: " + this.dni + " | Nombre: " + this.nombre + " | Edad: " + this.edad();
     }
+
+	@Override
+	public int compareTo(Cliente o) {
+		return this.dni - o.dni;
+	}
 }
