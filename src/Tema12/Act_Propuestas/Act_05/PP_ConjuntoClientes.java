@@ -5,7 +5,6 @@ package Tema12.Act_Propuestas.Act_05;
  * los clientes ordenados por nombre.
  */
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.TreeSet;
 
