@@ -16,9 +16,8 @@ package Tema12.Act_Resueltas.Act_11;
 
 import Utilidades.Teclado;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
+import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -33,6 +32,28 @@ public class PP_Socio {
             opcion = Teclado.leerOpcion(1, 6);
             switch (opcion) {
                 case 1 -> alta(socios, Teclado.getString("DNI: "));
+                case 2 -> socios.remove(new Socio(Teclado.getString("DNI: ")));
+                case 3 -> {
+                    String dni = Teclado.getString("DNI: ");
+                    socios.remove(new Socio(dni));
+                    alta(socios,dni);
+                }
+                case 4 -> System.out.println(socios);
+                case 5 -> {
+                    Comparator<Socio> c = new Comparator<>() {
+                        @Override
+                        public int compare(Socio o1, Socio o2) {
+                            return o2.antiguedad() - o1.antiguedad();
+                        }
+                    };
+                    Set<Socio> s = new TreeSet<>(c);
+                    s.addAll(socios);
+                    System.out.println(s);
+                }
+                case 6 -> {
+                    guardarFichero(socios);
+                    System.out.println("¡Adiós!");
+                }
             }
         } while (opcion != 6);
     }
@@ -46,6 +67,15 @@ public class PP_Socio {
             System.out.println(ex.getMessage());
         }
         return conjunto;
+    }
+
+    static void guardarFichero(Set<Socio> conjunto) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/Tema12/Act_Resueltas/Act_11/socios.dat"))) {
+            out.writeObject(conjunto);
+        }
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public static void menu() {
