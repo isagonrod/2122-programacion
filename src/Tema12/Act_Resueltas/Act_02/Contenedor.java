@@ -1,6 +1,7 @@
 package Tema12.Act_Resueltas.Act_02;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Contenedor <T> {
     private T[] objetos;
@@ -9,7 +10,7 @@ public class Contenedor <T> {
         this.objetos = objetos;
     }
 
-    void insertarAlFinal(T nuevo) {
+    public void insertarAlFinal(T nuevo) {
         this.objetos = Arrays.copyOf(this.objetos, this.objetos.length + 1);
         this.objetos[this.objetos.length - 1] = nuevo;
     }
@@ -38,11 +39,25 @@ public class Contenedor <T> {
         return res;
     }
 
-    void ordenar() {
+    public void ordenar() {
         Arrays.sort(this.objetos);
     }
 
     public String toString() {
         return Arrays.deepToString(this.objetos);
+    }
+
+    public void ordenar(Comparator<T> c) {
+        Arrays.sort(this.objetos, c);
+    }
+
+    public T get (int indice) {
+        T objeto = null;
+        for (int i = 0; i < objetos.length; i++) {
+            if (objetos[i].equals(indice)) {
+                objeto = objetos[i];
+            }
+        }
+        return objeto;
     }
 }
