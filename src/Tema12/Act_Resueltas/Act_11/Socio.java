@@ -37,6 +37,6 @@ public class Socio implements Comparable<Socio>, Serializable {
 
     @Override
     public String toString() {
-        return "DNI: " + this.dni + " | Nombre: " + this.nombre + " | Antigüedad: " + this.antiguedad() + "\n";
+        return "\n\tDNI: " + this.dni + " | Nombre: " + this.nombre + " | Antigüedad: " + this.antiguedad() + "\n";
     }
 }
