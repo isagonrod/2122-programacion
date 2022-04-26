@@ -52,12 +52,6 @@ public class Contenedor <T> {
     }
 
     public T get (int indice) {
-        T objeto = null;
-        for (int i = 0; i < objetos.length; i++) {
-            if (objetos[i].equals(indice)) {
-                objeto = objetos[i];
-            }
-        }
-        return objeto;
+        return this.objetos[indice];
     }
 }
