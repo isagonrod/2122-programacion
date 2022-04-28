@@ -7,21 +7,29 @@ package Tema12.Act_Aplicacion;
  * Finalmente, se mostrarán por pantalla las palabras que estén repetidas y, a continuación, las que no lo estén.
  */
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Act_19 {
     public static void main(String[] args) {
-        List<String> lista = new ArrayList<>();
         String frase = "Hola mi nombre es un nombre bastante largo y bonito pero un nombre también bastante común";
+        String[] palabras = frase.split(" ");
 
-        Iterator<String> it = lista.iterator();
-        while (it.hasNext()) {
-            String palabra = it.next();
-            lista.add(palabra);
+        List<String> listaOriginal = new ArrayList<>(Arrays.asList(palabras));
+        List<String> listaRepetidos = new ArrayList<>(listaOriginal);
+        Set<String> listaNoRepetidos = new HashSet<>();
+
+        System.out.println("Original: " + listaOriginal);
+
+        for (String palabra : listaOriginal) {
+            if (listaNoRepetidos.contains(palabra)) {
+                listaNoRepetidos.remove(palabra);
+            } else {
+                listaNoRepetidos.add(palabra);
+                listaRepetidos.remove(palabra);
+            }
         }
 
-        System.out.println("Lista: " + lista);
+        System.out.println("No Repetidos: " + listaNoRepetidos);
+        System.out.println("Repetidos: " + listaRepetidos);
     }
 }
