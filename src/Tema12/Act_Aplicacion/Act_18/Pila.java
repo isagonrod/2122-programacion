@@ -13,8 +13,12 @@ public class Pila<T> {
         this.pila.add(nuevo);
     }
 
-    public void desapilar() {
-        this.pila.remove(this.pila.size() - 1);
+    public T desapilar() {
+        T elem = null;
+        if (pila.size() > 0) {
+            elem = this.pila.remove(this.pila.size() - 1);
+        }
+        return elem;
     }
 
     public String toString() {

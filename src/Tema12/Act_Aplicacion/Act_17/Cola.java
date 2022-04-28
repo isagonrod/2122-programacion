@@ -13,8 +13,12 @@ public class Cola<T> {
         this.cola.add(nuevo);
     }
 
-    public void desencolar() {
-        this.cola.remove(0);
+    public T desencolar() {
+        T elem = null;
+        if (cola.size() > 0) {
+            elem = this.cola.remove(0);
+        }
+        return elem;
     }
 
     public String toString() {
