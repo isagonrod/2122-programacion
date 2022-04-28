@@ -6,5 +6,18 @@ package Tema12.Act_Aplicacion;
  * pantalla.
  */
 
+import Utilidades.Valores;
+
+import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeSet;
+
 public class Act_21 {
+	public static void main(String[] args) {
+		Set<Integer> numerosEnteros = new TreeSet<>(Comparator.reverseOrder());
+		for (int i = 0; i < 20; i++) {
+			numerosEnteros.add(Valores.generarAleatorio(1, 100));
+		}
+		System.out.println("Colección de números enteros: " + numerosEnteros);
+	}
 }

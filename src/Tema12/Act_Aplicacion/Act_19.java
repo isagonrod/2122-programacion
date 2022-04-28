@@ -15,21 +15,21 @@ public class Act_19 {
         String[] palabras = frase.split(" ");
 
         List<String> listaOriginal = new ArrayList<>(Arrays.asList(palabras));
-        List<String> listaRepetidos = new ArrayList<>(listaOriginal);
-        Set<String> listaNoRepetidos = new HashSet<>();
+		Comparator<String> comparator = Comparator.naturalOrder();
+		System.out.println("Lista original: " + listaOriginal + "\n");
 
-        System.out.println("Original: " + listaOriginal);
+		Set<String> sinRepeticiones = new TreeSet<>(listaOriginal);
+		System.out.println("Lista sin repeticiones: " + sinRepeticiones);
 
-        for (String palabra : listaOriginal) {
-            if (listaNoRepetidos.contains(palabra)) {
-                listaNoRepetidos.remove(palabra);
-            } else {
-                listaNoRepetidos.add(palabra);
-                listaRepetidos.remove(palabra);
-            }
-        }
+		Set<String> repetidas = new TreeSet<>();
+		for (String palabra : sinRepeticiones) {
+			listaOriginal.remove(palabra);
+		}
+		repetidas.addAll(listaOriginal);
+		System.out.println("Lista de palabras repetidas: " + repetidas);
 
-        System.out.println("No Repetidos: " + listaNoRepetidos);
-        System.out.println("Repetidos: " + listaRepetidos);
+		Set<String> unicas = new TreeSet<>();
+		unicas.addAll(repetidas);
+		System.out.println("Lista de palabras no repetidas: " + unicas);
     }
 }
