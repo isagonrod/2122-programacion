@@ -60,8 +60,8 @@ public class Contenedor <T> {
 
         for (int i = 0; i < this.objetos.length; i++) {
             if (this.objetos[i].equals(e)) {
-                Arrays.copyOf(indices, indices.length + 1); // TODO : Revisar
-                System.arraycopy(i, 0, indices, 0, indices.length - 1);
+                indices = Arrays.copyOf(indices, indices.length + 1);
+                indices[indices.length - 1] = i;
             }
         }
         return indices;
@@ -69,7 +69,16 @@ public class Contenedor <T> {
 
     public boolean eliminarTodos (Object e) {
         boolean eliminado = false;
-        // TODO
+
+        for (int i = 0; i < this.objetos.length; i++) {
+            if (this.objetos[i].equals(e)) {
+                System.arraycopy(this.objetos, 0, this.objetos, 0, i);
+                System.arraycopy(this.objetos, i + 1, this.objetos, i, this.objetos.length - 1);
+                this.objetos = Arrays.copyOf(this.objetos, this.objetos.length - 1);
+                eliminado = true;
+            }
+        }
+
         return eliminado;
     }
 }
