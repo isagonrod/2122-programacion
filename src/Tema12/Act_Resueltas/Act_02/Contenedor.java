@@ -72,11 +72,10 @@ public class Contenedor <T> {
 
         for (int i = 0; i < this.objetos.length; i++) {
             if (this.objetos[i].equals(e)) {
-                System.arraycopy(this.objetos, 0, this.objetos, 0, i);
-                System.arraycopy(this.objetos, i + 1, this.objetos, i, this.objetos.length - 1);
-                this.objetos = Arrays.copyOf(this.objetos, this.objetos.length - 1);
-                eliminado = true;
+                this.objetos[i - 1] = this.objetos[i];
             }
+			this.objetos = Arrays.copyOf(this.objetos, this.objetos.length - 1);
+			eliminado = true;
         }
 
         return eliminado;

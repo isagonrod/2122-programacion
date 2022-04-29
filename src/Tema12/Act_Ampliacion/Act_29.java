@@ -15,7 +15,9 @@ public class Act_29 {
         Integer[] numeros = {1, 2, 3, 4, 5, 5, 6, 7};
         Contenedor<Integer> contenedorNumeros = new Contenedor<>(numeros);
 
-        System.out.println("Índices: " + Arrays.toString(contenedorNumeros.buscarTodos(5)));
-        System.out.println("Eliminados: " + contenedorNumeros.eliminarTodos(5));
+		System.out.println("Tabla original: " + contenedorNumeros);
+		System.out.println("Índices buscados: " + Arrays.toString(contenedorNumeros.buscarTodos(5)));
+        System.out.println("Eliminados: " + contenedorNumeros.eliminarTodos(7));
+		System.out.println("Tabla con elementos eliminados: " + contenedorNumeros);
     }
 }
