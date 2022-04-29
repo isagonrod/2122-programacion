@@ -29,7 +29,8 @@ public class Act_19 {
 		System.out.println("Lista de palabras repetidas: " + repetidas);
 
 		Set<String> unicas = new TreeSet<>();
-		unicas.addAll(repetidas);
+		unicas.addAll(sinRepeticiones);
+		unicas.removeAll(repetidas);
 		System.out.println("Lista de palabras no repetidas: " + unicas);
     }
 }
