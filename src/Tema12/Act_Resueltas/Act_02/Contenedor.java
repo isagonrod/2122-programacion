@@ -54,4 +54,22 @@ public class Contenedor <T> {
     public T get (int indice) {
         return this.objetos[indice];
     }
+
+    public int[] buscarTodos(Object e) {
+        int[] indices = new int[0];
+
+        for (int i = 0; i < this.objetos.length; i++) {
+            if (this.objetos[i].equals(e)) {
+                Arrays.copyOf(indices, indices.length + 1); // TODO : Revisar
+                System.arraycopy(i, 0, indices, 0, indices.length - 1);
+            }
+        }
+        return indices;
+    }
+
+    public boolean eliminarTodos (Object e) {
+        boolean eliminado = false;
+        // TODO
+        return eliminado;
+    }
 }
