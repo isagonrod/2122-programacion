@@ -9,7 +9,6 @@ package Tema12.Act_Aplicacion;
 import Utilidades.Teclado;
 
 import java.util.LinkedHashSet;
-import java.util.Objects;
 import java.util.Set;
 
 public class Act_22 {
@@ -21,7 +20,7 @@ public class Act_22 {
             nombre = Teclado.getString("Introduce nombre: ");
             conjuntoNombres.add(nombre);
         }
-        while (!Objects.equals(nombre, "fin"));
+        while (!nombre.equals("fin"));
 
         conjuntoNombres.remove("fin");
 
