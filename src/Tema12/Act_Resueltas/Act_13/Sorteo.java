@@ -1,0 +1,32 @@
+package Tema12.Act_Resueltas.Act_13;
+
+import java.util.*;
+
+public class Sorteo <T extends Comparable<T>>{
+    private final Set<T> elementos;
+
+    public Sorteo() {
+        elementos = new TreeSet<>();
+    }
+
+    boolean add(T nuevo) {
+        return elementos.add(nuevo);
+    }
+
+    Set<T> premiados(int numPremiados) {
+        Set<T> premiados = null;
+        List<T> temp = new ArrayList<>(elementos);
+        Collections.shuffle(temp);
+        if (numPremiados <= elementos.size()) {
+            premiados = new TreeSet<>();
+            for (int i = 0; i < numPremiados; i++) {
+                premiados.add(temp.get(i));
+            }
+        }
+        return premiados;
+    }
+
+    public String toString() {
+        return elementos.toString();
+    }
+}
