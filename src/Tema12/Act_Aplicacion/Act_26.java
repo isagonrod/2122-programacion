@@ -30,6 +30,8 @@ public class Act_26 {
 	}
 
 	static List<List<String>> repartoAlumnos(List<String> lista, int numGrupos) {
-		return null;
+		List<List<String>> cursos = new ArrayList<>();
+
+		return cursos;
 	}
 }
