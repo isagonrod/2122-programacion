@@ -8,6 +8,8 @@ package Tema12.Act_Aplicacion;
  * Cada nombre de la lista de alumnos se asigna a uno de los grupos.
  */
 
+import Utilidades.Valores;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +29,31 @@ public class Act_26 {
 		alumnos.add("Marta Pérez");
 		alumnos.add("Jaime Navarro");
 		alumnos.add("Myriam Perea");
+
+		System.out.println(repartoAlumnos(alumnos, 3));
 	}
 
 	static List<List<String>> repartoAlumnos(List<String> lista, int numGrupos) {
 		List<List<String>> cursos = new ArrayList<>();
+
+		for (int i = 0; i < numGrupos; i++) { //inicializamos los grupos
+			cursos.add(new ArrayList<>());
+		}
+
+		for (String alumno : lista) { //decidimos a qué grupo va cada alumno
+			int numLista;
+			boolean seguir = true;
+			List<String> grupoElegido;
+
+			do {
+				numLista = Valores.generarAleatorio(0, numGrupos); //decidimos a qué grupo ir
+				grupoElegido = cursos.get(numLista);
+				if (grupoElegido.size() < lista.size() / numGrupos) { //intentamos equilibrar el tamaño de los grupos
+					grupoElegido.add(alumno);
+					seguir = false;
+				}
+			} while (seguir);
+		}
 
 		return cursos;
 	}
