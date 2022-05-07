@@ -21,23 +21,65 @@ package Tema12.Act_Resueltas.Act_16;
  * Debemos recordar que, en código Unicode, las mayúsculas van antes que las minúsculas.
  */
 
+/* ACADÉMICAS:
+ * E = Carmen Iglesias (2002)
+ * g = Soledad Puértolas Villanueva (2010)
+ * P = Inés Fernández-Ordóñez (2011)
+ * n = Carme Riera Guilera (2013)
+ * B = Aurora Egido Martínez (2014)
+ * U = Clara Janés (2016)
+ * s = Paz Battaner (2017)
+ *
+ * EXTRA: e = Juan Gil (2011)
+ */
+
 import Utilidades.Teclado;
 
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 public class PP_RAE {
     public static void main(String[] args) {
         Map<Character, Academico> academia = new TreeMap<>();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 8; i++) {
             System.out.println("Letra: ");
             Character letra = new Scanner(System.in).next().charAt(0);
             nuevoAcademico(academia, new Academico(Teclado.getString("Nombre: "), Teclado.getNumber("Año de ingreso: ")), letra);
         }
 
-        System.out.println("Orden por letra: " + academia);
+        System.out.println("Orden por letra:\n" + academia);
+
+		Collection<Academico> sinLetra = academia.values();
+		List<Academico> listaSinLetra = new ArrayList<>(sinLetra);
+		Collections.sort(listaSinLetra);
+		System.out.println("Por nombre sin letra:\n" + listaSinLetra);
+
+		Comparator<Academico> comparaIngresos = new Comparator<Academico>() {
+			@Override
+			public int compare(Academico o1, Academico o2) {
+				return o1.aIngreso - o2.aIngreso;
+			}
+		};
+		Collections.sort(listaSinLetra, comparaIngresos);
+		System.out.println("Por año sin letra:\n" + listaSinLetra);
+
+		Set<Map.Entry<Character, Academico>> conLetra = academia.entrySet();
+		List<Map.Entry<Character, Academico>> listaConLetra = new ArrayList<>(conLetra);
+		Collections.sort(listaConLetra, new Comparator<Map.Entry<Character, Academico>>() {
+			@Override
+			public int compare(Map.Entry<Character, Academico> o1, Map.Entry<Character, Academico> o2) {
+				return o1.getValue().aIngreso - o2.getValue().aIngreso;
+			}
+		});
+		System.out.println("Orden por año de ingreso:\n" + listaConLetra);
+
+		Collections.sort(listaConLetra, new Comparator<Map.Entry<Character, Academico>>() {
+			@Override
+			public int compare(Map.Entry<Character, Academico> o1, Map.Entry<Character, Academico> o2) {
+				return o1.getValue().compareTo(o2.getValue());
+			}
+		});
+		System.out.println("Orden por nombre:\n" + listaConLetra);
     }
 
     static boolean nuevoAcademico(Map<Character, Academico> academia, Academico nuevo, Character letra) {
