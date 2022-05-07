@@ -22,31 +22,36 @@ import java.io.*;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class PP_Socio_Apodo {
+public class PPSocioApodo {
 	public static void main(String[] args) {
-		Set<Socio_Apodo> club = leerFichero();
+		Set<SocioApodo> club = leerFichero();
 		int opc;
 
 		do {
 			menu();
 			opc = Teclado.leerOpcion(1, 7);
 			switch (opc) {
-				case 1 -> club.add(new Socio_Apodo(Teclado.getString("Apodo: "), Teclado.getString("Nobre: "), Teclado.getString("Fecha de ingreso: ")));
-				case 2 -> club.remove(new Socio_Apodo(Teclado.getString("Apodo del socio a dar de baja: ")));
+				case 1 -> club.add(new SocioApodo(Teclado.getString("Apodo: "), Teclado.getString("Nobre: "), Teclado.getString("Fecha de ingreso: ")));
+				case 2 -> club.remove(new SocioApodo(Teclado.getString("Apodo del socio a dar de baja: ")));
 				case 3 -> {
 					String apodo = Teclado.getString("Apodo del socio a modificar: ");
-					club.remove(new Socio_Apodo(apodo));
-					club.add(new Socio_Apodo(apodo, Teclado.getString("Nombre: "), Teclado.getString("Fecha de ingreso: ")));
+					club.remove(new SocioApodo(apodo));
+					club.add(new SocioApodo(apodo, Teclado.getString("Nombre: "), Teclado.getString("Fecha de ingreso: ")));
 				}
 				case 4 -> System.out.println("Listado de socios ordenados por APODO:\n" + club);
 				case 5 -> {
-					Set<Socio_Apodo> clubOrdenadoAntig = new TreeSet<>(new ComparaAntig());
+					Set<SocioApodo> clubOrdenadoAntig = new TreeSet<>(new ComparaAntig());
 					clubOrdenadoAntig.addAll(club);
 					System.out.println("Listado de socios ordenados por ANTIGÜEDAD:\n" + clubOrdenadoAntig);
 				}
 				case 6 -> {
-					String fecha = Teclado.getString("Fecha a buscar para listar los socios: ");
-
+					String fecha = Teclado.getString("Año a buscar para listar los socios: ");
+					System.out.println("Listado de socios con alta anterior al año " + fecha + ":");
+					for (SocioApodo s : club) {
+						if (s.esAnterior(fecha)) {
+							System.out.println(s);
+						}
+					}
 				}
 				case 7 -> {
 					guardarFichero(club);
@@ -67,10 +72,10 @@ public class PP_Socio_Apodo {
 		System.out.println("7. Salir");
 	}
 
-	public static Set<Socio_Apodo> leerFichero() {
-		Set<Socio_Apodo> conjunto = new TreeSet<>();
+	public static Set<SocioApodo> leerFichero() {
+		Set<SocioApodo> conjunto = new TreeSet<>();
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/Tema12/Act_Aplicacion/Act_25/club.dat"))) {
-			conjunto = (TreeSet<Socio_Apodo>)in.readObject();
+			conjunto = (TreeSet<SocioApodo>)in.readObject();
 		}
 		catch (IOException | ClassNotFoundException ex) {
 			System.out.println(ex.getMessage());
@@ -78,7 +83,7 @@ public class PP_Socio_Apodo {
 		return conjunto;
 	}
 
-	static void guardarFichero(Set<Socio_Apodo> conjunto) {
+	static void guardarFichero(Set<SocioApodo> conjunto) {
 		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/Tema12/Act_Aplicacion/Act_25/club.dat"))) {
 			out.writeObject(conjunto);
 		}

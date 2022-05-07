@@ -4,30 +4,30 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public class Socio_Apodo implements Comparable<Socio_Apodo> {
+public class SocioApodo implements Comparable<SocioApodo> {
 	String apodo;
 	String nombre;
 	LocalDate fechaIngreso;
 
-	public Socio_Apodo(String apodo, String nombre, String fechaIngreso) {
+	public SocioApodo(String apodo, String nombre, String fechaIngreso) {
 		this.apodo = apodo;
 		this.nombre = nombre;
 		DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		this.fechaIngreso = LocalDate.parse(fechaIngreso, f);
 	}
 
-	public Socio_Apodo(String apodo) {
+	public SocioApodo(String apodo) {
 		this.apodo = apodo;
 	}
 
 	@Override
 	public boolean equals(Object o) {
-		Socio_Apodo that = (Socio_Apodo) o;
+		SocioApodo that = (SocioApodo) o;
 		return apodo.equals(that.apodo);
 	}
 
 	@Override
-	public int compareTo(Socio_Apodo o) {
+	public int compareTo(SocioApodo o) {
 		return this.apodo.compareToIgnoreCase(o.apodo);
 	}
 
@@ -39,5 +39,12 @@ public class Socio_Apodo implements Comparable<Socio_Apodo> {
 	public String toString() {
 		return "Apodo: " + this.apodo + " | Nombre real: " + this.nombre + " | Fecha de ingreso: " + this.fechaIngreso +
 				" | Antigüedad: " + this.antigüedad() + " años";
+	}
+
+	public boolean esAnterior(String fecha) {
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate fechaAComprobar = LocalDate.parse("01/01/" + fecha, f);
+
+		return this.fechaIngreso.isBefore(fechaAComprobar);
 	}
 }
