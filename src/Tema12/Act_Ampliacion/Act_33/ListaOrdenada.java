@@ -1,7 +1,6 @@
 package Tema12.Act_Ampliacion.Act_33;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class ListaOrdenada<E extends Comparable<E>> {
     private List<E> objetos;
@@ -9,14 +8,18 @@ public class ListaOrdenada<E extends Comparable<E>> {
 
     public ListaOrdenada() {
         // Aplicar Orden natural y ordenar (sort)
+        this.objetos = new LinkedList<>();
+        this.comparador = Comparator.naturalOrder();
     }
 
-    public ListaOrdenada(Comparator c) {
+    public ListaOrdenada(Comparator<E> c) {
         // Aplicar Orden de 'c' y ordenar (sort)
+        this.objetos = new LinkedList<>();
+        this.comparador = c;
     }
 
     public List<E> getObjetos() {
-        return objetos;
+        return this.objetos;
     }
 
     public void setObjetos(List<E> objetos) {
@@ -24,26 +27,52 @@ public class ListaOrdenada<E extends Comparable<E>> {
     }
 
     public Comparator<E> getComparador() {
-        return comparador;
+        return this.comparador;
     }
 
     public void setComparador(Comparator<E> comparador) {
         this.comparador = comparador;
     }
 
-    // void insertarPrincipio (E obj)
+    public void insertarPrincipio (E elem) {
+        this.objetos.add(0, elem);
+        this.ordenar(this.comparador);
+    }
 
-    // void insertarFinal (E obj)
+    public void insertarFinal (E elem) {
+        this.objetos.add(elem);
+        this.ordenar(this.comparador);
+    }
 
-    // void insertarEn (int indice, E elem)
+    public void insertarEn (int indice, E elem) {
+        this.objetos.add(indice, elem);
+        this.ordenar(this.comparador);
+    }
 
-    // void eliminar (int indice)
+    public void eliminar (int indice) {
+        this.objetos.remove(indice);
+    }
 
-    // void eliminar (E obj)
+    public void eliminar (E elem) {
+        this.objetos.remove(elem);
+    }
 
-    // void eliminarTodos (E obj)
+    public void eliminarTodos (E elem) {
+        boolean eliminado;
+        do {
+            eliminado = this.objetos.remove(elem);
+        } while (eliminado);
+    }
 
-    // int buscar (E obj)
+    public int buscar (E elem) {
+        return Collections.binarySearch(this.objetos, elem);
+    }
 
-    // String toString()
+    public String toString() {
+        return this.objetos.toString();
+    }
+
+    public void ordenar (Comparator<E> c) {
+        this.objetos.sort(c);
+    }
 }
