@@ -39,7 +39,8 @@ public class PP_Registro {
                     double temperatura = Teclado.getDouble("Introducir temperatura: ");
                     temperaturas.add(new Registro(temperatura));
                 }
-                case 2 -> {
+                case 2 -> System.out.println(temperaturas);
+                case 3 -> {
                     Comparator<Registro> c = new Comparator<Registro>() {
                         @Override
                         public int compare(Registro o1, Registro o2) {
@@ -54,6 +55,7 @@ public class PP_Registro {
                     }
                     System.out.println("Temperatura media: " + suma / temperaturas.size());
                 }
+                case 4 -> System.out.println("¡Adiós!");
             }
         } while (opc != 4);
 
