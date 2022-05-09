@@ -9,7 +9,7 @@ package Tema12.Act_Aplicacion.Act_25;
  * Las operaciones se mostrarán en un menú que tendrá las siguientes opciones:
  * 		1. Alta socio.
  * 		2. Baja socio.
- * 		3. Modificación socio.
+ *		3. Modificación socio.
  * 		4. Listar socios por apodo.
  * 		5. Listar socios por antigüedad.
  * 		6. Listar los socios con alta anterior a un año determinado.
@@ -19,37 +19,45 @@ package Tema12.Act_Aplicacion.Act_25;
 import Utilidades.Teclado;
 
 import java.io.*;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
-public class PPSocioApodo {
+public class PP_SocioApodo {
 	public static void main(String[] args) {
-		Set<SocioApodo> club = leerFichero();
+		Map<String, SocioApodo> club = leerFichero();
 		int opc;
 
 		do {
 			menu();
 			opc = Teclado.leerOpcion(1, 7);
 			switch (opc) {
-				case 1 -> club.add(new SocioApodo(Teclado.getString("Apodo: "), Teclado.getString("Nobre: "), Teclado.getString("Fecha de ingreso: ")));
-				case 2 -> club.remove(new SocioApodo(Teclado.getString("Apodo del socio a dar de baja: ")));
+				case 1 -> club.put(Teclado.getString("Apodo: "), new SocioApodo(Teclado.getString("Nombre: "), Teclado.getString("Fecha de ingreso: ")));
+				case 2 -> club.remove(Teclado.getString("Apodo del socio a dar de baja: "));
 				case 3 -> {
 					String apodo = Teclado.getString("Apodo del socio a modificar: ");
-					club.remove(new SocioApodo(apodo));
-					club.add(new SocioApodo(apodo, Teclado.getString("Nombre: "), Teclado.getString("Fecha de ingreso: ")));
+					club.remove(apodo);
+					club.put(apodo, new SocioApodo(Teclado.getString("Nombre: "), Teclado.getString("Fecha de ingreso: ")));
 				}
 				case 4 -> System.out.println("Listado de socios ordenados por APODO:\n" + club);
 				case 5 -> {
-					Set<SocioApodo> clubOrdenadoAntig = new TreeSet<>(new ComparaAntig());
-					clubOrdenadoAntig.addAll(club);
+					Set<Map.Entry<String,SocioApodo>> clubOrdenadoAntig = club.entrySet();
+					List<Map.Entry<String, SocioApodo>> lista = new ArrayList<>(clubOrdenadoAntig);
+					Collections.sort(lista, new Comparator<Map.Entry<String, SocioApodo>>() {
+						@Override
+						public int compare(Map.Entry<String, SocioApodo> o1, Map.Entry<String, SocioApodo> o2) {
+							return o1.getValue().antigüedad() - o2.getValue().antigüedad();
+						}
+					});
 					System.out.println("Listado de socios ordenados por ANTIGÜEDAD:\n" + clubOrdenadoAntig);
 				}
 				case 6 -> {
-					String fecha = Teclado.getString("Año a buscar para listar los socios: ");
+					Integer fecha = Teclado.getNumber("Año a buscar para listar los socios: ");
 					System.out.println("Listado de socios con alta anterior al año " + fecha + ":");
-					for (SocioApodo s : club) {
-						if (s.esAnterior(fecha)) {
-							System.out.println(s);
+					Set<Map.Entry<String,SocioApodo>> porFecha = club.entrySet();
+					Iterator<Map.Entry<String, SocioApodo>> it = porFecha.iterator();
+					while (it.hasNext()) {
+						Map.Entry<String, SocioApodo> e = it.next();
+						if (e.getValue().fechaIngreso.getYear() < fecha) {
+							System.out.println(e);
 						}
 					}
 				}
@@ -72,18 +80,17 @@ public class PPSocioApodo {
 		System.out.println("7. Salir");
 	}
 
-	public static Set<SocioApodo> leerFichero() {
-		Set<SocioApodo> conjunto = new TreeSet<>();
+	public static Map<String, SocioApodo> leerFichero() {
+		Map<String, SocioApodo> mapa = new TreeMap<>();
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/Tema12/Act_Aplicacion/Act_25/club.dat"))) {
-			conjunto = (TreeSet<SocioApodo>)in.readObject();
-		}
+			mapa = (TreeMap<String, SocioApodo>)in.readObject();		}
 		catch (IOException | ClassNotFoundException ex) {
 			System.out.println(ex.getMessage());
 		}
-		return conjunto;
+		return mapa;
 	}
 
-	static void guardarFichero(Set<SocioApodo> conjunto) {
+	static void guardarFichero(Map<String, SocioApodo> conjunto) {
 		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/Tema12/Act_Aplicacion/Act_25/club.dat"))) {
 			out.writeObject(conjunto);
 		}
