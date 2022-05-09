@@ -10,6 +10,10 @@ public class Registro implements Serializable {
     LocalTime hora;
     double temperatura;
 
+    public double getTemperatura() {
+        return temperatura;
+    }
+
     public Registro(double temperatura) {
         this.temperatura = temperatura;
         this.hora = LocalTime.now();

@@ -17,9 +17,7 @@ import Utilidades.Teclado;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Act_34 {
     public static void main(String[] args) {
@@ -34,7 +32,21 @@ public class Act_34 {
                     String fecha = Teclado.getString("Fecha del registro: ");
                     DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     LocalDate fechaRegistro = LocalDate.parse(fecha, f);
-                    //registroTemperaturas.put(fechaRegistro, new Registro());
+                    Set<Registro> registroActual = obtenerRegistrosPorDia(registroTemperaturas, fechaRegistro);
+                    registroActual.add(new Registro(Teclado.getDouble("Temperatura: ")));
+                }
+                case 2 -> {
+                    listarPorDia(registroTemperaturas, LocalDate.now());
+                }
+                case 3 -> {
+                    String fecha = Teclado.getString("Fecha del registro: ");
+                    DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate fechaRegistro = LocalDate.parse(fecha, f);
+                    listarPorDia(registroTemperaturas, fechaRegistro);
+                }
+                case 4 -> {
+                    guardarFichero(registroTemperaturas);
+                    System.out.println("¡Adiós!");
                 }
             }
         } while (opc != 4);
@@ -64,6 +76,41 @@ public class Act_34 {
         }
         catch (IOException ex) {
             System.out.println(ex.getMessage());
+        }
+    }
+
+    static Set<Registro> obtenerRegistrosPorDia (Map<LocalDate, Set<Registro>> registroTemperaturas, LocalDate fecha) {
+        Set<Registro> registroActual = registroTemperaturas.get(fecha);
+
+        if (registroActual == null) {
+            registroActual = new HashSet<>();
+            registroTemperaturas.put(fecha, registroActual);
+        }
+
+        return registroActual;
+    }
+
+    static void listarPorDia (Map<LocalDate, Set<Registro>> registroTemperaturas, LocalDate fechaRegistro) {
+        Set<Registro> registroActual = registroTemperaturas.get(fechaRegistro);
+        if (registroActual != null) {
+            System.out.println("Registros para " + fechaRegistro + "\n" + registroActual);
+
+            Comparator<Registro> c = new Comparator<Registro>() {
+                @Override
+                public int compare(Registro o1, Registro o2) {
+                    return (int)Math.signum(o1.getTemperatura() - o2.getTemperatura());
+                }
+            };
+            System.out.println("Temperatura máxima: " + Collections.max(registroActual, c));
+            System.out.println("Temperatura mínima: " + Collections.min(registroActual, c));
+            double suma = 0;
+            for (Registro t : registroActual) {
+                suma += t.getTemperatura();
+            }
+            System.out.println("Temperatura media: " + suma / registroActual.size());
+        }
+        else {
+            System.out.println("No hay registros de temperatura para esta fecha");
         }
     }
 }
