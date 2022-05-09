@@ -62,7 +62,7 @@ public class Act_34 {
 
     public static Map<LocalDate, Set<Registro>> leerFichero() {
         Map<LocalDate, Set<Registro>> mapa = new TreeMap<>();
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/Tema12/Act_Amplicacion/registroTemp.dat"))) {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("src/Tema12/Act_Ampliacion/registroTemp.dat"))) {
             mapa = (TreeMap<LocalDate, Set<Registro>>)in.readObject();		}
         catch (IOException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
@@ -71,7 +71,7 @@ public class Act_34 {
     }
 
     static void guardarFichero(Map<LocalDate, Set<Registro>> conjunto) {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/Tema12/Act_Amplicacion/registroTemp.dat"))) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/Tema12/Act_Ampliacion/registroTemp.dat"))) {
             out.writeObject(conjunto);
         }
         catch (IOException ex) {

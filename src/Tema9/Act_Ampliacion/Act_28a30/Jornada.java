@@ -11,12 +11,17 @@ package Tema9.Act_Ampliacion.Act_28a30;
  * jornadas.
  */
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-public class Jornada implements Comparable {
+public class Jornada implements Comparable, Serializable {
     String dni;
     LocalDateTime fechaEntrada, fechaSalida;
+
+    public Jornada(String dni) {
+        this.dni = dni;
+    }
 
     public Jornada(String dni, LocalDateTime fechaEntrada, LocalDateTime fechaSalida) {
         this.dni = dni;
