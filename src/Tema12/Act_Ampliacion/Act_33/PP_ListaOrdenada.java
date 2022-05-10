@@ -20,16 +20,16 @@ public class PP_ListaOrdenada {
         });
 
         cadenasNaturales.insertarPrincipio("Patata");
-        cadenasNaturales.insertarFinal("No tanto");
-        cadenasNaturales.insertarPrincipio("De oro");
-        cadenasNaturales.insertarPrincipio("Primo");
+        cadenasNaturales.insertarFinal("Tomates");
+        cadenasNaturales.insertarPrincipio("Pepinillo");
+        cadenasNaturales.insertarPrincipio("Peras");
         cadenasNaturales.insertarFinal("Melocotones");
-        cadenasNaturales.insertarEn(3, "Furgoneta");
+        cadenasNaturales.insertarEn(3, "Mandarinas");
         cadenasNaturales.insertarEn(3, "Melocotones");
         cadenasNaturales.insertarEn(1, "Melocotones");
         cadenasNaturales.insertarPrincipio("Melocotones");
-        cadenasNaturales.insertarFinal("Tendido");
-        cadenasNaturales.insertarPrincipio("Puestecito");
+        cadenasNaturales.insertarFinal("Manzana");
+        cadenasNaturales.insertarPrincipio("Kiwi");
 
         System.out.println("Orden natural (sin borrar)\n" + cadenasNaturales);
 
@@ -39,7 +39,7 @@ public class PP_ListaOrdenada {
 
         cadenasNoNaturales.getObjetos().addAll(cadenasNaturales.getObjetos());
         cadenasNoNaturales.insertarFinal("Otra cosa");
-        cadenasNoNaturales.insertarFinal("Mas cosa");
+        cadenasNoNaturales.insertarFinal("Mas cosas");
         cadenasNoNaturales.insertarFinal("Uy");
 
         System.out.println("Orden no natural\n" + cadenasNoNaturales);
