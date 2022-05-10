@@ -73,8 +73,8 @@ public class PP_Plantilla {
     public static void mostrar(Map<Integer,Jugador> plantilla, String posicion) { // TODO: Corregir
         System.out.println("PLANTILLA POR LA POSICIÓN DE " + posicion.toUpperCase() +":\n");
         Set<Map.Entry<Integer, Jugador>> jugadores = plantilla.entrySet();
-        if (jugadores.contains(posicion)) {
-            for (Map.Entry<Integer, Jugador> jugador : jugadores) {
+        for (Map.Entry<Integer, Jugador> jugador : jugadores) {
+            if (jugador.getValue().getPosicion().equals(PosicionJugador.valueOf(posicion))) {
                 System.out.println(jugador);
             }
         }
@@ -83,8 +83,10 @@ public class PP_Plantilla {
     public static boolean editarJugador(Map<Integer,Jugador> plantilla, Integer dorsal) {
         boolean modificado = false;
         if (plantilla.containsKey(dorsal)) {
-            plantilla.put(dorsal, new Jugador("", Teclado.getString("Nombre: "),
-                    PosicionJugador.valueOf(Teclado.getString("Posición: ")), Teclado.getDouble("Estatura: ")));
+            Jugador j = plantilla.get(dorsal);
+            j.setNombre(Teclado.getString("Nombre: "));
+            j.setPosicion(PosicionJugador.valueOf(Teclado.getString("Posición: ")));
+            j.setEstatura(Teclado.getDouble("Estatura: "));
             modificado = true;
         }
         return modificado;

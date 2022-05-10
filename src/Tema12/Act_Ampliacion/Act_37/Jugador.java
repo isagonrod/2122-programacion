@@ -47,6 +47,6 @@ public class Jugador {
 
     public String toString() {
         return "Nombre: " + this.nombre + " | DNI: " + this.dni + " | Posición: " + this.posicion +
-                " | Estatura: " + this.estatura + "\n";
+                " | Estatura: " + this.estatura + " m\n";
     }
 }
