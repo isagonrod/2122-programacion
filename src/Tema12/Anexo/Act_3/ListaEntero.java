@@ -6,7 +6,7 @@ public class ListaEntero {
 	private ArrayList<Entero> lista;
 
 	public ListaEntero() {
-		new ArrayList<>();
+		this.lista = new ArrayList<>();
 	}
 
 	public ArrayList<Entero> getLista() {

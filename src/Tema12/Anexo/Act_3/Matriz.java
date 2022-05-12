@@ -20,7 +20,9 @@ public class Matriz {
 
 		for (int i = 0; i < nFilas; i++) {
 			this.m[i] = new ListaEntero();
-			Collections.fill(this.m[i].getLista(), new Entero(0));
+			for (int j = 0; j < nColumnas; j++) {
+				this.m[i].getLista().add(new Entero(0));
+			}
 		}
 	}
 

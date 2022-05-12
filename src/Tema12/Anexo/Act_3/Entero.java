@@ -14,4 +14,8 @@ public class Entero {
 	public void setNum(int num) {
 		this.num = num;
 	}
+
+	public String toString() {
+		return String.valueOf(this.num);
+	}
 }
