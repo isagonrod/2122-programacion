@@ -36,13 +36,26 @@ package Tema12.Anexo.Act_3;
  */
 
 public class Principal {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Matriz matriz1 = new Matriz(2, 3);
 
 		int[][] tabla = {{1, 2, 3},{4, 5, 6}};
 		Matriz matriz2 = new Matriz(2, 3, tabla);
 
-		matriz1.imprime("-- MATRIZ 1 --");
-		matriz2.imprime("-- MATRIZ 2 --");
+		matriz1.imprime("\n-- MATRIZ 1 --");
+		matriz2.imprime("\n-- MATRIZ 2 --");
+
+		matriz1.set(0, 0, new Entero(69));
+		matriz1.set(0, 1, new Entero(55));
+		matriz1.set(1, 2, new Entero(88));
+		matriz1.imprime("\n-- MATRIZ 1 (modificada) --");
+
+		System.out.println("\nElemento de la matriz 2 buscado: " + matriz2.get(1, 1));
+
+		matriz1.suma(matriz1, matriz2);
+		matriz1.imprime("\n-- SUMA DE LAS DOS MATRICES --");
+
+		matriz2.espejo();
+		matriz2.imprime("\n-- ESPEJO DE LA MATRIZ 2 --");
 	}
 }
