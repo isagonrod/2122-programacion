@@ -70,7 +70,7 @@ public class PP_Plantilla {
         System.out.println("PLANTILLA COMPLETA:\n" + plantilla);
     }
 
-    public static void mostrar(Map<Integer,Jugador> plantilla, String posicion) { // TODO: Corregir
+    public static void mostrar(Map<Integer,Jugador> plantilla, String posicion) {
         System.out.println("PLANTILLA POR LA POSICIÓN DE " + posicion.toUpperCase() +":\n");
         Set<Map.Entry<Integer, Jugador>> jugadores = plantilla.entrySet();
         for (Map.Entry<Integer, Jugador> jugador : jugadores) {
