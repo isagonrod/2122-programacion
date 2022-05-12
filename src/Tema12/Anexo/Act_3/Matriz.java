@@ -117,13 +117,13 @@ public class Matriz {
 	 * 	no sea de las dimensiones de los sumandos. */
 	public void suma(Matriz m1, Matriz m2) throws Exception {
 		if (m1.fila != m2.fila) {
-			throw new Exception("Las filas de los sumandos no son iguales");
+			throw new NumFilaException("Las filas de los sumandos no son iguales");
 		} else if (m1.columna != m2.columna) {
-			throw new Exception("Las columnas de los sumandos no son iguales");
+			throw new NumColException("Las columnas de los sumandos no son iguales");
 		} else if (this.fila != m1.fila) {
-			throw new Exception("Las filas del objeto actual no son iguales a las de los sumandos");
+			throw new NumFilaException("Las filas del objeto actual no son iguales a las de los sumandos");
 		} else if (this.columna != m1.columna) {
-			throw new Exception("Las columnas del objeto actual no son iguales a las de los sumandos");
+			throw new NumColException("Las columnas del objeto actual no son iguales a las de los sumandos");
 		} else {
 			for (int i = 0; i < this.fila; i++) {
 				for (int j = 0; j < this.columna; j++) {
