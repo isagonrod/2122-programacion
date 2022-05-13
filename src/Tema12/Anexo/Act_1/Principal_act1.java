@@ -1,6 +1,6 @@
 package Tema12.Anexo.Act_1;
 
-/* ACTIVIDAD 3 DEL ANEXO
+/* ACTIVIDAD 1 DEL ANEXO
  * Utilizando la clase ArrayList de la interfaz List se va a construir una clase que implemente una matriz dinámica.
  * Para ello definamos una clase Matriz con los siguientes atributos:
  *
@@ -35,7 +35,7 @@ package Tema12.Anexo.Act_1;
  * 		imagen especular.
  */
 
-public class Principal {
+public class Principal_act1 {
 	public static void main(String[] args) throws Exception {
 		Matriz matriz1 = new Matriz(2, 3);
 
