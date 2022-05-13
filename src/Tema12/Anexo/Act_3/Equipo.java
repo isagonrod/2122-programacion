@@ -18,13 +18,89 @@ public class Equipo implements IEquipo {
         this.equipo = equipo;
     }
 
-    public String toString() {
+	@Override
+	public String getNombreEquipo() {
+		return null;
+	}
+
+	@Override
+	public void setNombreEquipo(String nombreEquipo) {
+
+	}
+
+	@Override
+	public int getPuntos() {
+		return 0;
+	}
+
+	@Override
+	public void setPuntos(int puntos) {
+
+	}
+
+	@Override
+	public int getPartidosJugados() {
+		return 0;
+	}
+
+	@Override
+	public void setPartidosJugados(int partidosJugados) {
+
+	}
+
+	@Override
+	public int getGolesFavor() {
+		return 0;
+	}
+
+	@Override
+	public void setGolesFavor(int golesFavor) {
+
+	}
+
+	@Override
+	public int getGolesContra() {
+		return 0;
+	}
+
+	@Override
+	public void setGolesContra(int golesContra) {
+
+	}
+
+	@Override
+	public Set<Partido> getPartidosFuera() {
+		return null;
+	}
+
+	@Override
+	public void setPartidosFuera(Set<Partido> partidosFuera) {
+
+	}
+
+	@Override
+	public Set<Partido> getPartidosCasa() {
+		return null;
+	}
+
+	@Override
+	public void setPartidosCasa(Set<Partido> partidosCasa) {
+
+	}
+
+	public String toString() {
         return this.equipo.toString();
     }
 
-    // addPartidoCasa(Partido nuevo) {}
+	@Override
+	public void addPartidoCasa(Partido nuevo) {
 
-    // addPartidoFuera(Partido nuevo) {}
+	}
+
+	@Override
+	public void addPartidoFuera(Partido nuevo) {
+
+	}
 
     //recalculaValores()
 }

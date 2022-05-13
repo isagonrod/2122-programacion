@@ -25,4 +25,7 @@ package Tema12.Anexo.Act_3;
  */
 
 public class Principal_act3 {
+	public static void main(String[] args) {
+
+	}
 }
