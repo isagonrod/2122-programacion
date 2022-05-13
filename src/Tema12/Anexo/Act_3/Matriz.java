@@ -54,7 +54,7 @@ public class Matriz {
 		this.m = m;
 	}
 
-	/** Un método numFil y numCol que devuelvan respectivamente el número de fila y columnas de la matriz.
+	/** Un método numFil que devuelva el número de fila de la matriz.
 	 *
 	 * @return
 	 */
@@ -66,7 +66,7 @@ public class Matriz {
 		this.fila = fila;
 	}
 
-	/** Un método numFil y numCol que devuelvan respectivamente el número de fila y columnas de la matriz.
+	/** Un método numCol que devuelva el número de columna de la matriz.
 	 *
 	 * @return
 	 */
