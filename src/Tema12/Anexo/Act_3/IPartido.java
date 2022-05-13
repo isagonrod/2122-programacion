@@ -1,9 +1,11 @@
 package Tema12.Anexo.Act_3;
 
+import java.util.Set;
+
 public interface IPartido {
-    Equipo equipoLocal = null;
-    Equipo equipoVisitante = null;
-    int nGolesLocal = 0;
-    int nGolesVisitante = 0;
-    int jornada = 0;
+    public Set<IPartido> getPartido();
+
+    public void setPartido(Set<IPartido> partido);
+
+    public String toString();
 }

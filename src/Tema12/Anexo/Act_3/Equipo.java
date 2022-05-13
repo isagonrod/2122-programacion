@@ -4,6 +4,14 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Equipo implements IEquipo {
+	String nombreEquipo = null;
+	int puntos = 0;
+	int partidosJugados = 0;
+	int golesFavor = 0;
+	int golesContra = 0;
+	Set<Partido> partidosFuera = null;
+	Set<Partido> partidosCasa = null;
+
     private Set<IEquipo> equipo;
 
     public Equipo() {
@@ -88,10 +96,6 @@ public class Equipo implements IEquipo {
 
 	}
 
-	public String toString() {
-        return this.equipo.toString();
-    }
-
 	@Override
 	public void addPartidoCasa(Partido nuevo) {
 
@@ -103,4 +107,9 @@ public class Equipo implements IEquipo {
 	}
 
     //recalculaValores()
+
+	@Override
+	public String toString() {
+		return this.equipo.toString();
+	}
 }

@@ -19,7 +19,7 @@ package Tema12.Anexo.Act_3;
  *      de forma descendente por puntos.
  *      En caso de que dos equipos tengan los mismos puntos, se ordena también de forma descendente según la diferencia
  *      entre los goles a favor y los goles en contra.
- *  b) Implementa el método recalculaValores(), teniendo en cuenta que cad partido ganado suma 3 puntos, cada partido
+ *  b) Implementa el método recalculaValores(), teniendo en cuenta que cada partido ganado suma 3 puntos, cada partido
  *      empatado suma 1 punto y cada partido perdido no suma puntos.
  *      Se supone que todos los partidos almacenados en los conjuntos son correctos.
  */
