@@ -1,4 +1,4 @@
-package Tema12.Anexo.Act_3;
+package Tema12.Anexo.Act_1;
 
 public class NumColException extends Exception {
     public NumColException(String message) {

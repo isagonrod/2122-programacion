@@ -1,4 +1,4 @@
-package Tema12.Anexo.Act_3;
+package Tema12.Anexo.Act_1;
 
 /* ACTIVIDAD 3 DEL ANEXO
  * Utilizando la clase ArrayList de la interfaz List se va a construir una clase que implemente una matriz dinámica.
