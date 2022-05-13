@@ -2,7 +2,7 @@ package Tema12.Anexo.Act_3;
 
 import java.util.Set;
 
-public interface IEquipo {
+public interface IEquipo extends Comparable<IEquipo> {
 	public String getNombreEquipo();
 
 	public void setNombreEquipo(String nombreEquipo);
@@ -34,6 +34,8 @@ public interface IEquipo {
 	void addPartidoCasa(Partido nuevo);
 
 	void addPartidoFuera(Partido nuevo);
+
+	void recalculaValores();
 
 	public String toString();
 }
