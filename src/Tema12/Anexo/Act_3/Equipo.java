@@ -131,15 +131,14 @@ public class Equipo implements IEquipo {
 
 	@Override
 	public String toString() {
-		return "Equipo{" +
-				"nombreEquipo='" + nombreEquipo + '\'' +
-				", puntos=" + puntos +
-				", partidosJugados=" + partidosJugados +
-				", golesFavor=" + golesFavor +
-				", golesContra=" + golesContra +
-				", partidosFuera=" + partidosFuera +
-				", partidosCasa=" + partidosCasa +
-				'}';
+		return this.nombreEquipo + '\n' + '\t' +
+				"Puntos: " + puntos + '\n' + '\t' +
+				"Nº de partidos jugados: " + partidosJugados + '\n' + '\t' +
+				"Nº goles a favor: " + golesFavor + '\n' + '\t' +
+				"Nº goles en contra: " + golesContra + '\n' + '\t' +
+				"Nº partidos jugados fuera: " + partidosFuera.size() + '\n' + '\t' +
+				"Nº partidos jugados en casa: " + partidosCasa.size() +
+				"\n";
 	}
 
 	@Override
