@@ -29,7 +29,9 @@ public class Act_4 {
 
         resultados = candidatos(english, francais, deutsch);
 
-        System.out.println(Arrays.toString(resultados));
+		System.out.println("Candidatos que superaron la prueba de inglés y otra más: " + resultados[0]);
+		System.out.println("Candidatos que superaron al menos dos idiomas: " + resultados[1]);
+		System.out.println("Candidatos que solo dominan un idioma: " + resultados[2]);
     }
 
     static Set<String>[] candidatos(Set<String> english, Set<String> francais, Set<String> deutsch) {
