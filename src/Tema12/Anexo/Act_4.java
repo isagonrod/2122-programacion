@@ -11,33 +11,62 @@ package Tema12.Anexo;
  *  c) Candidatos que solo dominan un idioma.
  */
 
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Act_4 {
     public static void main(String[] args) {
         Set<String> english = new TreeSet<>();
-        Set<String> français = new TreeSet<>();
+        Set<String> francais = new TreeSet<>();
         Set<String> deutsch = new TreeSet<>();
+        Set<String>[] resultados;
 
         english.add("Isa");
         english.add("Sara");
-        français.add("Sara");
-        français.add("Ángel");
+        francais.add("Sara");
+        francais.add("Ángel");
         deutsch.add("Isa");
         deutsch.add("Miguel");
+
+        resultados = candidatos(english, francais, deutsch);
+
+        System.out.println(Arrays.toString(resultados));
     }
 
-    static Set[] candidatos(Set<String> english, Set<String> français, Set<String> deutsch) {
-        Set[] candidatos = {english, français, deutsch};
-        Set[] resultados = new TreeSet[3];
+    static Set<String>[] candidatos(Set<String> english, Set<String> francais, Set<String> deutsch) {
+        Set<String>[] resultados = new TreeSet[3];
+        Set<String> aux = new TreeSet<>();
 
         // Candidatos que superaron la prueba de inglés y otra más
+        resultados[0] = new TreeSet<>();
+        aux.addAll(english);
+        aux.retainAll(francais);
+        resultados[0].addAll(aux);
+        aux.clear();
+        aux.addAll(english);
+        aux.retainAll(deutsch);
+        resultados[0].addAll(aux);
+        aux.clear();
 
         // Candidatos que superaron al menos dos idiomas.
+        resultados[1] = new TreeSet<>();
+        aux.addAll(francais);
+        aux.retainAll(deutsch);
+        resultados[1].addAll(aux);
+        aux.addAll(english);
+        aux.retainAll(deutsch);
+        resultados[1].addAll(aux);
+        aux.addAll(english);
+        aux.retainAll(francais);
+        resultados[1].addAll(aux);
+        aux.clear();
 
         // Candidatos que solo dominan un idioma.
+        resultados[2] = new TreeSet<>();
+        aux.addAll(english);
+        aux.addAll(francais);
+        aux.addAll(deutsch);
+        aux.removeAll(resultados[1]);
+        resultados[2].addAll(aux);
 
         return resultados;
     }
