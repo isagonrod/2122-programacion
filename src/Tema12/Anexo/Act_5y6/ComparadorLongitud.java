@@ -18,7 +18,7 @@ public class ComparadorLongitud implements Comparator<String> {
     public int compare(String o1, String o2) {
         int resultado = o1.length() - o2.length();
         if (resultado == 0) {
-            Comparator.naturalOrder();
+            resultado = o1.compareToIgnoreCase(o2);
         }
         return resultado;
     }
