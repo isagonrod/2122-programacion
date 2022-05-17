@@ -20,7 +20,7 @@ import java.util.Map;
 public class Act_7 {
     public static void main(String[] args) {
         Map<String, HashMap<String, String>> empresas = new HashMap<>();
-        HashMap<String, String> nuevoMapa = new HashMap<>();
+        HashMap<String, String> nuevoMapa;
         int opc;
 
         do {
@@ -30,18 +30,16 @@ public class Act_7 {
                 case 1 -> {
                     String nombreEmpresa = Teclado.getString("Nombre de la empresa: ");
                     if (!empresas.containsKey(nombreEmpresa)) {
+                        String user = Teclado.getString("Usuario: ");
+                        String password = Teclado.getString("Contraseña: ");
+                        nuevoMapa = new HashMap<>();
+                        nuevoMapa.put(user, password);
                         empresas.put(nombreEmpresa, nuevoMapa);
-                        if (nuevoMapa.isEmpty()) {
-                            String user = Teclado.getString("Usuario: ");
-                            String password = Teclado.getString("Contraseña: ");
-                            nuevoMapa.put(user, password);
-                        }
                     } else {
-                        if (!nuevoMapa.isEmpty()) { //TODO: Se añaden los usuarios ya existentes a las nuevas empresas
-                            String user = Teclado.getString("Usuario: ");
-                            String password = Teclado.getString("Contraseña: ");
-                            nuevoMapa.put(user, password);
-                        }
+                        nuevoMapa = empresas.get(nombreEmpresa);
+                        String user = Teclado.getString("Usuario: ");
+                        String password = Teclado.getString("Contraseña: ");
+                        nuevoMapa.put(user, password);
                     }
                 }
                 case 2 -> {
@@ -51,7 +49,7 @@ public class Act_7 {
                         System.out.println("\t" + empresas.get(listadoEmpresa));
                     }
                 }
-                case 3 -> System.out.println("Listado completo: " + empresas.keySet() + " - " + empresas.values());
+                case 3 -> imprimirMapa(empresas); //System.out.println("Listado completo: " + empresas.entrySet());
                 case 4 -> System.out.println("¡Adiós!");
             }
         } while (opc != 4);
@@ -63,5 +61,11 @@ public class Act_7 {
         System.out.println("2. Listado de usuarios de una empresa");
         System.out.println("3. Listado completo");
         System.out.println("4. Salir");
+    }
+
+    static void imprimirMapa(Map<String, HashMap<String, String>> empresas) {
+        for (Map.Entry<String, HashMap<String, String>> entry : empresas.entrySet()) {
+            System.out.println("Empresa " + entry.getKey() + ": " + entry.getValue());
+        }
     }
 }
