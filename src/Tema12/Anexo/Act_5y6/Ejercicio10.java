@@ -1,12 +1,5 @@
 package Tema12.Anexo.Act_5y6;
 
-import Utilidades.Teclado;
-
-import java.util.Iterator;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
 /* ACTIVIDAD 5 DEL ANEXO
  * Implemente una clase llamada Ejercicio10 que tenga los métodos siguientes:
  *  a) Un método añadirPalabras que reciba como parámetro un conjunto ordenado (orden natural) y añada cadenas a este
@@ -26,6 +19,12 @@ import java.util.TreeSet;
  *
  * NOTA: Ver métodos de Set. Recordar los métodos subSet, tailSet y headSet de SortedSet.
  */
+
+import Utilidades.Teclado;
+
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 public class Ejercicio10 {
     /** Un método añadirPalabras que reciba como parámetro un conjunto ordenado (orden natural) y añada cadenas a este
      *  conjunto. Las cadenas se leerán por teclado y el bucle estará controlado por una variable booleana también leída
@@ -35,7 +34,7 @@ public class Ejercicio10 {
         boolean seguir;
         do {
             conjunto.add(Teclado.getString("Nueva palabra: "));
-            seguir = Teclado.getString("¿Seguir? ").equals("si");
+            seguir = Teclado.getString("¿Quieres seguir? ").equals("si");
         } while(seguir);
     }
 
@@ -48,7 +47,8 @@ public class Ejercicio10 {
         String palabra1 = Teclado.getString("Cadena 1: "), palabra2 = Teclado.getString("Cadena 2: ");
 
         if (palabra1.compareTo(palabra2) < 0) {
-            System.out.println(conjunto.subSet(palabra1, palabra2));
+            System.out.println("Subconjunto entre " + palabra1 + " y " + palabra2 + ": " +
+                    conjunto.subSet(palabra1, palabra2));
         }
         else {
             throw new IllegalArgumentException();
@@ -60,7 +60,7 @@ public class Ejercicio10 {
      */
     static void mayoresOigualesQue(SortedSet<String> conjunto) {
         String palabra = Teclado.getString("Palabra: ");
-        System.out.println(conjunto.tailSet(palabra));
+        System.out.println("Palabras mayores o iguales que " + palabra + ": " + conjunto.tailSet(palabra));
     }
 
     /** Un método menoresQue que reciba un conjunto ordenado de objetos de la clase String como parámetro y muestre en la
@@ -68,7 +68,7 @@ public class Ejercicio10 {
      */
     static void menoresQue(SortedSet<String> conjunto) {
         String palabra = Teclado.getString("Palabra: ");
-        System.out.println(conjunto.headSet(palabra));
+        System.out.println("Palabras menores que " + palabra + ": " + conjunto.headSet(palabra));
     }
 
     public static void main(String[] args) {
