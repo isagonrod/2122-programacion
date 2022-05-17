@@ -47,10 +47,9 @@ public class Ejercicio10 {
         String palabra1 = Teclado.getString("Cadena 1: "), palabra2 = Teclado.getString("Cadena 2: ");
 
         if (palabra1.compareTo(palabra2) < 0) {
-            System.out.println("Subconjunto entre " + palabra1 + " y " + palabra2 + ": " +
+            System.out.println("Subconjunto entre '" + palabra1 + "' y '" + palabra2 + "': " +
                     conjunto.subSet(palabra1, palabra2));
-        }
-        else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
@@ -60,7 +59,7 @@ public class Ejercicio10 {
      */
     static void mayoresOigualesQue(SortedSet<String> conjunto) {
         String palabra = Teclado.getString("Palabra: ");
-        System.out.println("Palabras mayores o iguales que " + palabra + ": " + conjunto.tailSet(palabra));
+        System.out.println("Palabras mayores o iguales que '" + palabra + "': " + conjunto.tailSet(palabra));
     }
 
     /** Un método menoresQue que reciba un conjunto ordenado de objetos de la clase String como parámetro y muestre en la
@@ -68,7 +67,7 @@ public class Ejercicio10 {
      */
     static void menoresQue(SortedSet<String> conjunto) {
         String palabra = Teclado.getString("Palabra: ");
-        System.out.println("Palabras menores que " + palabra + ": " + conjunto.headSet(palabra));
+        System.out.println("Palabras menores que '" + palabra + "': " + conjunto.headSet(palabra));
     }
 
     public static void main(String[] args) {
@@ -77,11 +76,15 @@ public class Ejercicio10 {
         Ejercicio10.mostrarSubconjunto(diccionario);
         Ejercicio10.mayoresOigualesQue(diccionario);
         Ejercicio10.menoresQue(diccionario);
+        System.out.println("Primera palabra: " + diccionario.first());
+        System.out.println("Última palabra: " + diccionario.last());
+        System.out.println("Comparador: " + diccionario.comparator()); // Muestra el comparador usado
 
         SortedSet<String> nuevoDiccionario = new TreeSet<>(new ComparadorLongitud());
         nuevoDiccionario.addAll(diccionario);
 
         System.out.println("Nuevo diccionario utilizando " + ComparadorLongitud.class.getName());
-        System.out.println(nuevoDiccionario);
+        System.out.println("Comparador: " + nuevoDiccionario.comparator());
+        System.out.println("Nuevo diccionario: " + nuevoDiccionario);
     }
 }
