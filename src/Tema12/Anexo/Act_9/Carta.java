@@ -6,8 +6,9 @@ public class Carta {
     private String valor;
     private Palo palo;
 
-    public Carta() {
-        // TODO: Valor y palo aleatorio
+    public Carta(String valor, String palo) {
+        this.valor = valor;
+        this.palo = Palo.valueOf(palo);
     }
 
     public String getValor() {
@@ -24,5 +25,10 @@ public class Carta {
 
     public void setPalo(Palo palo) {
         this.palo = palo;
+    }
+
+    @Override
+    public String toString() {
+        return valor + " de " + palo;
     }
 }
