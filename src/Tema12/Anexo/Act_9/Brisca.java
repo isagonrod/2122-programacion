@@ -23,9 +23,9 @@ public class Brisca {
         Map<Carta, Integer> baraja = rellenarBaraja();
         ArrayList<Carta> mano = repartirMano(baraja);
 
-        System.out.println("Mano recibida: " + mano);
+        System.out.println("\nMano recibida: " + mano);
 
-        System.out.println("Total puntos: " + calcularMano(baraja, mano));
+        System.out.println("\nTotal puntos: " + calcularMano(baraja, mano));
     }
 
     private static Integer calcularMano(Map<Carta, Integer> baraja, ArrayList<Carta> mano) {

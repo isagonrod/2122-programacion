@@ -45,7 +45,7 @@ public class Act_7 {
                 case 2 -> {
                     String listadoEmpresa = Teclado.getString("Empresa a mostrar: ");
                     if (empresas.containsKey(listadoEmpresa)) {
-                        System.out.println("Listado de usuarios de la empresa '" + listadoEmpresa + "': ");
+                        System.out.println("\nListado de usuarios de la empresa '" + listadoEmpresa + "': ");
                         System.out.println("\t" + empresas.get(listadoEmpresa));
                     }
                 }
@@ -65,7 +65,7 @@ public class Act_7 {
 
     static void imprimirMapa(Map<String, HashMap<String, String>> empresas) {
         for (Map.Entry<String, HashMap<String, String>> entry : empresas.entrySet()) {
-            System.out.println("Empresa " + entry.getKey() + ": " + entry.getValue());
+            System.out.println("\nEmpresa " + entry.getKey() + ": " + entry.getValue());
         }
     }
 }
