@@ -2,6 +2,7 @@ package Tema12.Anexo.Act_10;
 
 import Utilidades.Teclado;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Alumno implements Comparable<Alumno> {
@@ -38,7 +39,7 @@ public class Alumno implements Comparable<Alumno> {
 
     @Override
     public String toString() {
-        return "Alumno: " + this.nombreApellido + "(" + this.dni + ") | Notas: " + this.notas;
+        return "Alumno: " + this.nombreApellido + "(" + this.dni + ") | Nota media: " + this.media() + " | Notas: " + Arrays.toString(this.notas);
     }
 
     @Override
@@ -63,7 +64,7 @@ public class Alumno implements Comparable<Alumno> {
 
     public Double[] insertarNotas() {
         for (int i = 0; i < this.notas.length; i++) {
-            notas[i] = Teclado.getDouble("Nota " + i + ": ");
+            notas[i] = Teclado.getDouble("Nota " + (i+1) + ": ");
         }
         return this.notas;
     }
