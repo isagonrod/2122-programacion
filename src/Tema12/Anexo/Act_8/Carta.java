@@ -1,6 +1,4 @@
-package Tema12.Anexo.Act_9;
-
-import Utilidades.Valores;
+package Tema12.Anexo.Act_8;
 
 public class Carta {
     private String valor;

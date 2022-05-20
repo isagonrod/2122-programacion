@@ -1,4 +1,4 @@
-package Tema12.Act_Clase.Act_Mapa_ProfAlum;
+package Tema12.Anexo.Act_9;
 
 import Utilidades.Teclado;
 

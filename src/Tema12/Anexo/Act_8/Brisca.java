@@ -1,4 +1,4 @@
-package Tema12.Anexo.Act_9;
+package Tema12.Anexo.Act_8;
 
 /* ACTIVIDAD 9 DEL ANEXO
  * Escribe un programa que genere una secuencia de 5 cartas de la baraja española y que sume los puntos según el juego
