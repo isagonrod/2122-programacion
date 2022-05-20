@@ -36,11 +36,11 @@ package Tema12.Anexo.Act_10;
  *      - IRegalos
  *      - Regalos
  *  - Implementando IExpLogica:
- *      - ExpCodigoBoda
- *      - ExpCodigoRegalo
- *      - ExpNombre
- *      - ExpDisponible
- *  - Implementando IExpReal: ExpPrecio
+ *      - ExpCodigoBoda --> Excepción
+ *      - ExpCodigoRegalo --> Excepción
+ *      - ExpNombre --> Excepción
+ *      - ExpDisponible --> Excepción
+ *  - Implementando IExpReal: ExpPrecio --> Excepción
  *  - Implementando Comparator: CompPrecioRegalo
  *  - Implementando IExpReal: ExpValorBodaCondicion --> Esta clase sumará el valor de todos los regalos de una boda que
  *                                                      cumplen una expresión apoyándose en la clase Colecciones y en
@@ -59,9 +59,31 @@ package Tema12.Anexo.Act_10;
  *  7) Lista de regalos disponibles ordenados por precio.
  */
 
+import Utilidades.Teclado;
+
 public class Principal_Bodas {
     public static void main(String[] args) {
+        ListaNovios bodas = new ListaNovios();
+        int opc;
 
+        do {
+            menu();
+            opc = Teclado.leerOpcion(1, 8);
+            switch (opc) {
+                case 5 -> {
+                    submenu();
+                    opc = Teclado.leerOpcion(1, 3);
+                }
+                case 6 -> {
+                    submenu();
+                    opc = Teclado.leerOpcion(1, 3);
+                    switch (opc) {
+
+                    }
+                }
+                case 8 -> System.out.println("¡Adiós!");
+            }
+        } while (opc != 8);
     }
 
     static void menu() {
@@ -71,14 +93,14 @@ public class Principal_Bodas {
         System.out.println("3. Listado de una boda dado el nombre del novio o de la novia");
         System.out.println("4. Informar si un regalo está disponible dado el código de la boda y el regalo");
         System.out.println("5. Suma total de regalos de una boda");
-        System.out.println("\t5.1. Con un recorrido basado en dos iteradores anidados");
-        System.out.println("\t5.2. Con un solo iterador y basándose en el método suma de la clase Colecciones");
-        System.out.println("\t5.3. Apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion");
         System.out.println("6. Suma total de regalos disponibles de una boda");
-        System.out.println("\t6.1. Con un recorrido basado en dos iteradores anidados");
-        System.out.println("\t6.2. Con un solo iterador y basándose en el método suma de la clase Colecciones");
-        System.out.println("\t6.3. Apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion");
         System.out.println("7. Lista de regalos disponibles ordenados por precio");
-        System.out.println("8. Salir");
+        System.out.println("8. Salir\n");
+    }
+
+    static void submenu() {
+        System.out.println("\n1. Con un recorrido basado en dos iteradores anidados");
+        System.out.println("2. Con un solo iterador y basándose en el método suma de la clase Colecciones");
+        System.out.println("3. Apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion\n");
     }
 }
