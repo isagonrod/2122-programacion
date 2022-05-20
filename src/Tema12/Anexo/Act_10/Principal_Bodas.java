@@ -61,10 +61,7 @@ package Tema12.Anexo.Act_10;
 
 import Utilidades.Teclado;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Principal_Bodas {
     public static void main(String[] args) {
@@ -82,28 +79,75 @@ public class Principal_Bodas {
                 case 5 -> {
                     submenu();
                     opc = Teclado.leerOpcion(1, 3);
-                    /*
-                    System.out.println("\n1. Con un recorrido basado en dos iteradores anidados");
-                    System.out.println("2. Con un solo iterador y basándose en el método suma de la clase Colecciones");
-                    System.out.println("3. Apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion\n");
-                    */
+                    sumarRegalosDeBoda(bodas, opc, false);
                 }
                 case 6 -> {
                     submenu();
                     opc = Teclado.leerOpcion(1, 3);
-                    /*
-                    System.out.println("\n1. Con un recorrido basado en dos iteradores anidados");
-                    System.out.println("2. Con un solo iterador y basándose en el método suma de la clase Colecciones");
-                    System.out.println("3. Apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion\n");
-                    */
-                    switch (opc) {
-
-                    }
+                    sumarRegalosDeBoda(bodas, opc, true);
                 }
                 case 7 -> listarRegalosDisponiblesPorPrecio(bodas);
                 case 8 -> System.out.println("¡Adiós!");
             }
         } while (opc != 8);
+    }
+
+    static void sumarRegalosDeBoda(List<Novios> bodas, int opc, boolean soloDisponibles) {
+        switch (opc) {
+            case 1 -> System.out.println(sumarRegalosDeBodaOpc1(bodas, soloDisponibles));
+            case 2 -> System.out.println(sumarRegalosDeBodaOpc2(bodas, soloDisponibles));
+            case 3 -> System.out.println(sumarRegalosDeBodaOpc3(bodas, soloDisponibles));
+        }
+    }
+
+    private static Integer sumarRegalosDeBodaOpc1(List<Novios> bodas, boolean soloDisponibles) {
+        Integer resultado = 0;
+        Iterator<Novios> it1 = bodas.iterator();
+        Iterator<Regalo> it2;
+
+        while(it1.hasNext()) {
+            it2 = it1.next().getRegalos().iterator();
+            while (it2.hasNext()) {
+                Regalo regalo = it2.next();
+                if (!soloDisponibles || regalo.getDisponible()) {
+                    resultado++;
+                }
+            }
+        }
+
+        return resultado;
+    }
+
+    /* Suma total de regalos de una boda. Implemente este apartado
+     * con un solo iterador y basándose en el método suma de la clase Colecciones
+     */
+    private static Integer sumarRegalosDeBodaOpc2(List<Novios> bodas, boolean soloDisponibles) {
+        Integer resultado = 0;
+        Iterator<Novios> it1 = bodas.iterator();
+
+        while(it1.hasNext()) {
+            List<Regalo> regalos = it1.next().getRegalos();
+
+            if (!soloDisponibles) {
+                resultado += regalos.size();
+            }
+            else {
+                //TODO falta el otro caso, que es eso del suma en collections???
+            }
+        }
+
+        return resultado;
+    }
+
+    /* Suma total de regalos de una boda. Implemente este apartado
+     * apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion
+     */
+    private static Integer sumarRegalosDeBodaOpc3(List<Novios> bodas, boolean soloDisponibles) {
+        Integer resultado = 0;
+
+        //TODO what???
+
+        return resultado;
     }
 
     static void listarRegalosDisponiblesPorPrecio(List<Novios> bodas) {
