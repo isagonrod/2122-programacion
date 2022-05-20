@@ -39,7 +39,7 @@ public class Alumno implements Comparable<Alumno> {
 
     @Override
     public String toString() {
-        return "Alumno: " + this.nombreApellido + "(" + this.dni + ") | Nota media: " + this.media() + " | Notas: " + Arrays.toString(this.notas);
+        return "Alumno: " + this.nombreApellido + " (" + this.dni + ") | Nota media: " + this.media() + " | Notas: " + Arrays.toString(this.notas);
     }
 
     @Override

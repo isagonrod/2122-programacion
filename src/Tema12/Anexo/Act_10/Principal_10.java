@@ -67,13 +67,13 @@ public class Principal_10 {
     }
 
     static void menu() {
-        System.out.println("-- MENÚ DE OPCIONES --");
+        System.out.println("\n-- MENÚ DE OPCIONES --");
         System.out.println("1. Insertar profesor");
         System.out.println("2. Insertar alumno");
         System.out.println("3. Listado completo con alumnos ordenados por DNI");
         System.out.println("4. Listado completo con alumnos ordenados por nota media");
         System.out.println("5. Modificar datos de profesor");
-        System.out.println("6. Salir");
+        System.out.println("6. Salir\n");
     }
 
     static void imprimirMapa(Map<Profesor, Set<Alumno>> clase) {

@@ -27,7 +27,7 @@ public class Profesor {
 
     @Override
     public String toString() {
-        return this.nombreApellido + "(" + this.dni + ")";
+        return this.nombreApellido + " (" + this.dni + ")";
     }
 
     public void insertarProfesor(String dni, String nombreApellido) {
