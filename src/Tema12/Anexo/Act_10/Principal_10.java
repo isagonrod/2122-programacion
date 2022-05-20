@@ -1,7 +1,13 @@
 package Tema12.Anexo.Act_10;
 
 /* ACTIVIDAD 10
- * Alumnos ordenados por dni
+ * Menú de opciones:
+ *  1) Insertar profesor
+ *  2) Insertar alumno (pedir por teclado Profesor y luego los datos del alumno)
+ *  3) Listado completo (Profesor + Alumnos ordenados por dni)
+ *  4) Listado completo (Profesor + Alumnos ordenador por nota media)
+ *  5) Modificar Profesor (pedir dni y cambiar nombre y apellido)
+ *  6) Salir
  */
 
 import Utilidades.Teclado;
