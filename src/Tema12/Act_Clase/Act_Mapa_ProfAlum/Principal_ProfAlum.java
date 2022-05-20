@@ -1,6 +1,6 @@
-package Tema12.Anexo.Act_10;
+package Tema12.Act_Clase.Act_Mapa_ProfAlum;
 
-/* ACTIVIDAD 10
+/* ACTIVIDAD DE CLASE
  * Menú de opciones:
  *  1) Insertar profesor
  *  2) Insertar alumno (pedir por teclado Profesor y luego los datos del alumno)
@@ -14,7 +14,7 @@ import Utilidades.Teclado;
 
 import java.util.*;
 
-public class Principal_10 {
+public class Principal_ProfAlum {
     public static void main(String[] args) {
         Map<Profesor, Set<Alumno>> clase = new HashMap<>();
         int opc;
