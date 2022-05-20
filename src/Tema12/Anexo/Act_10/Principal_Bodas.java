@@ -61,9 +61,12 @@ package Tema12.Anexo.Act_10;
 
 import Utilidades.Teclado;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Principal_Bodas {
     public static void main(String[] args) {
-        ListaNovios bodas = new ListaNovios();
+        List<Novios> bodas = new ArrayList<>();
         int opc;
 
         do {

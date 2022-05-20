@@ -1,6 +1,6 @@
 package Tema12.Anexo.Act_10;
 
-public class Regalo {
+public class Regalo implements IRegalos {
     private Integer codigo;
     private String descripcion;
     private Double precio;

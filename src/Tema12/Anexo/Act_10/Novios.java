@@ -3,7 +3,7 @@ package Tema12.Anexo.Act_10;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Novios {
+public class Novios implements INovios {
     private String codigoBoda;
     private String nombreNovio;
     private String nombreNovia;
