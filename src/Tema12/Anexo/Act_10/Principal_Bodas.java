@@ -63,30 +63,115 @@ import Utilidades.Teclado;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Principal_Bodas {
     public static void main(String[] args) {
-        List<Novios> bodas = new ArrayList<>();
+        List<Novios> bodas = rellenarBodas();
         int opc;
 
         do {
             menu();
             opc = Teclado.leerOpcion(1, 8);
             switch (opc) {
+                case 1 -> System.out.println(bodas);
+                case 2 -> System.out.println(bodas.get(Teclado.getNumber("Introducir número de la boda en la lista: ")).getRegalos());
+                case 3 -> listarRegalosSegunNombreNovios(bodas);
+                case 4 -> informarDisponibilidadRegaloSegunCodigos(bodas);
                 case 5 -> {
                     submenu();
                     opc = Teclado.leerOpcion(1, 3);
+                    /*
+                    System.out.println("\n1. Con un recorrido basado en dos iteradores anidados");
+                    System.out.println("2. Con un solo iterador y basándose en el método suma de la clase Colecciones");
+                    System.out.println("3. Apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion\n");
+                    */
                 }
                 case 6 -> {
                     submenu();
                     opc = Teclado.leerOpcion(1, 3);
+                    /*
+                    System.out.println("\n1. Con un recorrido basado en dos iteradores anidados");
+                    System.out.println("2. Con un solo iterador y basándose en el método suma de la clase Colecciones");
+                    System.out.println("3. Apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion\n");
+                    */
                     switch (opc) {
 
                     }
                 }
+                case 7 -> listarRegalosDisponiblesPorPrecio(bodas);
                 case 8 -> System.out.println("¡Adiós!");
             }
         } while (opc != 8);
+    }
+
+    static void listarRegalosDisponiblesPorPrecio(List<Novios> bodas) {
+        Set<Regalo> regalosDisponibles = new TreeSet<>(new CompPrecioRegalo());
+
+        for(Novios novios : bodas) {
+            for (Regalo regalo : novios.getRegalos()) {
+                if (regalo.getDisponible()) {
+                    regalosDisponibles.add(regalo);
+                }
+            }
+        }
+
+        System.out.println(regalosDisponibles);
+    }
+
+    static void informarDisponibilidadRegaloSegunCodigos(List<Novios> bodas) {
+        String codigoBoda = Teclado.getString("Introducir código de la boda: ");
+        Integer codigoRegalo = Teclado.getNumber("Introducir código del regalo: ");
+        for(Novios novios : bodas) {
+            if (novios.getCodigoBoda().compareTo(codigoBoda) == 0) {
+                for (Regalo regalo : novios.getRegalos()) {
+                    if (regalo.getCodigo().equals(codigoRegalo)) {
+                        System.out.println("El regalo " + codigoRegalo + (regalo.getDisponible() ? "SI" : "NO") + " está disponible.");
+                    }
+                }
+            }
+        }
+    }
+
+    static void listarRegalosSegunNombreNovios(List<Novios> bodas) {
+        String nombre = Teclado.getString("Introducir nombre de alguno de los novios: ");
+        for(Novios novios : bodas) {
+            if (novios.getNombreNovio().compareTo(nombre) == 0 || novios.getNombreNovia().compareTo(nombre) == 0) {
+                System.out.println(novios.getRegalos());
+            }
+        }
+    }
+
+    static List<Novios> rellenarBodas() {
+        List<Novios> bodas = new ArrayList<>();
+
+        bodas.add(new Novios("uno", "capullo", "capulla", "chabola"));
+        bodas.add(new Novios("dos", "joputa", "japuta", "puente"));
+        bodas.add(new Novios("tres", "cabron", "cabrona", "tresmil"));
+        bodas.add(new Novios("cuatro", "golfo", "golfa", "calle"));
+
+        bodas.get(0).getRegalos().add(new Regalo(1, "mierda", 200.0, true));
+        bodas.get(0).getRegalos().add(new Regalo(2, "carbón", 80.0, true));
+        bodas.get(0).getRegalos().add(new Regalo(3, "mirra", 10.0, true));
+        bodas.get(0).getRegalos().add(new Regalo(4, "cortemangas", 9999.0, true));
+
+        bodas.get(1).getRegalos().add(new Regalo(5, "garbanzos", 5.0, true));
+        bodas.get(1).getRegalos().add(new Regalo(6, "ropalimpia", 1.0, false));
+        bodas.get(1).getRegalos().add(new Regalo(7, "dignidad", 100000.0, false));
+        bodas.get(1).getRegalos().add(new Regalo(8, "quesocaducao", 0.50, true));
+
+        bodas.get(2).getRegalos().add(new Regalo(9, "tranquilidad", 15.99, false));
+        bodas.get(2).getRegalos().add(new Regalo(10, "estreñimiento", 80.0, true));
+        bodas.get(2).getRegalos().add(new Regalo(11, "ropa", 10.0, false));
+        bodas.get(2).getRegalos().add(new Regalo(12, "palomino", 9999.0, true));
+
+        bodas.get(3).getRegalos().add(new Regalo(13, "corchopalculo", 200.0, true));
+        bodas.get(3).getRegalos().add(new Regalo(14, "buenacara", 80.0, false));
+        bodas.get(3).getRegalos().add(new Regalo(15, "simpatia", 10.0, false));
+        bodas.get(3).getRegalos().add(new Regalo(16, "vinagre", 9999.0, true));
+
+        return bodas;
     }
 
     static void menu() {
