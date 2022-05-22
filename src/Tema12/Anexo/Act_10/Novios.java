@@ -60,12 +60,8 @@ public class Novios implements INovios {
 
     @Override
     public String toString() {
-        return "Novios{" +
-                "codigoBoda='" + codigoBoda + '\'' +
-                ", nombreNovio='" + nombreNovio + '\'' +
-                ", nombreNovia='" + nombreNovia + '\'' +
-                ", domicilio='" + domicilio + '\'' +
-                ", regalos=" + regalos +
-                '}';
+        return '\n' + codigoBoda + '\n' +
+                "\tNovio: " + nombreNovio + " | Novia: " + nombreNovia + " | Domicilio: " + domicilio + '\n' +
+                "\tLista de regalos: " + '\n' + regalos;
     }
 }

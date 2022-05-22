@@ -190,30 +190,18 @@ public class Principal_Bodas {
     static List<Novios> rellenarBodas() {
         List<Novios> bodas = new ArrayList<>();
 
-        bodas.add(new Novios("uno", "capullo", "capulla", "chabola"));
-        bodas.add(new Novios("dos", "joputa", "japuta", "puente"));
-        bodas.add(new Novios("tres", "cabron", "cabrona", "tresmil"));
-        bodas.add(new Novios("cuatro", "golfo", "golfa", "calle"));
+        bodas.add(new Novios("Boda_1", "Ramiro Gómez", "Verónica Sánchez", "Sevilla"));
+        bodas.get(0).getRegalos().add(new Regalo(1, "Vajilla completa", 200.0, true));
+        bodas.get(0).getRegalos().add(new Regalo(2, "Aspiradora sin cables", 150.95, true));
+        bodas.get(0).getRegalos().add(new Regalo(3, "Robot de cocina", 500.0, true));
+        bodas.get(0).getRegalos().add(new Regalo(4, "Cubertería de 113 piezas", 999.99, true));
 
-        bodas.get(0).getRegalos().add(new Regalo(1, "mierda", 200.0, true));
-        bodas.get(0).getRegalos().add(new Regalo(2, "carbón", 80.0, true));
-        bodas.get(0).getRegalos().add(new Regalo(3, "mirra", 10.0, true));
-        bodas.get(0).getRegalos().add(new Regalo(4, "cortemangas", 9999.0, true));
-
-        bodas.get(1).getRegalos().add(new Regalo(5, "garbanzos", 5.0, true));
-        bodas.get(1).getRegalos().add(new Regalo(6, "ropalimpia", 1.0, false));
-        bodas.get(1).getRegalos().add(new Regalo(7, "dignidad", 100000.0, false));
-        bodas.get(1).getRegalos().add(new Regalo(8, "quesocaducao", 0.50, true));
-
-        bodas.get(2).getRegalos().add(new Regalo(9, "tranquilidad", 15.99, false));
-        bodas.get(2).getRegalos().add(new Regalo(10, "estreñimiento", 80.0, true));
-        bodas.get(2).getRegalos().add(new Regalo(11, "ropa", 10.0, false));
-        bodas.get(2).getRegalos().add(new Regalo(12, "palomino", 9999.0, true));
-
-        bodas.get(3).getRegalos().add(new Regalo(13, "corchopalculo", 200.0, true));
-        bodas.get(3).getRegalos().add(new Regalo(14, "buenacara", 80.0, false));
-        bodas.get(3).getRegalos().add(new Regalo(15, "simpatia", 10.0, false));
-        bodas.get(3).getRegalos().add(new Regalo(16, "vinagre", 9999.0, true));
+		bodas.add(new Novios("Boda_2", "Leonardo Cabriani", "Emma Limone", "Praga"));
+        bodas.get(1).getRegalos().add(new Regalo(5, "Smart TV 100 pulgadas", 3000.84, true));
+        bodas.get(1).getRegalos().add(new Regalo(6, "Sofá chaise longue de 5 plazas", 1500.00, false));
+        bodas.get(1).getRegalos().add(new Regalo(7, "Juego de toallas de algodón", 150.66, false));
+        bodas.get(1).getRegalos().add(new Regalo(8, "Lavadora", 95.30, true));
+		bodas.get(1).getRegalos().add(new Regalo(9, "Secadora", 116.58, false));
 
         return bodas;
     }

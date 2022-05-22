@@ -47,11 +47,6 @@ public class Regalo implements IRegalos {
 
     @Override
     public String toString() {
-        return "Regalo{" +
-                "codigo=" + codigo +
-                ", descripcion='" + descripcion + '\'' +
-                ", precio=" + precio +
-                ", disponible=" + disponible +
-                '}';
+        return "\t\tCódigo: " + codigo + " | Descripción: " + descripcion + " | Precio: " + precio + " | Disponible: " + disponible + '\n';
     }
 }
