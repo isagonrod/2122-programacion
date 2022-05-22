@@ -78,12 +78,12 @@ public class Principal_Bodas {
                 case 4 -> informarDisponibilidadRegaloSegunCodigos(bodas);
                 case 5 -> {
                     submenu();
-                    opc = Teclado.leerOpcion(1, 3);
+                    opc = Teclado.leerOpcion(1, 2);
                     sumarRegalosDeBoda(bodas, opc, false);
                 }
                 case 6 -> {
                     submenu();
-                    opc = Teclado.leerOpcion(1, 3);
+                    opc = Teclado.leerOpcion(1, 2);
                     sumarRegalosDeBoda(bodas, opc, true);
                 }
                 case 7 -> listarRegalosDisponiblesPorPrecio(bodas);
@@ -96,7 +96,7 @@ public class Principal_Bodas {
         switch (opc) {
             case 1 -> System.out.println(sumarRegalosDeBodaOpc1(bodas, soloDisponibles));
             case 2 -> System.out.println(sumarRegalosDeBodaOpc2(bodas, soloDisponibles));
-            case 3 -> System.out.println(sumarRegalosDeBodaOpc3(bodas, soloDisponibles));
+            //case 3 -> System.out.println(sumarRegalosDeBodaOpc3(bodas, soloDisponibles));
         }
     }
 
@@ -145,7 +145,7 @@ public class Principal_Bodas {
     private static Integer sumarRegalosDeBodaOpc3(List<Novios> bodas, boolean soloDisponibles) {
         Integer resultado = 0;
 
-        //TODO what???
+        //TODO what??? -> ESTE NO HACE FALTA HACERLO
 
         return resultado;
     }
@@ -221,6 +221,6 @@ public class Principal_Bodas {
     static void submenu() {
         System.out.println("\n1. Con un recorrido basado en dos iteradores anidados");
         System.out.println("2. Con un solo iterador y basándose en el método suma de la clase Colecciones");
-        System.out.println("3. Apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion\n");
+        //System.out.println("3. Apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion\n");
     }
 }
