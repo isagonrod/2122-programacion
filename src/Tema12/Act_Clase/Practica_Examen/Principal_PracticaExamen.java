@@ -37,10 +37,56 @@ public class Principal_PracticaExamen {
 				}
 				case 2 -> {
 					int edad = Teclado.getNumber("Edad de los empleados (límite superior): ");
+					listarPorEdad(empleados, edad);
+				}
+				case 3 -> {
+					String fecha = Teclado.getString("Fecha ingreso de los empleados (límite inferior): ");
+					listarPorFechaIngreso(empleados, fecha);
+				}
+				case 4 -> {
+					sumarSueldoEmpleados(empleados, "");
+				}
+				case 5 -> {
+					String fecha = Teclado.getString("Fecha ingreso de los empleados (límite inferior): ");
+					sumarSueldoEmpleados(empleados, fecha);
 				}
 				case 6 -> System.out.println("¡Adiós!");
 			}
 		} while (opc != 6);
+	}
+
+	static void sumarSueldoEmpleados(Set<Empleado> empleados, String fecha) {
+		Fecha f = null;
+		Double resultado = 0.0;
+
+		if (!fecha.equals("")) {
+			f = new Fecha(fecha);
+		}
+
+		for (Empleado empleado : empleados) {
+			if (fecha.equals("") || empleado.getFechaIngreso().diferenciaDias(f) >= 0) {
+				resultado += empleado.getSueldo();
+			}
+		}
+
+		System.out.println("El salario total solicitado es de: " + resultado);
+	}
+
+	static void listarPorFechaIngreso(Set<Empleado> empleados, String fecha) {
+		Fecha f = new Fecha(fecha);
+		for (Empleado empleado : empleados) {
+			if (empleado.getFechaIngreso().diferenciaDias(f) >= 0) {
+				System.out.println(empleado);
+			}
+		}
+	}
+
+	static void listarPorEdad(Set<Empleado> empleados, int edad) {
+		for (Empleado empleado : empleados) {
+			if (empleado.edad() >= edad) {
+				System.out.println(empleado);
+			}
+		}
 	}
 
 	static void menu() {
