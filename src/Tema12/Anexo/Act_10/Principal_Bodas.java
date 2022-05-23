@@ -77,15 +77,13 @@ public class Principal_Bodas {
                 case 3 -> listarRegalosSegunNombreNovios(bodas);
                 case 4 -> informarDisponibilidadRegaloSegunCodigos(bodas);
                 case 5 -> {
-                    submenu();
-                    opc = Teclado.leerOpcion(1, 2);
-                    sumarRegalosDeBoda(bodas, opc, false);
-                }
+					System.out.print("Suma total de regalos: ");
+					sumarRegalosDeBoda(bodas, opc, false);
+				}
                 case 6 -> {
-                    submenu();
-                    opc = Teclado.leerOpcion(1, 2);
-                    sumarRegalosDeBoda(bodas, opc, true);
-                }
+					System.out.print("Suma total de regalos disponibles: ");
+					sumarRegalosDeBoda(bodas, opc, true);
+				}
                 case 7 -> listarRegalosDisponiblesPorPrecio(bodas);
                 case 8 -> System.out.println("¡Adiós!");
             }
@@ -93,61 +91,21 @@ public class Principal_Bodas {
     }
 
     static void sumarRegalosDeBoda(List<Novios> bodas, int opc, boolean soloDisponibles) {
-        switch (opc) {
-            case 1 -> System.out.println(sumarRegalosDeBodaOpc1(bodas, soloDisponibles));
-            case 2 -> System.out.println(sumarRegalosDeBodaOpc2(bodas, soloDisponibles));
-            //case 3 -> System.out.println(sumarRegalosDeBodaOpc3(bodas, soloDisponibles));
-        }
-    }
+		Integer resultado = 0;
+		Iterator<Novios> it1 = bodas.iterator();
+		Iterator<Regalo> it2;
 
-    private static Integer sumarRegalosDeBodaOpc1(List<Novios> bodas, boolean soloDisponibles) {
-        Integer resultado = 0;
-        Iterator<Novios> it1 = bodas.iterator();
-        Iterator<Regalo> it2;
+		while(it1.hasNext()) {
+			it2 = it1.next().getRegalos().iterator();
+			while (it2.hasNext()) {
+				Regalo regalo = it2.next();
+				if (!soloDisponibles || regalo.getDisponible()) {
+					resultado++;
+				}
+			}
+		}
 
-        while(it1.hasNext()) {
-            it2 = it1.next().getRegalos().iterator();
-            while (it2.hasNext()) {
-                Regalo regalo = it2.next();
-                if (!soloDisponibles || regalo.getDisponible()) {
-                    resultado++;
-                }
-            }
-        }
-
-        return resultado;
-    }
-
-    /* Suma total de regalos de una boda. Implemente este apartado
-     * con un solo iterador y basándose en el método suma de la clase Colecciones
-     */
-    private static Integer sumarRegalosDeBodaOpc2(List<Novios> bodas, boolean soloDisponibles) {
-        Integer resultado = 0;
-        Iterator<Novios> it1 = bodas.iterator();
-
-        while(it1.hasNext()) {
-            List<Regalo> regalos = it1.next().getRegalos();
-
-            if (!soloDisponibles) {
-                resultado += regalos.size();
-            }
-            else {
-                //TODO falta el otro caso, que es eso del suma en collections???
-            }
-        }
-
-        return resultado;
-    }
-
-    /* Suma total de regalos de una boda. Implemente este apartado
-     * apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion
-     */
-    private static Integer sumarRegalosDeBodaOpc3(List<Novios> bodas, boolean soloDisponibles) {
-        Integer resultado = 0;
-
-        //TODO what??? -> ESTE NO HACE FALTA HACERLO
-
-        return resultado;
+		System.out.println("Hay " + resultado + " regalos");
     }
 
     static void listarRegalosDisponiblesPorPrecio(List<Novios> bodas) {
@@ -216,11 +174,5 @@ public class Principal_Bodas {
         System.out.println("6. Suma total de regalos disponibles de una boda");
         System.out.println("7. Lista de regalos disponibles ordenados por precio");
         System.out.println("8. Salir\n");
-    }
-
-    static void submenu() {
-        System.out.println("\n1. Con un recorrido basado en dos iteradores anidados");
-        System.out.println("2. Con un solo iterador y basándose en el método suma de la clase Colecciones");
-        //System.out.println("3. Apoyándose en la clase Colecciones y la clase ExpValorBodaCondicion\n");
     }
 }
