@@ -1,10 +1,10 @@
-package Tema13.Act_Resueltas.Act_3;
+package Tema13.Act_Resueltas;
 
 import Tema13.Act_Resueltas.Act_1.Cliente;
 
 import java.util.Comparator;
 
-public class Principal_13_3 {
+public class PrincipalResuelta_13_3 {
     public static void main(String[] args) {
         Cliente[] grupoClientes = {
                 new Cliente("111", "Marta", "12/02/2000"),

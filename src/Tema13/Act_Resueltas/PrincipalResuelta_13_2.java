@@ -1,4 +1,4 @@
-package Tema13.Act_Resueltas.Act_2;
+package Tema13.Act_Resueltas;
 
 import Tema13.Act_Resueltas.Act_1.Cliente;
 import Tema13.Act_Resueltas.Act_1.Saludo;
@@ -6,7 +6,7 @@ import Tema13.Act_Resueltas.Act_1.Saludo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Principal_13_2 {
+public class PrincipalResuelta_13_2 {
     public static void main(String[] args) {
         Cliente[] grupoClientes = {
                 new Cliente("111", "Marta", "12/02/2000"),

@@ -1,6 +1,6 @@
 package Tema13.Act_Resueltas.Act_1;
 
-public class Principal_13_1 {
+public class PrincipalResuelta_13_1 {
     public static void main(String[] args) {
         Saludo<String> saludoNombre = s -> "¡Hola " + s + "!";
         System.out.println(saludoNombre.saludar("Claudia"));
